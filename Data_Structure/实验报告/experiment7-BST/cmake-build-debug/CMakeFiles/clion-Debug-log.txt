@@ -1,0 +1,4 @@
+D:\应用\JetBrains\ToolBox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=D:/应用/JetBrains/ToolBox/apps/CLion/ch-0/223.7571.171/bin/ninja/win/ninja.exe -G Ninja -S D:\Programming\C-CPP\Csteaching\experiment7-BST -B D:\Programming\C-CPP\Csteaching\experiment7-BST\cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/Programming/C-CPP/Csteaching/experiment7-BST/cmake-build-debug

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="guiprj">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/guiprj.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

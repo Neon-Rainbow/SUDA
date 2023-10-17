@@ -1,0 +1,7 @@
+(function(){
+    AD_DATA = window["AD_DATA"] || {};
+    AD_DATA["10823"] = [{"data":{"DEFAULT":{"resource":{"type":"flash","file":"https:\/\/images.sohu.com\/saf\/a2017\/0725\/ChAKr1l2sgWARqwhAABNd23SYCY278.swf","width":300,"height":100,"md5":"10q9j0001003dD007lY20059p","click":"https:\/\/clk.optaim.com\/event.ng\/Type=click&FlightID=201707&TargetID=sohu&Values=d6888577,e8d7bc4d,5be9ddf4,5d315e5c&AdID=3306144","imp":"https:\/\/imp.optaim.com\/201707\/d6888577e8d7bc4d5be9ddf45d315e5c.php?a=0"},"monitorkey":"10q9j0001003dD007lY20059p","adid":"19803"}}},{}];
+    AD_DATA["12626"] = [{"data":{"DEFAULT":{"resource":{"type":"image","file":"https:\/\/images.sohu.com\/saf\/a2018\/0530\/ChAKr1sN_5WAW9yLAABymFrPZeE239.jpg","width":970,"height":90,"md5":"10qUM0001003KW008Zk1005hb","click":"https:\/\/clk.optaim.com\/event.ng\/Type=click&FlightID=201805&TargetID=sohu&Values=da3558ae,37db6946,df3817e4,57a1f98e&AdID=10695711&ip=__IP__&imei=__IMEI__&IDFA=__IDFA__&androidid=__ANDROIDID__","imp":"https:\/\/imp.optaim.com\/201805\/da3558ae37db6946df3817e457a1f98e.php?a=0"},"monitorkey":"10qUM0001003KW008Zk1005hb","adid":"20285"}}},{}];
+})();
+
+// w0:20180604090001:T0

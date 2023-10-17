@@ -1,0 +1,45 @@
+#include<iostream>
+
+using namespace std;
+
+bool isPrime(int Num) {
+	for (int i = 2; i * i <= Num; ++i) {
+		if (Num % i == 0) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool isPalin(int Num) {
+	int Ans = 0, Temp = Num;
+
+	while (Num > 0) {
+		Ans = (Num % 10 + Ans * 10);
+		Num /= 10;
+	}
+
+	if (Ans == Temp) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+int main(void) {
+	int n;
+	cin >> n;
+
+	int Cnt = 0;
+	for (int i = 11; i <= n; ++i) {
+		if (isPalin(i) && isPrime(i)) {
+			Cnt++;
+		}
+	}
+
+	cout << Cnt << endl;
+
+	return 0;
+}

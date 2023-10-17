@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define N 105 
+void toNum(char s[], int a[])
+{
+    a[0] = strlen(s);
+    for(int i = 1; i <= a[0]; ++i)
+        a[i] = s[a[0] - i] - '0';
+}
+void showNum(int a[])
+{
+    for(int i = a[0]; i >= 1; --i)
+        cout << a[i];
+}
+void setLen(int a[], int i)
+{
+    while(a[i] == 0 && i > 1)
+        i--;
+    a[0] = i;
+}
+//高精度数字除以低精度数字 a为被除数 b为除数 r为商，返回值是余数 
+int Divide(int a[], int b, int r[])
+{
+    int x = 0;//x:是上一次进行除法的余数，以及作为下一次的被减数
+    for(int i = a[0]; i >= 1; --i)
+    {
+        r[i] = (x * 10 + a[i]) / b;
+        x = (x * 10 + a[i]) % b;
+    }
+    setLen(r, a[0]); 
+    return x;
+}
+int main()
+{
+	int a[N] = {}, r[N] = {}, m;
+    char s[N];
+    cin >> s;
+    toNum(s, a);
+    m = Divide(a, 13, r);
+    showNum(r);
+    cout << endl << m;
+	return 0;
+}

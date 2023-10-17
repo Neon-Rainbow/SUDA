@@ -1,0 +1,139 @@
+% simple.tex - A simple article to illustrate document structure.
+
+% Andrew Roberts - June 2003
+
+\documentclass{article}
+\usepackage{times}
+
+\begin{document}
+	
+	% Article top matter
+	\title{How to Structure a Latex Document} %\LaTeX is a macro for printing the Latex logo
+	\author{Andrew Roberts\\
+		School of Computing,\\
+		University of Leeds,\\
+		Leeds,\\
+		United Kingdom,\\
+		LS2 1HE\\
+		\texttt{andyr@comp.leeds.ac.uk}}  %\texttt formats the text to a typewriter style font
+	\date{\today}  %\today is replaced with the current date
+	\maketitle
+	
+	\begin{abstract}
+		In this article, I shall discuss some of the fundamental topics in
+		producing a structured document.  This document itself does not go into
+		much depth, but is instead the output of an example of how to implement
+		structure. Its Latex source, when in used with my tutorial
+		provides all the relevant information.  \end{abstract}
+	
+	\section{Introduction}
+	This small document is designed to illustrate how easy it is to create a
+	well structured document within \LaTeX\cite{lamport94}.  You should quickly be able to
+	see how the article looks very professional, despite the content being
+	far from academic.  Titles, section headings, justified text, text
+	formatting etc., is all there, and you would be surprised when you see
+	just how little markup was required to get this output.
+	
+	\section{Structure}
+	One of the great advantages of \LaTeX{} is that all it needs to know is
+	the structure of a document, and then it will take care of the layout
+	and presentation itself.  So, here we shall begin looking at how exactly
+	you tell \LaTeX{} what it needs to know about your document.
+	
+	\subsection{Top Matter}
+	The first thing you normally have is a title of the document, as well as
+	information about the author and date of publication.  In \LaTeX{} terms,
+	this is all generally referred to as \emph{top matter}.
+	
+	\subsubsection{Article Information}
+	%Set up an 'itemize' environment to start a bulleted list.  Each
+	%individual item begins with the \item command.  Also note in this list
+	%that it has two levels, with a list embedded in one of the list items.
+	\begin{itemize}
+		\item \texttt{\textbackslash title\{\emph{title}\}} - The title of the article.
+		\item \texttt{\textbackslash date} - The date. Use:
+		\begin{itemize}
+			\item \texttt{\textbackslash date\{\textbackslash today\}} - to get the
+			date that the document is typeset.
+			\item \texttt{\textbackslash date\{\emph{date}\}} - for a  %\emph{} emphasises the specified text.  Italics by default.
+			specific date.
+			\item \texttt{\textbackslash date\{\}} - for no date.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsubsection{Author Information}
+	The basic article class only provides the one command:
+	\begin{itemize}
+		\item \texttt{\textbackslash author} - The author of the document.
+	\end{itemize}
+	
+	It is common to not only include the author name, but to insert new
+	lines (\texttt{\textbackslash\textbackslash}) after and add things such
+	as address and email details.  For a slightly more logical approach, use
+	the AMS article class (\texttt{amsart}) and you have the following extra
+	commands:
+	
+	\begin{itemize}
+		\item \texttt{\textbackslash address} - The author's address.  Use
+		the new line command (\texttt{\textbackslash\textbackslash}) for
+		line breaks.
+		\item \texttt{\textbackslash thanks} - Where you put any acknowledgments.
+		\item \texttt{\textbackslash email} - The author's email address.
+		\item \texttt{\textbackslash urladdr} - The URL for the author's web page.
+	\end{itemize}
+	
+	\subsection{Sectioning Commands}
+	The commands for inserting sections are fairly intuitive.  Of course,
+	certain commands are appropriate to different document classes.
+	For example, a book has chapters but a article doesn't.
+	
+	%A simple table.  The center environment is first set up, otherwise the
+	%table is left aligned.  The tabular environment is what tells Latex
+	%that the data within is data for the table.
+	\begin{center}
+		\begin{tabular}{| l | l |} 
+			%The tabular environment is what tells Latex that the data within is
+			%data for the table.  The arguments say that there will be two
+			%columns, both left justified (indicated by the 'l', you could also
+			%have 'c' or 'r'.  The bars '|' indicate vertical lines throughout
+			%the table.
+			
+			\hline  % Print horizontal line
+			Command & Level \\ \hline  % Columns are delimited by '&'.  And
+			%rows are delimited by '\\'
+			\texttt{\textbackslash part\{\emph{part}\}} & -1 \\
+			\texttt{\textbackslash chapter\{\emph{chapter}\}} & 0 \\
+			\texttt{\textbackslash section\{\emph{section}\}} & 1 \\
+			\texttt{\textbackslash subsection\{\emph{subsection}\}} & 2 \\
+			\texttt{\textbackslash subsubsection\{\emph{subsubsection}\}} & 3 \\
+			\texttt{\textbackslash paragraph\{\emph{paragraph}\}} & 4 \\
+			\texttt{\textbackslash subparagraph\{\emph{subparagraph}\}} & 5 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	Numbering of the sections is performed automatically by \LaTeX{}, so don't
+	bother adding them explicitly, just insert the heading you want between
+	the curly braces.  If you don't want sections number, then add an asterisk (*) after the
+	section command, but before the first curly brace, e.g., \texttt{\textbackslash
+		section*\{A Title Without Numbers\}}.
+	
+	%Create the environment for the bibliography.  Since there is only one
+	%reference, set the label width to be one character (I shall follow
+	%convention as use the number '9'.  This is because it helps to remind
+	%that it is the maximum number of refs that is now permitted by that
+	%width).
+	\begin{thebibliography}{9}
+		%The \bibitem is to start a new reference.  Ensure that the cite_key is
+		%unique.  You don't need to put each element on a new line, but I did
+		%simply for readability.
+		\bibitem{lamport94}
+		Leslie Lamport,
+		\emph{\LaTeX: A Document Preparation System}.
+		Addison Wesley, Massachusetts,
+		2nd Edition,
+		1994.
+		
+	\end{thebibliography} %Must end the environment
+	
+\end{document}  %End of document.

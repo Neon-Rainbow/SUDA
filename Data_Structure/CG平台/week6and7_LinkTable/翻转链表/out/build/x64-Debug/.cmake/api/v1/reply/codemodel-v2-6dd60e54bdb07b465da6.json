@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "RecursivePairInversionOfSingleLinkedList",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "RecursivePairInversionOfSingleLinkedList::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RecursivePairInversionOfSingleLinkedList-Debug-67978c75dd2b419bf293.json",
+					"name" : "RecursivePairInversionOfSingleLinkedList",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Programming/CPP_file/CourseGranding/week6and7_LinkTable/RecursivePairInversionOfSingleLinkedList/out/build/x64-Debug",
+		"source" : "D:/Programming/CPP_file/CourseGranding/week6and7_LinkTable/RecursivePairInversionOfSingleLinkedList"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

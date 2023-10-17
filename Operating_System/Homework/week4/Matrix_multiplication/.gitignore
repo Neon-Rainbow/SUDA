@@ -1,0 +1,12 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/cmake-build-debug/
+!/cmake-build-debug/matrix_A.csv
+!/cmake-build-debug/matrix_B.csv
+!/cmake-build-debug/matrix_C.csv

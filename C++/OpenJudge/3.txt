@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+#include<iomanip>
+#include<cmath>
+
+using namespace std;
+
+int main(void) {
+	string OctNum;
+	cin >> OctNum;
+
+	double Ans = 0;
+	for (int i = OctNum.length() - 1; i >= 2; --i) {
+		Ans += (OctNum[i] - '0') * 1.0;
+		Ans /= 8;
+	}
+	cout << OctNum << " [8] = " << setiosflags(ios::fixed) 
+		 << setprecision(3 * (OctNum.length() - 2)) << Ans << " [10]" << endl;
+
+	return 0;
+}

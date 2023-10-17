@@ -1,0 +1,6 @@
+# ninja log v5
+461	598	6903953296844885	experiment7_BST.exe	d555df040bf7f76d
+3	1109	6905554578233707	CMakeFiles/experiment7_BinaryTree.dir/main.cpp.obj	c39f9b89c2d22ba5
+1110	1496	6905554582077562	experiment7_BinaryTree.exe	ef35420a22da40b9
+3	993	6908334666970601	CMakeFiles/experiment7_BinaryTree.dir/main.cpp.obj	e3b2f287c412c1e9
+995	2327	6908334680174437	experiment7_BinaryTree.exe	b96e0824b9e0ffe6

@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long toVal(string s, int b)//字符串s在b进制下转为值 
+{
+	long long val = 0;
+	for(int i = 0; i < s.length(); ++i)
+		val = val * b + s[i] - '0';
+	return val;
+}
+bool check(string s, int b)//数字s是否可能是b进制下的数字，即各位数字是不是都小于b 
+{
+	for(int i = 0; i < s.length(); ++i)
+		if(s[i] - '0' >= b)
+			return false;
+	return true;
+}
+int main()
+{
+	string s_p, s_q, s_r;
+	long long p, q, r;
+	cin >> s_p >> s_q >> s_r;
+	for(int b = 2; b <= 40; ++b)
+	{
+		if(check(s_p, b) && check(s_q, b) && check(s_r, b))
+		{
+			p = toVal(s_p, b);//字符串s_p在b进制下转为值p 
+			q = toVal(s_q, b);//字符串s_q在b进制下转为值q
+			r = toVal(s_r, b);//字符串s_r在b进制下转为值r
+			if(p * q == r)//如果满足乘积关系 
+			{
+				cout << b;
+				return 0;
+			}
+		}
+	}
+	cout << 0;
+	return 0;
+}

@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+int n;
+int m=0;
+int day=1;
+int main() {
+	cin>>n;
+	for(int i=1;i<=365;i++) {
+		day++;
+		if(n==7) {
+			n=1;
+		} else {
+			n++;
+		}
+		if(day==13&&n==5) {
+			cout<<m+1<<endl;
+		}
+		if(day==month[m]) {
+			m++;
+			day=0;
+		}
+	}
+	return 0;
+} 

@@ -1,0 +1,24 @@
+<style>
+.bord{width:298px;border:1px #DFDFDF solid;border-top:0}
+
+.menuE{position:relative;height:30px;width:298px;background:#F9F9F9;border:1px #DFDFDF solid}
+.menuE ul{position:absolute;top:-1px;left:-1px;width:300px;height:32px}
+.menuE li{cursor:pointer;width:150px;height:32px;float:left;color:#333;text-align:center;font:14px/32px "微软雅黑","宋体"}
+.menuE .now{color:#fff;background:url(http://i3.itc.cn/20150421/2cf3_0fae738f_c895_a47f_9cdd_65f71e0f7069_1.gif) no-repeat 0 0}
+
+/* 表格 st */
+.events-info .tab{margin:15px auto 0}
+.tab table{margin:0 auto}
+.tab tr{background:#fff;height:32px;line-height:32px;border-top:1px #D9D9D9 dotted}
+.tab th{text-align:left}
+.tab td{vertical-align:middle}
+.tab .tr-bg{background:#F6F6F6}
+.tab .tc{text-align:center}
+
+.tab .tjB{text-indent:18px}
+.tab .blue,.tab .blue a{color:#0D3A80}
+.tab .sn{display:inline-block;width:15px;height:15px;line-height:15px;text-align:center;text-indent:0;border:1px #ccc solid;background:#fff}
+.tab .sn-red{border:1px #D70001 solid;color:#D70001}
+.tab .tr-end{border:0}
+/* 表格 end */
+</style> 

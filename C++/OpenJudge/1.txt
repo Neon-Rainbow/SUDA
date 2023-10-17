@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define N 1005
+int char2val(char c)
+{
+    return c >= '0' && c <= '9' ? c-'0' : c-'A'+10;
+}
+char val2char(int val)
+{
+    return val < 10 ? '0'+val : 'A'+val-10; 
+}
+int bToVal(string s, int b) 
+{
+    int val = 0;
+    for(int i = 0; i < s.length(); i++)
+        val = val*b+char2val(s[i]);
+    return val;
+}
+string valToB(int val, int b)
+{
+    string s;
+    int i = val; 
+    do 
+    { 
+        s = val2char(i%b) + s;
+        i /= b;
+    }while(i > 0);  
+    return s;
+}
+int main()
+{
+    string s;
+    int a, b, val;
+    cin >> a >> s >> b;
+    for(int i = 0; i < s.length(); ++i)
+        s[i] = toupper(s[i]);
+    val = bToVal(s, a);
+    cout << valToB(val, b);
+    return 0;
+}

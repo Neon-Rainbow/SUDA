@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<string.h>
+char c[200];
+int s[200];
+int a,b;
+int ans[200];
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        scanf("%s",c);
+        int l=strlen(c);
+        b=a=0;
+        int t;
+        int y=0;
+        for(t=0;t<l;t++){
+            if(c[t]==','){break;}
+            a=a*10+c[t]-48;
+        }
+        for(t++;t<l;t++){
+            if(c[t]==','){s[y]=0;break;}
+            if(c[t]>=48&&c[t]<=57){
+                s[y++]=c[t]-48;
+            }
+            else if(c[t]>=65&&c[t]<=90){
+                s[y++]=c[t]-55;
+            }
+        }
+        for(t++;t<l;t++){
+            b=b*10+c[t]-48;
+        }
+        memset(c,0,sizeof(c));
+ 
+        int rec;
+        int k=y;
+        int p=0;
+        int book=1;
+        while(book){
+           rec=0;
+            for(int i=0;i<k;i++){
+                rec=rec*a+s[i];
+                s[i]=rec/b;
+                rec=rec-s[i]*b;
+            }
+            ans[p++]=rec;
+            book=0;
+            for(int i=0;i<k;i++){
+                if(s[i]!=0){book=1;break;}
+            }
+        }
+        int flag=0;
+        for(int i=p-1;i>=0;i--){
+            if(ans[i]!=0){flag=1;}
+            if(flag==1){
+                if(ans[i]>=10){printf("%c",ans[i]+55);}
+                else printf("%d",ans[i]);
+            }
+        }
+        if(flag==0){printf("%d",0);}
+        printf("\n");
+        memset(ans,0,sizeof(ans));
+    }
+}

@@ -1,0 +1,36 @@
+\def\SetClass{article}
+\documentclass{ctexart}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\title{算法设计与分析第二次作业}
+\author{2127405048方浩楠}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{3.2-3}
+
+\begin{align*}
+& \text{Question:} \\
+& \text{Prove equation (3.19). Also prove that }n! = \omega (x^n) \text{ and } n! = o(n^n) \\
+& \\
+& \text{equation(3.19):}\\
+& \text{lg}(n!) = \Theta(n\text{lg}n) \\
+\end{align*}
+
+下面证明等式3.19
+\begin{align*}
+     \text{lg}(n!) &= \text{lg}(\sqrt{2 \pi n}(\frac{n}{e})^n(1+\Theta(\frac{1}{n})) )\\
+     & = \text{lg}(\sqrt{2 \pi n}) + \text{lg}(\frac{n}{e})^n+\text{lg}(1+\Theta(\frac{1}{n})) \\
+     & = \frac{1}{2}\text{lg}(2 \pi n) + n\text{lg}(\frac{n}{e}) + \text{lg}(1+\Theta(\frac{1}{n})) \\
+     & = \Theta(\text{lg}n) + \Theta(n\text{lg}n) + \Theta(\frac{1}{n})\\
+     & = \Theta(n\text{lg}n) \\
+     Q.E.D
+\end{align*}
+
+\end{document}

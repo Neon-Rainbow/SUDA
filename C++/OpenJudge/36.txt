@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool isClassA(int n)//判断数字n是否是A类数
+{
+	int s1 = 0, s0 = 0;//s1:1的个数 s0:0的个数 
+	for(int a = n; a > 0; a /= 2)//二进制下数字拆分 除基取余 
+	{
+		if(a % 2 == 1)//如果这一位是1 
+			s1++;
+		else//如果这一位是0 
+			s0++;
+	}	
+	return s1 > s0;//如果1比0多，那么是A类数
+}
+int main()
+{
+	int ctA = 0, ctB = 0;//ctA:A类数个数 ctB:B类数个数 
+   	for(int i = 1; i <= 1000; ++i)
+   	{
+   		if(isClassA(i))//如果i是A类数 
+   			ctA++;
+   		else//如果i是B类数 
+   			ctB++;
+    }
+    cout << ctA << ' ' << ctB;
+	return 0;
+}
+

@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int k, x;
+bool solve(int n)//判断n是不是集合M中的元素
+{
+    if(n == k)
+        return true;
+    else if(n < 0)
+        return false;
+    bool b1 = (n-1)%2 == 0 ? solve((n-1)/2) : false;//如果不能整除，直接得到false结果 
+    bool b2 = (n-1)%3 == 0 ? solve((n-1)/3) : false;
+    return b1 || b2;
+}
+int main()
+{
+    char c;
+    cin >> k >> c >> x;
+    cout << (solve(x) ? "YES" : "NO");
+  	return 0;
+}

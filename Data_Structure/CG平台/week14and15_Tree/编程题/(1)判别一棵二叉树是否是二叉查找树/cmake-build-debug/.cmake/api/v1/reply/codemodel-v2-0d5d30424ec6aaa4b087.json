@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "_1_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "_1_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-_1_-Debug-12c94ec127bbeda26047.json",
+					"name" : "_1_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Programming/C-CPP/CourseGranding/week14and15_Tree/\u7f16\u7a0b\u9898/(1)\u5224\u522b\u4e00\u68f5\u4e8c\u53c9\u6811\u662f\u5426\u662f\u4e8c\u53c9\u67e5\u627e\u6811/cmake-build-debug",
+		"source" : "D:/Programming/C-CPP/CourseGranding/week14and15_Tree/\u7f16\u7a0b\u9898/(1)\u5224\u522b\u4e00\u68f5\u4e8c\u53c9\u6811\u662f\u5426\u662f\u4e8c\u53c9\u67e5\u627e\u6811"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

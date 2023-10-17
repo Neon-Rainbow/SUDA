@@ -1,0 +1,96 @@
+最符合'苏州大学'这一搜索词的文章的title为Natural Language Processing Lab, Soochow University, China | 苏州大学 自然语言处理实验室，文档序号为6
+该文档内容为(查询词已被着重标记):
+title:
+Natural Language Processing Lab, Soochow University, China | ##苏州大学## 自然语言处理实验室
+body:
+
+
+Natural Language Processing Lab, Soochow University, China | ##苏州大学## 自然语言处理实验室
+
+
+
+
+
+
+
+Home
+News
+Research
+Member
+Project
+Publication
+Contact
+
+
+
+
+
+News
+
+
+
+»Soochow NLP lab has 1 Youqing project and 5 normal projects granted by NSFC
+2016.08.24
+
+»Soochow NLP lab has 10 papers accepted by COLING
+2016.10.22
+
+
+more...
+
+
+About us
+
+
+
+
+Mission: to advance Natural Language Processing and Artificial Intelligence
+
+                            technology to benefit humanity
+
+                            
+Vision: to be a globally admired research lab in Natural Language Processing
+
+                            and Artificial Intelligence 
+
+
+
+
+The Natural Language Processing (NLP) Lab at Soochow University is a team of 17 faculty members,
+
+                    2 postdocs, and ~100 postgraguate students who work together on fundamental studies that allow computers to 
+
+					process and understand human languages. 
+Our work ranges from basic research in computational linguistics to key applications in human language technology, 
+
+					and covers areas such as lexical analysis, syntactic parsing, shallow semantic parsing, deep pragmatic understanding, 
+
+					information extraction, sentiment analysis, Chinese language processing, and statistical machine translation (SMT). 
+
+					Our research has resulted in various kinds of linguistic resources and state-of-the-art platforms and techniques 
+
+					for robust, broad-coverage natural-language processing.
+The Soochow University NLP Lab is affiliated with the Jiangsu Provincial Key Laboratory for Computer
+
+                    Information Processing Technology, and contains four research groups, i.e. natural language understanding,
+
+					Chinese computing, social media processing and SMT. Meanwhile, it includes two university-level research 
+
+					institutes, i.e. the Zongheng Institute for Chinese computing and 
+
+					the Crosslingual HLT Institute for SMT .
+
+                
+
+            
+
+
+
+            Copyright ? Natural Language Processing Lab, Soochow University, 2008-2016. All Rights Reserved
+
+        
+
+
+
+
+

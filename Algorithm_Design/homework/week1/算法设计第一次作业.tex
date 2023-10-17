@@ -1,0 +1,58 @@
+\def\SetClass{article}
+\documentclass{ctexart}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+\title{算法设计与分析第一次作业}
+\author{2127405048方浩楠}
+\date{\today}
+
+\maketitle
+
+\begin{document}
+\begin{algorithm}
+\caption{Rewrite the INSERTION-SORT procedure to sort into nonincreasing instead of non-decreasing order.\newline 重写过程INSERTION-SORT,使之按非升序(而不是非降序)排序}\label{algorithm}
+\KwData{A sequence of n numbers \ $<a_1,a_2,\cdot\cdot\cdot,a_n>$}
+\KwResult{A permutation (reordering)\ $<a_1^{'},a_2^{'},\cdot\cdot\cdot,a_n^{'}>$of the input sequence such that\ $a_1^{'} \geq  a_2^{'} \geq \cdot\cdot\cdot a_n^{'}$}
+\For{ $j \leftarrow 2$ \KwTo $A.length$}{
+    $ key \leftarrow A[j]$\;
+    $i \leftarrow j - 1$\;
+    \While(\tcp{just need to change $A[i] > key$ to $A[i] < key$}){$i > 0$ and $A[i] < key$}{ 
+        $A[i+1] \leftarrow A[i]$\;
+        $i \leftarrow i -1$\;
+    }
+$A[i+1] \leftarrow key$
+}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Consider the problem of adding two n-bit binary integers, stored in two n-element arrays A and B. The sum of the two integers should be stored in binary form in an (n + 1) element array C. State the problem formally and write pseudocode for adding the two integers.\newline 考虑把两个n位二进制整数加起来的问题,这两个整数分别存储在两个n元数组A和B中,这两个整数的和应按二进制形势存储在一个(n+1)元数组C中.请给出该问题的形式化描述,并写出伪代码}\label{algorithm}
+    \KwData{A and B integer arrays, A.length = B.length = n}
+    \KwResult{C integer array,C.length = n+1}
+    $carry \leftarrow 0$\;
+    \For{$i \leftarrow n$ \KwTo $1$}{
+        $C[i+1] = (carry + A[i] +B[i]) mod 2$\;
+        \If{$carry + A[i] +B[i] \geq 2$}{$carry \leftarrow 1$\;\Else{$carry \leftarrow 0$\;}}
+    }
+    $C[1] = carry$
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Selection Sort\ 插入排序}\label{algorithm}
+    \KwData{An n-element array A}
+    \For{$i \leftarrow 1\ \KwTo \ n -1 $}{
+        $min = i$\;
+        \For{$j \leftarrow i + 1 \ \KwTo \ n$}{
+            \If{$A[j] < A[min]$}{
+                min = j
+            }
+        }
+    }
+    $Swap\ A[min]\ and\ A[i]$
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Observe that the while loop of lines 5–7 of the INSERTION-SORT procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray A[i$\cdot\cdot\cdot$ j-1]. Can we use a binary search (see Exercise 2.3-5) instead to improve the overall worst-case running time of insertion sort to $\theta$(nlgn)?\newline 能否使用二分查找来改进插入排序?}\label{algoorithm}
+    二分查找无法用于改进插入排序
+\end{algorithm}
+    
+\end{document}

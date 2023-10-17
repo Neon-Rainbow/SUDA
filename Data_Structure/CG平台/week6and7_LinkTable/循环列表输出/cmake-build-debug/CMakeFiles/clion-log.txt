@@ -1,0 +1,18 @@
+D:\应用\JetBrains\ToolBox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=D:/应用/JetBrains/ToolBox/apps/CLion/ch-0/222.4345.21/bin/ninja/win/ninja.exe -G Ninja -S D:\Programming\CPP_file\CourseGranding\week6and7_LinkTable\IncrementalOutputAndClearingOfSingleCycleLinkedList -B D:\Programming\CPP_file\CourseGranding\week6and7_LinkTable\IncrementalOutputAndClearingOfSingleCycleLinkedList\cmake-build-debug
+-- Configuring done
+CMake Warning in CMakeLists.txt:
+  The object file directory
+
+    D:/Programming/CPP_file/CourseGranding/week6and7_LinkTable/IncrementalOutputAndClearingOfSingleCycleLinkedList/cmake-build-debug/CMakeFiles/IncrementalOutputAndClearingOfSingleCycleLinkedList.dir/./
+
+  has 198 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    IncrementalOutputAndClearingOfSingleCycleLinkedList.cpp.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Generating done
+-- Build files have been written to: D:/Programming/CPP_file/CourseGranding/week6and7_LinkTable/IncrementalOutputAndClearingOfSingleCycleLinkedList/cmake-build-debug

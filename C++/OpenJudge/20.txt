@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int n;
+	int counter[105] = {0};
+	int a[10005][25] = {0};
+	int result[10005] = {0},p = 0;
+	int maxnum = 0,maxtime = 0;
+	cin>>n; 
+	for(int i = 0;i<n;i++){
+		cin>>a[i][0]>>a[i][1];
+		for(int j = 2;j<=a[i][1]+1;j++){
+			cin>>a[i][j];
+			counter[a[i][j]]++;
+			if(counter[a[i][j]]>maxtime){
+				maxtime = counter[a[i][j]];
+				maxnum = a[i][j];
+			}
+		}
+	}
+	for(int i = 0;i<n;i++){
+		for(int j = 2;j<=a[i][1]+1;j++){
+			if(a[i][j] == maxnum){
+				result[p] = a[i][0];
+				p++;
+			}
+		}
+	}
+	cout<<maxnum<<endl;
+	sort(result,result+p);
+	cout<<result[0];
+	for(int i = 1;i<p;i++){
+		if(result[i] == result[i-1]){
+			continue;
+		}else{
+			cout<<" "<<result[i];
+		}
+	}
+	return 0;
+}

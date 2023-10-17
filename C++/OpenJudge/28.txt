@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int ct[105] = {}, n, a;//ct[i]  表明数字i-50有j个
+	cin >> n;
+	for(int i = 1; i <= n; ++i)
+	{
+		cin >> a;
+		ct[a+50]++;//散列函数：下标=数值+50 
+	}
+	for(int i = 0; i <= 100; ++i)
+	{
+		if(ct[i] > n/2)
+		{
+			cout << i-50;
+			return 0;
+		}
+	}
+	cout << "no";
+	return 0;
+}

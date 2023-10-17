@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+#include<vector>
+
+using namespace std;
+
+int main(void) {
+	string NumStr;
+	cin >> NumStr;
+	int Len = NumStr.length();
+
+	vector<int> Num(65); 
+	for (int i = 0; i < Len; ++i) {
+		Num[i] = NumStr[i] - '0';
+	}
+
+	NumStr += NumStr; 
+
+	vector<int> Ans(65);
+	for (int i = 1; i <= Len; ++i) {
+		string TempStr = "";
+		int Res = 0;
+		for (int j = Len - 1; j >= 0; --j) {
+			int Temp = Num[j] * i + Res;
+			Res = Temp / 10;
+			Ans[j] = Temp % 10;
+		}
+		for (int k = 0; k < Len; ++k) {
+			TempStr += (char)Ans[k] + '0';
+		}
+		if (NumStr.find(TempStr, 0) == -1) {
+			cout << '0' << endl;
+			return 0;
+		}
+	}
+
+	cout << '1' << endl;
+
+	return 0;
+}
