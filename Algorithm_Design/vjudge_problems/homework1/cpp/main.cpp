@@ -2,15 +2,25 @@
 #include <cmath>
 #include <unordered_map>
 
-long long countTrailingOnes(long long n) {
-    int count = 0;
-    while (n & 1) {
-        count++;
-        n >>= 1;
-    }
-    return count;
+
+/**
+ * @brief Count the number of trailing zeros in the binary representation of a number.
+ *
+ * @param num The number to be analyzed.
+ * @return The count of trailing zeros in the binary representation of num.
+ */
+long long countTrailingOnes(long long num) {
+    return num == 0 ? 0 : __builtin_ctzll(~num);
 }
 
+/**
+ * @brief Get the bit value at the specified position from the left in the binary representation of a number.
+ *
+ * @param binary The number to be analyzed.
+ * @param n The position from the left in the binary representation.
+ * @param cache A cache to store previously computed results to avoid redundant computations.
+ * @return The bit value (0 or 1) at the specified position.
+ */
 long long getNthBitFromLeft(long long binary, long long n, std::unordered_map<long long, long long> &cache) {
     int totalBits = std::log2(binary) + 1;
     int positionFromRight = totalBits - n - 1;
@@ -21,7 +31,14 @@ long long getNthBitFromLeft(long long binary, long long n, std::unordered_map<lo
     cache[n] = temp;
     return temp;
 }
-
+/**
+ * @brief Calculate the value at a specific index in the transformed sequence.
+ *
+ * @param num The initial number.
+ * @param index The index in the sequence.
+ * @param cache A cache to store previously computed results to avoid redundant computations.
+ * @return The value (0 or 1) at the specified index in the transformed sequence.
+ */
 
 long long cal(long long num, long long index, std::unordered_map<long long, long long> &cache) {
     if(index % 2 == 0) {
