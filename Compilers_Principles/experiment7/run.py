@@ -25,7 +25,7 @@ def main() -> None:
         None.但是会在终端上显示出输入的化学分子式中的原子数
     """
     formular = input("请输入化学分子式: ")
-    print(f"{formular}中的原子数量为{atom_count(formular)}")
+    print(f"{formular} 中的原子数量为 {atom_count(formular)}")
 
 
 if __name__ == '__main__':
