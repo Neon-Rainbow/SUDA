@@ -1,0 +1,80 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> species_list
+Rule 1     species_list -> species_list species
+Rule 2     species_list -> species
+Rule 3     species -> SYMBOL
+Rule 4     species -> SYMBOL COUNT
+
+Terminals, with rules where they appear
+
+COUNT                : 4
+SYMBOL               : 3 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+species              : 1 2
+species_list         : 1 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . species_list
+    (1) species_list -> . species_list species
+    (2) species_list -> . species
+    (3) species -> . SYMBOL
+    (4) species -> . SYMBOL COUNT
+
+    SYMBOL          shift and go to state 3
+
+    species_list                   shift and go to state 1
+    species                        shift and go to state 2
+
+state 1
+
+    (0) S' -> species_list .
+    (1) species_list -> species_list . species
+    (3) species -> . SYMBOL
+    (4) species -> . SYMBOL COUNT
+
+    SYMBOL          shift and go to state 3
+
+    species                        shift and go to state 4
+
+state 2
+
+    (2) species_list -> species .
+
+    SYMBOL          reduce using rule 2 (species_list -> species .)
+    $end            reduce using rule 2 (species_list -> species .)
+
+
+state 3
+
+    (3) species -> SYMBOL .
+    (4) species -> SYMBOL . COUNT
+
+    SYMBOL          reduce using rule 3 (species -> SYMBOL .)
+    $end            reduce using rule 3 (species -> SYMBOL .)
+    COUNT           shift and go to state 5
+
+
+state 4
+
+    (1) species_list -> species_list species .
+
+    SYMBOL          reduce using rule 1 (species_list -> species_list species .)
+    $end            reduce using rule 1 (species_list -> species_list species .)
+
+
+state 5
+
+    (4) species -> SYMBOL COUNT .
+
+    SYMBOL          reduce using rule 4 (species -> SYMBOL COUNT .)
+    $end            reduce using rule 4 (species -> SYMBOL COUNT .)
+
