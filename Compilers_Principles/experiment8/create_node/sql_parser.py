@@ -74,7 +74,7 @@ def p_query(t):
 
 def p_select(t):
     """
-    select : SELECT list FROM table opt_where_clause
+    select : SELECT list FROM table_list opt_where_clause
     """
     t[0] = Node('QUERY')
     node_select = Node("[SELECT]")
@@ -140,6 +140,19 @@ def p_list(t):
         t[0].add(t[3])
 
 
+def p_table_list(t):
+    """
+    table_list : table_list COMMA table
+               | table
+    """
+    if len(t) == 2:  # single table
+        t[0] = Node('[TABLES]')
+        t[0].add(t[1])
+    else:  # multiple tables
+        t[0] = t[1]  # Extend existing [TABLES] node
+        t[0].add(t[3])
+
+
 def p_empty(t):
     """
     empty :
@@ -201,10 +214,25 @@ def p_field(t):
 
 yacc.yacc()
 
+
+def createNode(query) -> Node:
+    """
+    该函数用来创建一个AST,用来表示SQL语句
+
+    Args:
+        query: 输入SQL语句
+
+    Returns:
+        返回一个AST的根节点
+    """
+    parse: Node = yacc.parse(query)
+    return parse
+
+
 if __name__ == "__main__":
     query = ('SELECT COUNT(column1) AS count_col1, COUNT(column2) AS count_col2, COUNT(column3) AS count_col3 '
-             'FROM table1 AS tab1 '
+             'FROM table1 AS tab1, table2 AS tab2 '
              'WHERE column1 BETWEEN value1 AND value2'
              )
-    parse: Node = yacc.parse(query)
-    parse.printNode()
+    parse_node = createNode(query)
+    parse_node.printNode()

@@ -1,0 +1,850 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BY
+    DOT
+    IN
+    NUMBER
+    ORDER
+
+Grammar
+
+Rule 0     S' -> query
+Rule 1     query -> select
+Rule 2     select -> SELECT list FROM table_list opt_where_clause
+Rule 3     opt_where_clause -> WHERE condition
+Rule 4     opt_where_clause -> empty
+Rule 5     condition -> NAME EQUALS NAME
+Rule 6     condition -> NAME LT NAME
+Rule 7     condition -> NAME GT NAME
+Rule 8     condition -> NAME LE NAME
+Rule 9     condition -> NAME GE NAME
+Rule 10    condition -> NAME NE NAME
+Rule 11    condition -> condition AND condition
+Rule 12    condition -> condition OR condition
+Rule 13    condition -> LP condition RP
+Rule 14    condition -> NAME BETWEEN NAME AND NAME
+Rule 15    list -> list COMMA field
+Rule 16    list -> field
+Rule 17    table_list -> table_list COMMA table
+Rule 18    table_list -> table
+Rule 19    empty -> <empty>
+Rule 20    aggregate_function -> AVG LP NAME RP
+Rule 21    aggregate_function -> SUM LP NAME RP
+Rule 22    aggregate_function -> MAX LP NAME RP
+Rule 23    aggregate_function -> MIN LP NAME RP
+Rule 24    aggregate_function -> COUNT LP NAME RP
+Rule 25    table -> NAME
+Rule 26    table -> NAME AS NAME
+Rule 27    table -> aggregate_function
+Rule 28    table -> aggregate_function AS NAME
+Rule 29    field -> NAME
+Rule 30    field -> NAME AS NAME
+Rule 31    field -> aggregate_function
+Rule 32    field -> aggregate_function AS NAME
+
+Terminals, with rules where they appear
+
+AND                  : 11 14
+AS                   : 26 28 30 32
+AVG                  : 20
+BETWEEN              : 14
+BY                   : 
+COMMA                : 15 17
+COUNT                : 24
+DOT                  : 
+EQUALS               : 5
+FROM                 : 2
+GE                   : 9
+GT                   : 7
+IN                   : 
+LE                   : 8
+LP                   : 13 20 21 22 23 24
+LT                   : 6
+MAX                  : 22
+MIN                  : 23
+NAME                 : 5 5 6 6 7 7 8 8 9 9 10 10 14 14 14 20 21 22 23 24 25 26 26 28 29 30 30 32
+NE                   : 10
+NUMBER               : 
+OR                   : 12
+ORDER                : 
+RP                   : 13 20 21 22 23 24
+SELECT               : 2
+SUM                  : 21
+WHERE                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+aggregate_function   : 27 28 31 32
+condition            : 3 11 11 12 12 13
+empty                : 4
+field                : 15 16
+list                 : 2 15
+opt_where_clause     : 2
+query                : 0
+select               : 1
+table                : 17 18
+table_list           : 2 17
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . query
+    (1) query -> . select
+    (2) select -> . SELECT list FROM table_list opt_where_clause
+
+    SELECT          shift and go to state 3
+
+    query                          shift and go to state 1
+    select                         shift and go to state 2
+
+state 1
+
+    (0) S' -> query .
+
+
+
+state 2
+
+    (1) query -> select .
+
+    $end            reduce using rule 1 (query -> select .)
+
+
+state 3
+
+    (2) select -> SELECT . list FROM table_list opt_where_clause
+    (15) list -> . list COMMA field
+    (16) list -> . field
+    (29) field -> . NAME
+    (30) field -> . NAME AS NAME
+    (31) field -> . aggregate_function
+    (32) field -> . aggregate_function AS NAME
+    (20) aggregate_function -> . AVG LP NAME RP
+    (21) aggregate_function -> . SUM LP NAME RP
+    (22) aggregate_function -> . MAX LP NAME RP
+    (23) aggregate_function -> . MIN LP NAME RP
+    (24) aggregate_function -> . COUNT LP NAME RP
+
+    NAME            shift and go to state 6
+    AVG             shift and go to state 8
+    SUM             shift and go to state 9
+    MAX             shift and go to state 10
+    MIN             shift and go to state 11
+    COUNT           shift and go to state 12
+
+    list                           shift and go to state 4
+    field                          shift and go to state 5
+    aggregate_function             shift and go to state 7
+
+state 4
+
+    (2) select -> SELECT list . FROM table_list opt_where_clause
+    (15) list -> list . COMMA field
+
+    FROM            shift and go to state 13
+    COMMA           shift and go to state 14
+
+
+state 5
+
+    (16) list -> field .
+
+    FROM            reduce using rule 16 (list -> field .)
+    COMMA           reduce using rule 16 (list -> field .)
+
+
+state 6
+
+    (29) field -> NAME .
+    (30) field -> NAME . AS NAME
+
+    FROM            reduce using rule 29 (field -> NAME .)
+    COMMA           reduce using rule 29 (field -> NAME .)
+    AS              shift and go to state 15
+
+
+state 7
+
+    (31) field -> aggregate_function .
+    (32) field -> aggregate_function . AS NAME
+
+    FROM            reduce using rule 31 (field -> aggregate_function .)
+    COMMA           reduce using rule 31 (field -> aggregate_function .)
+    AS              shift and go to state 16
+
+
+state 8
+
+    (20) aggregate_function -> AVG . LP NAME RP
+
+    LP              shift and go to state 17
+
+
+state 9
+
+    (21) aggregate_function -> SUM . LP NAME RP
+
+    LP              shift and go to state 18
+
+
+state 10
+
+    (22) aggregate_function -> MAX . LP NAME RP
+
+    LP              shift and go to state 19
+
+
+state 11
+
+    (23) aggregate_function -> MIN . LP NAME RP
+
+    LP              shift and go to state 20
+
+
+state 12
+
+    (24) aggregate_function -> COUNT . LP NAME RP
+
+    LP              shift and go to state 21
+
+
+state 13
+
+    (2) select -> SELECT list FROM . table_list opt_where_clause
+    (17) table_list -> . table_list COMMA table
+    (18) table_list -> . table
+    (25) table -> . NAME
+    (26) table -> . NAME AS NAME
+    (27) table -> . aggregate_function
+    (28) table -> . aggregate_function AS NAME
+    (20) aggregate_function -> . AVG LP NAME RP
+    (21) aggregate_function -> . SUM LP NAME RP
+    (22) aggregate_function -> . MAX LP NAME RP
+    (23) aggregate_function -> . MIN LP NAME RP
+    (24) aggregate_function -> . COUNT LP NAME RP
+
+    NAME            shift and go to state 24
+    AVG             shift and go to state 8
+    SUM             shift and go to state 9
+    MAX             shift and go to state 10
+    MIN             shift and go to state 11
+    COUNT           shift and go to state 12
+
+    table_list                     shift and go to state 22
+    table                          shift and go to state 23
+    aggregate_function             shift and go to state 25
+
+state 14
+
+    (15) list -> list COMMA . field
+    (29) field -> . NAME
+    (30) field -> . NAME AS NAME
+    (31) field -> . aggregate_function
+    (32) field -> . aggregate_function AS NAME
+    (20) aggregate_function -> . AVG LP NAME RP
+    (21) aggregate_function -> . SUM LP NAME RP
+    (22) aggregate_function -> . MAX LP NAME RP
+    (23) aggregate_function -> . MIN LP NAME RP
+    (24) aggregate_function -> . COUNT LP NAME RP
+
+    NAME            shift and go to state 6
+    AVG             shift and go to state 8
+    SUM             shift and go to state 9
+    MAX             shift and go to state 10
+    MIN             shift and go to state 11
+    COUNT           shift and go to state 12
+
+    field                          shift and go to state 26
+    aggregate_function             shift and go to state 7
+
+state 15
+
+    (30) field -> NAME AS . NAME
+
+    NAME            shift and go to state 27
+
+
+state 16
+
+    (32) field -> aggregate_function AS . NAME
+
+    NAME            shift and go to state 28
+
+
+state 17
+
+    (20) aggregate_function -> AVG LP . NAME RP
+
+    NAME            shift and go to state 29
+
+
+state 18
+
+    (21) aggregate_function -> SUM LP . NAME RP
+
+    NAME            shift and go to state 30
+
+
+state 19
+
+    (22) aggregate_function -> MAX LP . NAME RP
+
+    NAME            shift and go to state 31
+
+
+state 20
+
+    (23) aggregate_function -> MIN LP . NAME RP
+
+    NAME            shift and go to state 32
+
+
+state 21
+
+    (24) aggregate_function -> COUNT LP . NAME RP
+
+    NAME            shift and go to state 33
+
+
+state 22
+
+    (2) select -> SELECT list FROM table_list . opt_where_clause
+    (17) table_list -> table_list . COMMA table
+    (3) opt_where_clause -> . WHERE condition
+    (4) opt_where_clause -> . empty
+    (19) empty -> .
+
+    COMMA           shift and go to state 35
+    WHERE           shift and go to state 36
+    $end            reduce using rule 19 (empty -> .)
+
+    opt_where_clause               shift and go to state 34
+    empty                          shift and go to state 37
+
+state 23
+
+    (18) table_list -> table .
+
+    COMMA           reduce using rule 18 (table_list -> table .)
+    WHERE           reduce using rule 18 (table_list -> table .)
+    $end            reduce using rule 18 (table_list -> table .)
+
+
+state 24
+
+    (25) table -> NAME .
+    (26) table -> NAME . AS NAME
+
+    COMMA           reduce using rule 25 (table -> NAME .)
+    WHERE           reduce using rule 25 (table -> NAME .)
+    $end            reduce using rule 25 (table -> NAME .)
+    AS              shift and go to state 38
+
+
+state 25
+
+    (27) table -> aggregate_function .
+    (28) table -> aggregate_function . AS NAME
+
+    COMMA           reduce using rule 27 (table -> aggregate_function .)
+    WHERE           reduce using rule 27 (table -> aggregate_function .)
+    $end            reduce using rule 27 (table -> aggregate_function .)
+    AS              shift and go to state 39
+
+
+state 26
+
+    (15) list -> list COMMA field .
+
+    FROM            reduce using rule 15 (list -> list COMMA field .)
+    COMMA           reduce using rule 15 (list -> list COMMA field .)
+
+
+state 27
+
+    (30) field -> NAME AS NAME .
+
+    FROM            reduce using rule 30 (field -> NAME AS NAME .)
+    COMMA           reduce using rule 30 (field -> NAME AS NAME .)
+
+
+state 28
+
+    (32) field -> aggregate_function AS NAME .
+
+    FROM            reduce using rule 32 (field -> aggregate_function AS NAME .)
+    COMMA           reduce using rule 32 (field -> aggregate_function AS NAME .)
+
+
+state 29
+
+    (20) aggregate_function -> AVG LP NAME . RP
+
+    RP              shift and go to state 40
+
+
+state 30
+
+    (21) aggregate_function -> SUM LP NAME . RP
+
+    RP              shift and go to state 41
+
+
+state 31
+
+    (22) aggregate_function -> MAX LP NAME . RP
+
+    RP              shift and go to state 42
+
+
+state 32
+
+    (23) aggregate_function -> MIN LP NAME . RP
+
+    RP              shift and go to state 43
+
+
+state 33
+
+    (24) aggregate_function -> COUNT LP NAME . RP
+
+    RP              shift and go to state 44
+
+
+state 34
+
+    (2) select -> SELECT list FROM table_list opt_where_clause .
+
+    $end            reduce using rule 2 (select -> SELECT list FROM table_list opt_where_clause .)
+
+
+state 35
+
+    (17) table_list -> table_list COMMA . table
+    (25) table -> . NAME
+    (26) table -> . NAME AS NAME
+    (27) table -> . aggregate_function
+    (28) table -> . aggregate_function AS NAME
+    (20) aggregate_function -> . AVG LP NAME RP
+    (21) aggregate_function -> . SUM LP NAME RP
+    (22) aggregate_function -> . MAX LP NAME RP
+    (23) aggregate_function -> . MIN LP NAME RP
+    (24) aggregate_function -> . COUNT LP NAME RP
+
+    NAME            shift and go to state 24
+    AVG             shift and go to state 8
+    SUM             shift and go to state 9
+    MAX             shift and go to state 10
+    MIN             shift and go to state 11
+    COUNT           shift and go to state 12
+
+    table                          shift and go to state 45
+    aggregate_function             shift and go to state 25
+
+state 36
+
+    (3) opt_where_clause -> WHERE . condition
+    (5) condition -> . NAME EQUALS NAME
+    (6) condition -> . NAME LT NAME
+    (7) condition -> . NAME GT NAME
+    (8) condition -> . NAME LE NAME
+    (9) condition -> . NAME GE NAME
+    (10) condition -> . NAME NE NAME
+    (11) condition -> . condition AND condition
+    (12) condition -> . condition OR condition
+    (13) condition -> . LP condition RP
+    (14) condition -> . NAME BETWEEN NAME AND NAME
+
+    NAME            shift and go to state 47
+    LP              shift and go to state 48
+
+    condition                      shift and go to state 46
+
+state 37
+
+    (4) opt_where_clause -> empty .
+
+    $end            reduce using rule 4 (opt_where_clause -> empty .)
+
+
+state 38
+
+    (26) table -> NAME AS . NAME
+
+    NAME            shift and go to state 49
+
+
+state 39
+
+    (28) table -> aggregate_function AS . NAME
+
+    NAME            shift and go to state 50
+
+
+state 40
+
+    (20) aggregate_function -> AVG LP NAME RP .
+
+    AS              reduce using rule 20 (aggregate_function -> AVG LP NAME RP .)
+    FROM            reduce using rule 20 (aggregate_function -> AVG LP NAME RP .)
+    COMMA           reduce using rule 20 (aggregate_function -> AVG LP NAME RP .)
+    WHERE           reduce using rule 20 (aggregate_function -> AVG LP NAME RP .)
+    $end            reduce using rule 20 (aggregate_function -> AVG LP NAME RP .)
+
+
+state 41
+
+    (21) aggregate_function -> SUM LP NAME RP .
+
+    AS              reduce using rule 21 (aggregate_function -> SUM LP NAME RP .)
+    FROM            reduce using rule 21 (aggregate_function -> SUM LP NAME RP .)
+    COMMA           reduce using rule 21 (aggregate_function -> SUM LP NAME RP .)
+    WHERE           reduce using rule 21 (aggregate_function -> SUM LP NAME RP .)
+    $end            reduce using rule 21 (aggregate_function -> SUM LP NAME RP .)
+
+
+state 42
+
+    (22) aggregate_function -> MAX LP NAME RP .
+
+    AS              reduce using rule 22 (aggregate_function -> MAX LP NAME RP .)
+    FROM            reduce using rule 22 (aggregate_function -> MAX LP NAME RP .)
+    COMMA           reduce using rule 22 (aggregate_function -> MAX LP NAME RP .)
+    WHERE           reduce using rule 22 (aggregate_function -> MAX LP NAME RP .)
+    $end            reduce using rule 22 (aggregate_function -> MAX LP NAME RP .)
+
+
+state 43
+
+    (23) aggregate_function -> MIN LP NAME RP .
+
+    AS              reduce using rule 23 (aggregate_function -> MIN LP NAME RP .)
+    FROM            reduce using rule 23 (aggregate_function -> MIN LP NAME RP .)
+    COMMA           reduce using rule 23 (aggregate_function -> MIN LP NAME RP .)
+    WHERE           reduce using rule 23 (aggregate_function -> MIN LP NAME RP .)
+    $end            reduce using rule 23 (aggregate_function -> MIN LP NAME RP .)
+
+
+state 44
+
+    (24) aggregate_function -> COUNT LP NAME RP .
+
+    AS              reduce using rule 24 (aggregate_function -> COUNT LP NAME RP .)
+    FROM            reduce using rule 24 (aggregate_function -> COUNT LP NAME RP .)
+    COMMA           reduce using rule 24 (aggregate_function -> COUNT LP NAME RP .)
+    WHERE           reduce using rule 24 (aggregate_function -> COUNT LP NAME RP .)
+    $end            reduce using rule 24 (aggregate_function -> COUNT LP NAME RP .)
+
+
+state 45
+
+    (17) table_list -> table_list COMMA table .
+
+    COMMA           reduce using rule 17 (table_list -> table_list COMMA table .)
+    WHERE           reduce using rule 17 (table_list -> table_list COMMA table .)
+    $end            reduce using rule 17 (table_list -> table_list COMMA table .)
+
+
+state 46
+
+    (3) opt_where_clause -> WHERE condition .
+    (11) condition -> condition . AND condition
+    (12) condition -> condition . OR condition
+
+    $end            reduce using rule 3 (opt_where_clause -> WHERE condition .)
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+
+
+state 47
+
+    (5) condition -> NAME . EQUALS NAME
+    (6) condition -> NAME . LT NAME
+    (7) condition -> NAME . GT NAME
+    (8) condition -> NAME . LE NAME
+    (9) condition -> NAME . GE NAME
+    (10) condition -> NAME . NE NAME
+    (14) condition -> NAME . BETWEEN NAME AND NAME
+
+    EQUALS          shift and go to state 53
+    LT              shift and go to state 54
+    GT              shift and go to state 55
+    LE              shift and go to state 56
+    GE              shift and go to state 57
+    NE              shift and go to state 58
+    BETWEEN         shift and go to state 59
+
+
+state 48
+
+    (13) condition -> LP . condition RP
+    (5) condition -> . NAME EQUALS NAME
+    (6) condition -> . NAME LT NAME
+    (7) condition -> . NAME GT NAME
+    (8) condition -> . NAME LE NAME
+    (9) condition -> . NAME GE NAME
+    (10) condition -> . NAME NE NAME
+    (11) condition -> . condition AND condition
+    (12) condition -> . condition OR condition
+    (13) condition -> . LP condition RP
+    (14) condition -> . NAME BETWEEN NAME AND NAME
+
+    NAME            shift and go to state 47
+    LP              shift and go to state 48
+
+    condition                      shift and go to state 60
+
+state 49
+
+    (26) table -> NAME AS NAME .
+
+    COMMA           reduce using rule 26 (table -> NAME AS NAME .)
+    WHERE           reduce using rule 26 (table -> NAME AS NAME .)
+    $end            reduce using rule 26 (table -> NAME AS NAME .)
+
+
+state 50
+
+    (28) table -> aggregate_function AS NAME .
+
+    COMMA           reduce using rule 28 (table -> aggregate_function AS NAME .)
+    WHERE           reduce using rule 28 (table -> aggregate_function AS NAME .)
+    $end            reduce using rule 28 (table -> aggregate_function AS NAME .)
+
+
+state 51
+
+    (11) condition -> condition AND . condition
+    (5) condition -> . NAME EQUALS NAME
+    (6) condition -> . NAME LT NAME
+    (7) condition -> . NAME GT NAME
+    (8) condition -> . NAME LE NAME
+    (9) condition -> . NAME GE NAME
+    (10) condition -> . NAME NE NAME
+    (11) condition -> . condition AND condition
+    (12) condition -> . condition OR condition
+    (13) condition -> . LP condition RP
+    (14) condition -> . NAME BETWEEN NAME AND NAME
+
+    NAME            shift and go to state 47
+    LP              shift and go to state 48
+
+    condition                      shift and go to state 61
+
+state 52
+
+    (12) condition -> condition OR . condition
+    (5) condition -> . NAME EQUALS NAME
+    (6) condition -> . NAME LT NAME
+    (7) condition -> . NAME GT NAME
+    (8) condition -> . NAME LE NAME
+    (9) condition -> . NAME GE NAME
+    (10) condition -> . NAME NE NAME
+    (11) condition -> . condition AND condition
+    (12) condition -> . condition OR condition
+    (13) condition -> . LP condition RP
+    (14) condition -> . NAME BETWEEN NAME AND NAME
+
+    NAME            shift and go to state 47
+    LP              shift and go to state 48
+
+    condition                      shift and go to state 62
+
+state 53
+
+    (5) condition -> NAME EQUALS . NAME
+
+    NAME            shift and go to state 63
+
+
+state 54
+
+    (6) condition -> NAME LT . NAME
+
+    NAME            shift and go to state 64
+
+
+state 55
+
+    (7) condition -> NAME GT . NAME
+
+    NAME            shift and go to state 65
+
+
+state 56
+
+    (8) condition -> NAME LE . NAME
+
+    NAME            shift and go to state 66
+
+
+state 57
+
+    (9) condition -> NAME GE . NAME
+
+    NAME            shift and go to state 67
+
+
+state 58
+
+    (10) condition -> NAME NE . NAME
+
+    NAME            shift and go to state 68
+
+
+state 59
+
+    (14) condition -> NAME BETWEEN . NAME AND NAME
+
+    NAME            shift and go to state 69
+
+
+state 60
+
+    (13) condition -> LP condition . RP
+    (11) condition -> condition . AND condition
+    (12) condition -> condition . OR condition
+
+    RP              shift and go to state 70
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+
+
+state 61
+
+    (11) condition -> condition AND condition .
+    (11) condition -> condition . AND condition
+    (12) condition -> condition . OR condition
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 11 (condition -> condition AND condition .)
+    RP              reduce using rule 11 (condition -> condition AND condition .)
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+
+  ! AND             [ reduce using rule 11 (condition -> condition AND condition .) ]
+  ! OR              [ reduce using rule 11 (condition -> condition AND condition .) ]
+
+
+state 62
+
+    (12) condition -> condition OR condition .
+    (11) condition -> condition . AND condition
+    (12) condition -> condition . OR condition
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 12 (condition -> condition OR condition .)
+    RP              reduce using rule 12 (condition -> condition OR condition .)
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+
+  ! AND             [ reduce using rule 12 (condition -> condition OR condition .) ]
+  ! OR              [ reduce using rule 12 (condition -> condition OR condition .) ]
+
+
+state 63
+
+    (5) condition -> NAME EQUALS NAME .
+
+    AND             reduce using rule 5 (condition -> NAME EQUALS NAME .)
+    OR              reduce using rule 5 (condition -> NAME EQUALS NAME .)
+    $end            reduce using rule 5 (condition -> NAME EQUALS NAME .)
+    RP              reduce using rule 5 (condition -> NAME EQUALS NAME .)
+
+
+state 64
+
+    (6) condition -> NAME LT NAME .
+
+    AND             reduce using rule 6 (condition -> NAME LT NAME .)
+    OR              reduce using rule 6 (condition -> NAME LT NAME .)
+    $end            reduce using rule 6 (condition -> NAME LT NAME .)
+    RP              reduce using rule 6 (condition -> NAME LT NAME .)
+
+
+state 65
+
+    (7) condition -> NAME GT NAME .
+
+    AND             reduce using rule 7 (condition -> NAME GT NAME .)
+    OR              reduce using rule 7 (condition -> NAME GT NAME .)
+    $end            reduce using rule 7 (condition -> NAME GT NAME .)
+    RP              reduce using rule 7 (condition -> NAME GT NAME .)
+
+
+state 66
+
+    (8) condition -> NAME LE NAME .
+
+    AND             reduce using rule 8 (condition -> NAME LE NAME .)
+    OR              reduce using rule 8 (condition -> NAME LE NAME .)
+    $end            reduce using rule 8 (condition -> NAME LE NAME .)
+    RP              reduce using rule 8 (condition -> NAME LE NAME .)
+
+
+state 67
+
+    (9) condition -> NAME GE NAME .
+
+    AND             reduce using rule 9 (condition -> NAME GE NAME .)
+    OR              reduce using rule 9 (condition -> NAME GE NAME .)
+    $end            reduce using rule 9 (condition -> NAME GE NAME .)
+    RP              reduce using rule 9 (condition -> NAME GE NAME .)
+
+
+state 68
+
+    (10) condition -> NAME NE NAME .
+
+    AND             reduce using rule 10 (condition -> NAME NE NAME .)
+    OR              reduce using rule 10 (condition -> NAME NE NAME .)
+    $end            reduce using rule 10 (condition -> NAME NE NAME .)
+    RP              reduce using rule 10 (condition -> NAME NE NAME .)
+
+
+state 69
+
+    (14) condition -> NAME BETWEEN NAME . AND NAME
+
+    AND             shift and go to state 71
+
+
+state 70
+
+    (13) condition -> LP condition RP .
+
+    AND             reduce using rule 13 (condition -> LP condition RP .)
+    OR              reduce using rule 13 (condition -> LP condition RP .)
+    $end            reduce using rule 13 (condition -> LP condition RP .)
+    RP              reduce using rule 13 (condition -> LP condition RP .)
+
+
+state 71
+
+    (14) condition -> NAME BETWEEN NAME AND . NAME
+
+    NAME            shift and go to state 72
+
+
+state 72
+
+    (14) condition -> NAME BETWEEN NAME AND NAME .
+
+    AND             reduce using rule 14 (condition -> NAME BETWEEN NAME AND NAME .)
+    OR              reduce using rule 14 (condition -> NAME BETWEEN NAME AND NAME .)
+    $end            reduce using rule 14 (condition -> NAME BETWEEN NAME AND NAME .)
+    RP              reduce using rule 14 (condition -> NAME BETWEEN NAME AND NAME .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AND in state 61 resolved as shift
+WARNING: shift/reduce conflict for OR in state 61 resolved as shift
+WARNING: shift/reduce conflict for AND in state 62 resolved as shift
+WARNING: shift/reduce conflict for OR in state 62 resolved as shift
