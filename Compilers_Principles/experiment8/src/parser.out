@@ -1,0 +1,88 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BY
+    DOT
+    IN
+    NUMBER
+    ORDER
+
+Grammar
+
+Rule 0     S' -> query
+Rule 1     query -> select
+Rule 2     select -> SELECT select_list FROM table opt_where_clause
+Rule 3     opt_where_clause -> WHERE condition
+Rule 4     opt_where_clause -> empty
+Rule 5     condition -> NAME EQUALS NAME
+Rule 6     condition -> NAME LT NAME
+Rule 7     condition -> NAME GT NAME
+Rule 8     condition -> NAME LE NAME
+Rule 9     condition -> NAME GE NAME
+Rule 10    condition -> NAME NE NAME
+Rule 11    condition -> condition AND condition
+Rule 12    condition -> condition OR condition
+Rule 13    condition -> LP condition RP
+Rule 14    condition -> NAME BETWEEN NAME AND NAME
+Rule 15    list -> select_list COMMA field
+Rule 16    list -> field
+Rule 17    empty -> <empty>
+Rule 18    aggregate_function -> AVG LP NAME RP
+Rule 19    aggregate_function -> SUM LP NAME RP
+Rule 20    aggregate_function -> MAX LP NAME RP
+Rule 21    aggregate_function -> MIN LP NAME RP
+Rule 22    aggregate_function -> COUNT LP NAME RP
+Rule 23    table -> NAME
+Rule 24    table -> NAME AS NAME
+Rule 25    table -> aggregate_function
+Rule 26    table -> aggregate_function AS NAME
+Rule 27    field -> NAME
+Rule 28    field -> NAME AS NAME
+Rule 29    field -> aggregate_function
+Rule 30    field -> aggregate_function AS NAME
+
+Terminals, with rules where they appear
+
+AND                  : 11 14
+AS                   : 24 26 28 30
+AVG                  : 18
+BETWEEN              : 14
+BY                   : 
+COMMA                : 15
+COUNT                : 22
+DOT                  : 
+EQUALS               : 5
+FROM                 : 2
+GE                   : 9
+GT                   : 7
+IN                   : 
+LE                   : 8
+LP                   : 13 18 19 20 21 22
+LT                   : 6
+MAX                  : 20
+MIN                  : 21
+NAME                 : 5 5 6 6 7 7 8 8 9 9 10 10 14 14 14 18 19 20 21 22 23 24 24 26 27 28 28 30
+NE                   : 10
+NUMBER               : 
+OR                   : 12
+ORDER                : 
+RP                   : 13 18 19 20 21 22
+SELECT               : 2
+SUM                  : 19
+WHERE                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+aggregate_function   : 25 26 29 30
+condition            : 3 11 11 12 12 13
+empty                : 4
+field                : 15 16
+list                 : 
+opt_where_clause     : 2
+query                : 0
+select               : 1
+select_list          : 2 15
+table                : 2
+
