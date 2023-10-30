@@ -8,18 +8,20 @@
 
 ```plaintext
 |-- AST/
-|   |-- Node.py
+|   |-- Node.py # 该模块定义了一个用于表示树结构节点的类 Node
 |-- NodeCreation/
-|   |-- SQLParser.py
+|   |-- SQLParser.py # 该模块通过 PLY 解析 SQL 查询，并创建对应的抽象语法树 (AST)
 |-- Analysis/
-|   |-- SQLAnalysis.py
+|   |-- SQLAnalysis.py # 该模块提供了对抽象语法树 (AST) 中的 SQL 查询进行分析和执行的功能
 |-- tests/
-|   |-- test_Node.py
-|   |-- test_SQLParser.py
-|   |-- test_SQLAnalysis.py
-|-- run.py
-|-- README.md
-|-- requirements.txt
+|   |-- test_Node.py   # 测试AST/Node.py是否正常生成AST
+|   |-- test_SQLParser.py    # 测试NodeCreation/SQLParser.py根据SQL生成的AST
+|   |-- test_SQLAnalysis.py  # 测试对SQL的分析
+|-- data/
+|	|-- student.csv   # 学生信息
+|-- run.py   # 顶级脚本，用于运行项目
+|-- README.md  # readme文件,用来项目概述和使用说明
+|-- requirements.txt  # 用来说明项目的依赖项
 ```
 
 ## 依赖项
