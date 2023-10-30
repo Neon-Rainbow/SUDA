@@ -1,6 +1,37 @@
+"""
+创建于: 2023-10-30
+作者: 水告木南
+
+该模块通过 PLY (Python Lex-Yacc) 提供的词法分析和语法分析工具，解析 SQL 查询，并创建对应的抽象语法树 (AST)。
+
+主要函数:
+    - createNode(query): 解析给定的 SQL 查询，并返回一个表示该查询的 AST 的根节点。
+
+示例:
+    >>> from NodeCreation.SQLParser import createNode
+    >>> query = "SELECT * FROM student WHERE age > 20"
+    >>> ast_root = createNode(query1)
+    >>> ast_root.printNode()
+    + QUERY
+      + [SELECT]
+        + [FIELDS]
+          + [FIELD]
+            + *
+      + [FROM]
+        + [TABLES]
+          + [TABLE]
+            + student
+      + [WHERE]
+        + [CONDITION]
+          + >
+            + age
+            + 20
+"""
+
+
 import ply.lex as lex
 import ply.yacc as yacc
-from AST.node import Node
+from AST.Node import Node
 
 reserved = {
     'SELECT': 'SELECT',
@@ -275,17 +306,17 @@ def createNode(query) -> Node:
 
 
 if __name__ == "__main__":
-    query = ('SELECT COUNT(column1) AS count_col1, COUNT(column2) AS count_col2, COUNT(column3) AS count_col3 '
+    query1 = ('SELECT COUNT(column1) AS count_col1, COUNT(column2) AS count_col2, COUNT(column3) AS count_col3 '
              'FROM table1 AS tab1, table2 AS tab2 '
              'WHERE column1 BETWEEN value1 AND value2'
-             )
+              )
     query2 = ("SELECT id FROM student WHERE (chinese BETWEEN value1 AND value2) AND (english BETWEEN 60 AND 80)")
 
     query3 = ("SELECT id "
               "FROM student "
               "WHERE chinese BETWEEN 60 AND 80")
 
-    parse_node = createNode(query)
+    parse_node = createNode(query1)
     parse_node.printNode()
 
     print()

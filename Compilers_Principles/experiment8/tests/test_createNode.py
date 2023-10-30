@@ -1,5 +1,5 @@
 import pytest
-from create_node.sql_parser import createNode
+from NodeCreation.SQLParser import createNode
 
 
 def test_createNode():

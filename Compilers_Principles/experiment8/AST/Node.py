@@ -1,3 +1,22 @@
+"""
+创建于: 2023-10-30
+作者: 水告木南
+
+该模块定义了一个用于表示树结构节点的类 Node。
+
+主要类:
+    - Node: 表示树结构的一个节点，具有数据和子节点列表。
+
+示例:
+    >>> from AST.Node import Node
+    >>> node = Node("root")
+    >>> child_node = Node("child")
+    >>> node.add(child_node)
+    >>> node.printNode()
+    + root
+      + child
+"""
+
 class Node:
     """
     表示树结构的一个节点。
