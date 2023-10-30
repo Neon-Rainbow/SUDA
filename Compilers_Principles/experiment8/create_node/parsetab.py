@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND AS AVG BETWEEN BY COMMA COUNT DOT EQUALS FROM GE GT IN LE LP LT MAX MIN NAME NE NUMBER OR ORDER RP SELECT SUM WHERE\n    query :  select\n    \n    select : SELECT list FROM table_list opt_where_clause\n    \n    opt_where_clause : WHERE condition\n                     | empty\n    \n    condition : NAME EQUALS NAME\n              | NAME LT NAME\n              | NAME GT NAME\n              | NAME LE NAME\n              | NAME GE NAME\n              | NAME NE NAME\n              | condition AND condition\n              | condition OR condition\n              | LP condition RP\n              | NAME BETWEEN NAME AND NAME\n    \n    list : list COMMA field\n         | field\n    \n    table_list : table_list COMMA table\n               | table\n    \n    empty :\n    \n    aggregate_function : AVG LP NAME RP\n                       | SUM LP NAME RP\n                       | MAX LP NAME RP\n                       | MIN LP NAME RP\n                       | COUNT LP NAME RP\n    \n    table : NAME\n          | NAME AS NAME\n          | aggregate_function\n          | aggregate_function AS NAME\n    \n    field : NAME\n          | NAME AS NAME\n          | aggregate_function\n          | aggregate_function AS NAME\n    '
+_lr_signature = 'AND AS ASC AVG BETWEEN BY COMMA COUNT DESC EQUALS FROM GE GT IN LE LP LT MAX MIN NAME NE NUMBER OR ORDER RP SELECT STAR SUM WHERE\n    query :  select\n          | LP query RP\n    \n    select : SELECT list FROM table_list opt_where_clause opt_order_clause\n    \n    opt_where_clause : WHERE condition\n                     | empty\n    \n    opt_order_clause : ORDER BY NAME ASC\n                     | ORDER BY NAME DESC\n                     | ORDER BY NAME\n                     | empty\n    \n    condition : NAME EQUALS NAME\n              | NAME LT NAME\n              | NAME GT NAME\n              | NAME LE NAME\n              | NAME GE NAME\n              | NAME NE NAME\n              | condition AND condition\n              | condition OR condition\n              | LP condition RP\n              | NAME BETWEEN NAME AND NAME\n              | NAME BETWEEN NUMBER AND NUMBER\n              | NAME IN LP query RP\n              | NAME EQUALS aggregate_function\n    \n    list : list COMMA field\n         | field\n         | STAR\n    \n    table_list : table_list COMMA table\n               | table\n    \n    empty :\n    \n    aggregate_function : AVG LP NAME RP\n                       | SUM LP NAME RP\n                       | MAX LP NAME RP\n                       | MIN LP NAME RP\n                       | COUNT LP NAME RP\n    \n    table : NAME\n          | NAME AS NAME\n          | aggregate_function\n          | aggregate_function AS NAME\n    \n    field : NAME\n          | NAME AS NAME\n          | aggregate_function\n          | aggregate_function AS NAME\n          | STAR\n    '
     
-_lr_action_items = {'SELECT':([0,],[3,]),'$end':([1,2,22,23,24,25,34,37,40,41,42,43,44,45,46,49,50,61,62,63,64,65,66,67,68,70,72,],[0,-1,-19,-18,-25,-27,-2,-4,-20,-21,-22,-23,-24,-17,-3,-26,-28,-11,-12,-5,-6,-7,-8,-9,-10,-13,-14,]),'NAME':([3,13,14,15,16,17,18,19,20,21,35,36,38,39,48,51,52,53,54,55,56,57,58,59,71,],[6,24,6,27,28,29,30,31,32,33,24,47,49,50,47,47,47,63,64,65,66,67,68,69,72,]),'AVG':([3,13,14,35,],[8,8,8,8,]),'SUM':([3,13,14,35,],[9,9,9,9,]),'MAX':([3,13,14,35,],[10,10,10,10,]),'MIN':([3,13,14,35,],[11,11,11,11,]),'COUNT':([3,13,14,35,],[12,12,12,12,]),'FROM':([4,5,6,7,26,27,28,40,41,42,43,44,],[13,-16,-29,-31,-15,-30,-32,-20,-21,-22,-23,-24,]),'COMMA':([4,5,6,7,22,23,24,25,26,27,28,40,41,42,43,44,45,49,50,],[14,-16,-29,-31,35,-18,-25,-27,-15,-30,-32,-20,-21,-22,-23,-24,-17,-26,-28,]),'AS':([6,7,24,25,40,41,42,43,44,],[15,16,38,39,-20,-21,-22,-23,-24,]),'LP':([8,9,10,11,12,36,48,51,52,],[17,18,19,20,21,48,48,48,48,]),'WHERE':([22,23,24,25,40,41,42,43,44,45,49,50,],[36,-18,-25,-27,-20,-21,-22,-23,-24,-17,-26,-28,]),'RP':([29,30,31,32,33,60,61,62,63,64,65,66,67,68,70,72,],[40,41,42,43,44,70,-11,-12,-5,-6,-7,-8,-9,-10,-13,-14,]),'AND':([46,60,61,62,63,64,65,66,67,68,69,70,72,],[51,51,51,51,-5,-6,-7,-8,-9,-10,71,-13,-14,]),'OR':([46,60,61,62,63,64,65,66,67,68,70,72,],[52,52,52,52,-5,-6,-7,-8,-9,-10,-13,-14,]),'EQUALS':([47,],[53,]),'LT':([47,],[54,]),'GT':([47,],[55,]),'LE':([47,],[56,]),'GE':([47,],[57,]),'NE':([47,],[58,]),'BETWEEN':([47,],[59,]),}
+_lr_action_items = {'LP':([0,3,11,12,13,14,15,41,56,60,61,69,83,],[3,3,21,22,23,24,25,56,56,56,56,83,3,]),'SELECT':([0,3,83,],[4,4,4,]),'$end':([1,2,16,26,27,28,29,39,42,45,46,47,48,49,50,52,53,54,57,58,71,72,73,74,75,76,77,78,79,80,84,85,86,90,91,92,],[0,-1,-2,-28,-27,-34,-36,-28,-5,-29,-30,-31,-32,-33,-3,-9,-26,-4,-35,-37,-8,-16,-17,-10,-22,-11,-12,-13,-14,-15,-18,-6,-7,-19,-20,-21,]),'RP':([2,5,16,26,27,28,29,34,35,36,37,38,39,42,45,46,47,48,49,50,52,53,54,57,58,70,71,72,73,74,75,76,77,78,79,80,84,85,86,89,90,91,92,],[-1,16,-2,-28,-27,-34,-36,45,46,47,48,49,-28,-5,-29,-30,-31,-32,-33,-3,-9,-26,-4,-35,-37,84,-8,-16,-17,-10,-22,-11,-12,-13,-14,-15,-18,-6,-7,92,-19,-20,-21,]),'STAR':([4,18,],[8,31,]),'NAME':([4,17,18,19,20,21,22,23,24,25,40,41,43,44,56,59,60,61,62,63,64,65,66,67,68,87,],[9,28,9,32,33,34,35,36,37,38,28,55,57,58,55,71,55,55,74,76,77,78,79,80,81,90,]),'AVG':([4,17,18,40,62,],[11,11,11,11,11,]),'SUM':([4,17,18,40,62,],[12,12,12,12,12,]),'MAX':([4,17,18,40,62,],[13,13,13,13,13,]),'MIN':([4,17,18,40,62,],[14,14,14,14,14,]),'COUNT':([4,17,18,40,62,],[15,15,15,15,15,]),'FROM':([6,7,8,9,10,30,31,32,33,45,46,47,48,49,],[17,-24,-25,-38,-40,-23,-42,-39,-41,-29,-30,-31,-32,-33,]),'COMMA':([6,7,8,9,10,26,27,28,29,30,31,32,33,45,46,47,48,49,53,57,58,],[18,-24,-25,-38,-40,40,-27,-34,-36,-23,-42,-39,-41,-29,-30,-31,-32,-33,-26,-35,-37,]),'AS':([9,10,28,29,45,46,47,48,49,],[19,20,43,44,-29,-30,-31,-32,-33,]),'WHERE':([26,27,28,29,45,46,47,48,49,53,57,58,],[41,-27,-34,-36,-29,-30,-31,-32,-33,-26,-35,-37,]),'ORDER':([26,27,28,29,39,42,45,46,47,48,49,53,54,57,58,72,73,74,75,76,77,78,79,80,84,90,91,92,],[-28,-27,-34,-36,51,-5,-29,-30,-31,-32,-33,-26,-4,-35,-37,-16,-17,-10,-22,-11,-12,-13,-14,-15,-18,-19,-20,-21,]),'AND':([45,46,47,48,49,54,70,72,73,74,75,76,77,78,79,80,81,82,84,90,91,92,],[-29,-30,-31,-32,-33,60,60,60,60,-10,-22,-11,-12,-13,-14,-15,87,88,-18,-19,-20,-21,]),'OR':([45,46,47,48,49,54,70,72,73,74,75,76,77,78,79,80,84,90,91,92,],[-29,-30,-31,-32,-33,61,61,61,61,-10,-22,-11,-12,-13,-14,-15,-18,-19,-20,-21,]),'BY':([51,],[59,]),'EQUALS':([55,],[62,]),'LT':([55,],[63,]),'GT':([55,],[64,]),'LE':([55,],[65,]),'GE':([55,],[66,]),'NE':([55,],[67,]),'BETWEEN':([55,],[68,]),'IN':([55,],[69,]),'NUMBER':([68,88,],[82,91,]),'ASC':([71,],[85,]),'DESC':([71,],[86,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'query':([0,],[1,]),'select':([0,],[2,]),'list':([3,],[4,]),'field':([3,14,],[5,26,]),'aggregate_function':([3,13,14,35,],[7,25,7,25,]),'table_list':([13,],[22,]),'table':([13,35,],[23,45,]),'opt_where_clause':([22,],[34,]),'empty':([22,],[37,]),'condition':([36,48,51,52,],[46,60,61,62,]),}
+_lr_goto_items = {'query':([0,3,83,],[1,5,89,]),'select':([0,3,83,],[2,2,2,]),'list':([4,],[6,]),'field':([4,18,],[7,30,]),'aggregate_function':([4,17,18,40,62,],[10,29,10,29,75,]),'table_list':([17,],[26,]),'table':([17,40,],[27,53,]),'opt_where_clause':([26,],[39,]),'empty':([26,39,],[42,52,]),'opt_order_clause':([39,],[50,]),'condition':([41,56,60,61,],[54,70,72,73,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,36 +27,46 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> query","S'",1,None,None,None),
-  ('query -> select','query',1,'p_query','sql_parser.py',70),
-  ('select -> SELECT list FROM table_list opt_where_clause','select',5,'p_select','sql_parser.py',77),
-  ('opt_where_clause -> WHERE condition','opt_where_clause',2,'p_opt_where_clause','sql_parser.py',92),
-  ('opt_where_clause -> empty','opt_where_clause',1,'p_opt_where_clause','sql_parser.py',93),
-  ('condition -> NAME EQUALS NAME','condition',3,'p_condition','sql_parser.py',102),
-  ('condition -> NAME LT NAME','condition',3,'p_condition','sql_parser.py',103),
-  ('condition -> NAME GT NAME','condition',3,'p_condition','sql_parser.py',104),
-  ('condition -> NAME LE NAME','condition',3,'p_condition','sql_parser.py',105),
-  ('condition -> NAME GE NAME','condition',3,'p_condition','sql_parser.py',106),
-  ('condition -> NAME NE NAME','condition',3,'p_condition','sql_parser.py',107),
-  ('condition -> condition AND condition','condition',3,'p_condition','sql_parser.py',108),
-  ('condition -> condition OR condition','condition',3,'p_condition','sql_parser.py',109),
-  ('condition -> LP condition RP','condition',3,'p_condition','sql_parser.py',110),
-  ('condition -> NAME BETWEEN NAME AND NAME','condition',5,'p_condition','sql_parser.py',111),
-  ('list -> list COMMA field','list',3,'p_list','sql_parser.py',132),
-  ('list -> field','list',1,'p_list','sql_parser.py',133),
-  ('table_list -> table_list COMMA table','table_list',3,'p_table_list','sql_parser.py',144),
-  ('table_list -> table','table_list',1,'p_table_list','sql_parser.py',145),
-  ('empty -> <empty>','empty',0,'p_empty','sql_parser.py',157),
-  ('aggregate_function -> AVG LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',164),
-  ('aggregate_function -> SUM LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',165),
-  ('aggregate_function -> MAX LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',166),
-  ('aggregate_function -> MIN LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',167),
-  ('aggregate_function -> COUNT LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',168),
-  ('table -> NAME','table',1,'p_table','sql_parser.py',176),
-  ('table -> NAME AS NAME','table',3,'p_table','sql_parser.py',177),
-  ('table -> aggregate_function','table',1,'p_table','sql_parser.py',178),
-  ('table -> aggregate_function AS NAME','table',3,'p_table','sql_parser.py',179),
-  ('field -> NAME','field',1,'p_field','sql_parser.py',191),
-  ('field -> NAME AS NAME','field',3,'p_field','sql_parser.py',192),
-  ('field -> aggregate_function','field',1,'p_field','sql_parser.py',193),
-  ('field -> aggregate_function AS NAME','field',3,'p_field','sql_parser.py',194),
+  ('query -> select','query',1,'p_query','sql_parser.py',77),
+  ('query -> LP query RP','query',3,'p_query','sql_parser.py',78),
+  ('select -> SELECT list FROM table_list opt_where_clause opt_order_clause','select',6,'p_select','sql_parser.py',85),
+  ('opt_where_clause -> WHERE condition','opt_where_clause',2,'p_opt_where_clause','sql_parser.py',102),
+  ('opt_where_clause -> empty','opt_where_clause',1,'p_opt_where_clause','sql_parser.py',103),
+  ('opt_order_clause -> ORDER BY NAME ASC','opt_order_clause',4,'p_opt_order_clause','sql_parser.py',112),
+  ('opt_order_clause -> ORDER BY NAME DESC','opt_order_clause',4,'p_opt_order_clause','sql_parser.py',113),
+  ('opt_order_clause -> ORDER BY NAME','opt_order_clause',3,'p_opt_order_clause','sql_parser.py',114),
+  ('opt_order_clause -> empty','opt_order_clause',1,'p_opt_order_clause','sql_parser.py',115),
+  ('condition -> NAME EQUALS NAME','condition',3,'p_condition','sql_parser.py',130),
+  ('condition -> NAME LT NAME','condition',3,'p_condition','sql_parser.py',131),
+  ('condition -> NAME GT NAME','condition',3,'p_condition','sql_parser.py',132),
+  ('condition -> NAME LE NAME','condition',3,'p_condition','sql_parser.py',133),
+  ('condition -> NAME GE NAME','condition',3,'p_condition','sql_parser.py',134),
+  ('condition -> NAME NE NAME','condition',3,'p_condition','sql_parser.py',135),
+  ('condition -> condition AND condition','condition',3,'p_condition','sql_parser.py',136),
+  ('condition -> condition OR condition','condition',3,'p_condition','sql_parser.py',137),
+  ('condition -> LP condition RP','condition',3,'p_condition','sql_parser.py',138),
+  ('condition -> NAME BETWEEN NAME AND NAME','condition',5,'p_condition','sql_parser.py',139),
+  ('condition -> NAME BETWEEN NUMBER AND NUMBER','condition',5,'p_condition','sql_parser.py',140),
+  ('condition -> NAME IN LP query RP','condition',5,'p_condition','sql_parser.py',141),
+  ('condition -> NAME EQUALS aggregate_function','condition',3,'p_condition','sql_parser.py',142),
+  ('list -> list COMMA field','list',3,'p_list','sql_parser.py',175),
+  ('list -> field','list',1,'p_list','sql_parser.py',176),
+  ('list -> STAR','list',1,'p_list','sql_parser.py',177),
+  ('table_list -> table_list COMMA table','table_list',3,'p_table_list','sql_parser.py',189),
+  ('table_list -> table','table_list',1,'p_table_list','sql_parser.py',190),
+  ('empty -> <empty>','empty',0,'p_empty','sql_parser.py',202),
+  ('aggregate_function -> AVG LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',209),
+  ('aggregate_function -> SUM LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',210),
+  ('aggregate_function -> MAX LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',211),
+  ('aggregate_function -> MIN LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',212),
+  ('aggregate_function -> COUNT LP NAME RP','aggregate_function',4,'p_aggregate_function','sql_parser.py',213),
+  ('table -> NAME','table',1,'p_table','sql_parser.py',221),
+  ('table -> NAME AS NAME','table',3,'p_table','sql_parser.py',222),
+  ('table -> aggregate_function','table',1,'p_table','sql_parser.py',223),
+  ('table -> aggregate_function AS NAME','table',3,'p_table','sql_parser.py',224),
+  ('field -> NAME','field',1,'p_field','sql_parser.py',236),
+  ('field -> NAME AS NAME','field',3,'p_field','sql_parser.py',237),
+  ('field -> aggregate_function','field',1,'p_field','sql_parser.py',238),
+  ('field -> aggregate_function AS NAME','field',3,'p_field','sql_parser.py',239),
+  ('field -> STAR','field',1,'p_field','sql_parser.py',240),
 ]

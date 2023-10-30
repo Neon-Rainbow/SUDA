@@ -1,8 +1,6 @@
 import ply.lex as lex
 import ply.yacc as yacc
-import re
-from math import *
-from node import Node
+from AST.node import Node
 
 reserved = {
     'SELECT': 'SELECT',
@@ -20,12 +18,15 @@ reserved = {
     'MIN': 'MIN',
     'COUNT': 'COUNT',
     'AS': 'AS',
+    "DESC": "DESC",
+    "ASC": "ASC",
 }
 
 # TOKENS
 tokens = list(reserved.values()) + [
-    'NAME', 'COMMA', 'LP', 'RP', 'NUMBER', 'DOT',
-    'EQUALS', 'LT', 'GT', 'LE', 'GE', 'NE'
+    'NAME', 'COMMA', 'LP', 'RP', 'EQUALS',
+    'LT', 'GT', 'LE', 'GE', 'NE', 'STAR',
+    'NUMBER'
 ]
 
 
@@ -42,14 +43,20 @@ t_COMMA = r','
 t_LP = r'\('
 t_RP = r'\)'
 t_NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
-t_NUMBER = r'\d+(\.\d+)?'
-t_DOT = r'\.'
 t_EQUALS = r'='
 t_LT = r'<'
 t_GT = r'>'
 t_LE = r'<='
 t_GE = r'>='
 t_NE = r'<>'
+t_STAR = r'\*'
+
+
+def t_NUMBER(t):
+    r"""\d+"""  # Regex for matching numbers
+    t.value = float(t.value)  # Convert string to integer
+    return t
+
 
 # IGNORED
 t_ignore = " \t"
@@ -68,13 +75,14 @@ lex.lex()
 def p_query(t):
     """
     query :  select
+          | LP query RP
     """
     t[0] = t[1]
 
 
 def p_select(t):
     """
-    select : SELECT list FROM table_list opt_where_clause
+    select : SELECT list FROM table_list opt_where_clause opt_order_clause
     """
     t[0] = Node('QUERY')
     node_select = Node("[SELECT]")
@@ -85,6 +93,8 @@ def p_select(t):
     t[0].add(node_from)
     if t[5]:
         t[0].add(t[5])
+    if t[6]:
+        t[0].add(t[6])
 
 
 def p_opt_where_clause(t):
@@ -95,6 +105,24 @@ def p_opt_where_clause(t):
     if len(t) > 2:
         t[0] = Node('[WHERE]')
         t[0].add(t[2])
+
+
+def p_opt_order_clause(t):
+    """
+    opt_order_clause : ORDER BY NAME ASC
+                     | ORDER BY NAME DESC
+                     | ORDER BY NAME
+                     | empty
+    """
+    if len(t) > 2:
+        t[0] = Node('[ORDER BY]')
+        t[0].add(Node(t[3]))
+        sortNode = Node('[SORT]')
+        if len(t) == 5:
+            sortNode.add(t[4])
+        else:
+            sortNode.add(Node('[ASC]'))
+        t[0].add(sortNode)
 
 
 def p_condition(t):
@@ -109,34 +137,50 @@ def p_condition(t):
               | condition OR condition
               | LP condition RP
               | NAME BETWEEN NAME AND NAME
+              | NAME BETWEEN NUMBER AND NUMBER
+              | NAME IN LP query RP
+              | NAME EQUALS aggregate_function
     """
     t[0] = Node('[CONDITION]')
 
     if t[2] == "BETWEEN":
-        t[0].add(Node(t[1]))
-        t[0].add(Node('[BETWEEN]'))
-        between_node = Node('BETWEEN_VALUES')
+        # t[0].add(Node(t[1]))
+        between_node = Node('[BETWEEN]')
+        t[0].add(between_node)
+        between_node.add(Node(t[1]))
         between_node.add(Node(t[3]))
         between_node.add(Node(t[5]))
-        t[0].add(between_node)
+    elif t[2] == "IN":  # Handling IN clause
+        t[0].add(Node(t[1]))
+        in_node = Node('[IN]')
+        in_node.add(t[4])  # Assuming `list` rule returns a Node
+        t[0].add(in_node)
     else:
-        for item in t[1:]:
-            if isinstance(item, Node):
-                t[0].add(item)
-            else:
-                t[0].add(Node(item))
+        sign_node = Node(t[2])
+        sign_node.add(Node(t[1]))
+        if isinstance(t[3], Node):
+            sign_node.add(t[3])
+        else:
+            sign_node.add(Node(t[3]))
+        t[0].add(sign_node)
+        # for item in t[1:]:
+        #     if isinstance(item, Node):
+        #         t[0].add(item)
+        #     else:
+        #         t[0].add(Node(item))
 
 
 def p_list(t):
     """
     list : list COMMA field
          | field
+         | STAR
     """
-    if len(t) == 2:  # single field
+    if len(t) == 2:
         t[0] = Node('[FIELDS]')
         t[0].add(t[1])
-    else:  # multiple fields
-        t[0] = t[1]  # Extend existing [FIELDS] node
+    else:
+        t[0] = t[1]
         t[0].add(t[3])
 
 
@@ -193,6 +237,7 @@ def p_field(t):
           | NAME AS NAME
           | aggregate_function
           | aggregate_function AS NAME
+          | STAR
     """
     t[0] = Node('[FIELD]')
     if len(t) == 2:  # Either a simple name or an aggregate function without alias
@@ -234,5 +279,21 @@ if __name__ == "__main__":
              'FROM table1 AS tab1, table2 AS tab2 '
              'WHERE column1 BETWEEN value1 AND value2'
              )
+    query2 = ("SELECT id FROM student WHERE (chinese BETWEEN value1 AND value2) AND (english BETWEEN 60 AND 80)")
+
+    query3 = ("SELECT id "
+              "FROM student "
+              "WHERE chinese BETWEEN 60 AND 80")
+
     parse_node = createNode(query)
     parse_node.printNode()
+
+    print()
+
+    print(query2)
+    parse_node2 = createNode(query2)
+    parse_node2.printNode()
+
+    print(query3)
+    parse_node3 = createNode(query3)
+    parse_node3.printNode()
