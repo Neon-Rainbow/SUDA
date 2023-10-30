@@ -10,8 +10,10 @@
 
 + [实验4](experiment4) 从NFA到DFA（子集构造法）grade:85
 
-+ [实验5](experiment5) 简易Python编译器 
++ [实验5](experiment5) 简易Python编译器 grade:90
 
-+ [实验6](./experiment6/) 基于PLY的四则运算词法单元识别
++ [实验6](./experiment6/) 基于PLY的四则运算词法单元识别 grade:95
 
 + [实验7](./experiment7) 化学分子式解析
+
++ [实验8](./experiment8) SQL查询语句解析
