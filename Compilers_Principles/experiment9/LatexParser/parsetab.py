@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ABS AUTHOR BEGIN DOC END ITEM ITEMIZE LB RB SECTION SUBSECTION TEXT TITLEdoc : BEGIN LB DOC RB content END LB DOC RBcontent : title abs sections\n                | title author abs sectionstitle : TITLE LB TEXT RBauthor : AUTHOR LB TEXT RBabs : BEGIN LB ABS RB TEXT END LB ABS RBsections : sections section\n                | sectionsection : SECTION LB TEXT RB TEXT maybe_subsections\n                | SECTION LB TEXT RB TEXT itemize TEXT maybe_subsectionsmaybe_subsections : maybe_subsections subsection\n                         | subsection\n                         | subsection : SUBSECTION LB TEXT RB TEXTitemize : BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RBitem_list : item_list item\n                 | itemitem : ITEM TEXT'
+_lr_signature = 'ABS AUTHOR BEGIN DOC END ITEM ITEMIZE LB RB SECTION SUBSECTION TEXT TITLEdoc : BEGIN LB DOC RB content END LB DOC RBsectiontext : TEXT\n                    | TEXT BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB TEXT\n                    | BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB TEXT\n                    | TEXT BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RBcontent : title abs sections\n                | title author abs sectionstitle : TITLE LB TEXT RBauthor : AUTHOR LB TEXT RBabs : BEGIN LB ABS RB TEXT END LB ABS RBsections : sections section\n                | section\n    section : SECTION LB TEXT RB sectiontext\n                | SUBSECTION LB TEXT RB sectiontext\n                itemize : BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RBitem_list : item_list item\n                 | itemitem : ITEM TEXT'
     
-_lr_action_items = {'BEGIN':([0,7,11,29,33,36,],[2,12,12,-4,-5,41,]),'$end':([1,30,],[0,-1,]),'LB':([2,8,9,12,13,18,37,41,42,59,],[3,14,15,20,21,25,43,46,47,62,]),'DOC':([3,15,],[4,23,]),'RB':([4,22,23,27,28,31,48,50,51,63,],[5,29,30,32,33,34,52,53,54,64,]),'TITLE':([5,],[8,]),'END':([6,16,17,24,26,35,36,38,40,44,45,49,55,56,58,60,61,],[9,-2,-8,-7,-3,37,-13,-9,-12,-11,-13,-10,59,-17,-14,-16,-18,]),'AUTHOR':([7,29,],[13,-4,]),'SECTION':([10,16,17,19,24,26,36,38,40,44,45,49,52,58,],[18,18,-8,18,-7,18,-13,-9,-12,-11,-13,-10,-6,-14,]),'TEXT':([14,21,25,32,34,39,47,54,57,64,],[22,28,31,35,36,45,51,58,61,-15,]),'ABS':([20,43,],[27,48,]),'SUBSECTION':([36,38,40,44,45,49,58,],[42,42,-12,-11,42,42,-14,]),'ITEMIZE':([46,62,],[50,63,]),'ITEM':([53,55,56,60,61,],[57,57,-17,-16,-18,]),}
+_lr_action_items = {'BEGIN':([0,7,11,31,36,37,38,40,],[2,12,12,-8,-9,42,42,45,]),'$end':([1,32,],[0,-1,]),'LB':([2,8,9,12,13,18,19,42,44,45,59,62,],[3,14,15,21,22,26,27,46,47,48,63,64,]),'DOC':([3,15,],[4,24,]),'RB':([4,23,24,29,30,33,34,49,50,51,65,66,],[5,31,32,35,36,37,38,52,53,54,67,68,]),'TITLE':([5,],[8,]),'END':([6,16,17,25,28,39,40,41,43,55,56,58,60,61,68,69,70,],[9,-6,-12,-11,-7,44,-2,-13,-14,59,-17,62,-16,-18,-5,-4,-3,]),'AUTHOR':([7,31,],[13,-8,]),'SECTION':([10,16,17,20,25,28,40,41,43,53,68,69,70,],[18,18,-12,18,-11,18,-2,-13,-14,-10,-5,-4,-3,]),'SUBSECTION':([10,16,17,20,25,28,40,41,43,53,68,69,70,],[19,19,-12,19,-11,19,-2,-13,-14,-10,-5,-4,-3,]),'TEXT':([14,22,26,27,35,37,38,57,67,68,],[23,30,33,34,39,40,40,61,69,70,]),'ABS':([21,47,],[29,50,]),'ITEMIZE':([46,48,63,64,],[49,51,65,66,]),'ITEM':([52,54,55,56,58,60,61,],[57,57,57,-17,57,-16,-18,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'doc':([0,],[1,]),'content':([5,],[6,]),'title':([5,],[7,]),'abs':([7,11,],[10,19,]),'author':([7,],[11,]),'sections':([10,19,],[16,26,]),'section':([10,16,19,26,],[17,24,17,24,]),'maybe_subsections':([36,45,],[38,49,]),'itemize':([36,],[39,]),'subsection':([36,38,45,49,],[40,44,40,44,]),'item_list':([53,],[55,]),'item':([53,55,],[56,60,]),}
+_lr_goto_items = {'doc':([0,],[1,]),'content':([5,],[6,]),'title':([5,],[7,]),'abs':([7,11,],[10,20,]),'author':([7,],[11,]),'sections':([10,20,],[16,28,]),'section':([10,16,20,28,],[17,25,17,25,]),'sectiontext':([37,38,],[41,43,]),'item_list':([52,54,],[55,58,]),'item':([52,54,55,58,],[56,56,60,60,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,22 +27,22 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> doc","S'",1,None,None,None),
-  ('doc -> BEGIN LB DOC RB content END LB DOC RB','doc',9,'p_doc','LatexParser.py',63),
-  ('content -> title abs sections','content',3,'p_content','LatexParser.py',70),
-  ('content -> title author abs sections','content',4,'p_content','LatexParser.py',71),
-  ('title -> TITLE LB TEXT RB','title',4,'p_title','LatexParser.py',104),
-  ('author -> AUTHOR LB TEXT RB','author',4,'p_author','LatexParser.py',111),
-  ('abs -> BEGIN LB ABS RB TEXT END LB ABS RB','abs',9,'p_abs','LatexParser.py',118),
-  ('sections -> sections section','sections',2,'p_sections','LatexParser.py',125),
-  ('sections -> section','sections',1,'p_sections','LatexParser.py',126),
-  ('section -> SECTION LB TEXT RB TEXT maybe_subsections','section',6,'p_section','LatexParser.py',148),
-  ('section -> SECTION LB TEXT RB TEXT itemize TEXT maybe_subsections','section',8,'p_section','LatexParser.py',149),
-  ('maybe_subsections -> maybe_subsections subsection','maybe_subsections',2,'p_maybe_subsections','LatexParser.py',166),
-  ('maybe_subsections -> subsection','maybe_subsections',1,'p_maybe_subsections','LatexParser.py',167),
-  ('maybe_subsections -> <empty>','maybe_subsections',0,'p_maybe_subsections','LatexParser.py',168),
-  ('subsection -> SUBSECTION LB TEXT RB TEXT','subsection',5,'p_subsection','LatexParser.py',186),
-  ('itemize -> BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB','itemize',9,'p_itemize','LatexParser.py',193),
-  ('item_list -> item_list item','item_list',2,'p_item_list','LatexParser.py',200),
-  ('item_list -> item','item_list',1,'p_item_list','LatexParser.py',201),
-  ('item -> ITEM TEXT','item',2,'p_item','LatexParser.py',210),
+  ('doc -> BEGIN LB DOC RB content END LB DOC RB','doc',9,'p_doc','LatexParser.py',75),
+  ('sectiontext -> TEXT','sectiontext',1,'p_sectiontext','LatexParser.py',82),
+  ('sectiontext -> TEXT BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB TEXT','sectiontext',11,'p_sectiontext','LatexParser.py',83),
+  ('sectiontext -> BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB TEXT','sectiontext',10,'p_sectiontext','LatexParser.py',84),
+  ('sectiontext -> TEXT BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB','sectiontext',10,'p_sectiontext','LatexParser.py',85),
+  ('content -> title abs sections','content',3,'p_content','LatexParser.py',96),
+  ('content -> title author abs sections','content',4,'p_content','LatexParser.py',97),
+  ('title -> TITLE LB TEXT RB','title',4,'p_title','LatexParser.py',124),
+  ('author -> AUTHOR LB TEXT RB','author',4,'p_author','LatexParser.py',131),
+  ('abs -> BEGIN LB ABS RB TEXT END LB ABS RB','abs',9,'p_abs','LatexParser.py',138),
+  ('sections -> sections section','sections',2,'p_sections','LatexParser.py',145),
+  ('sections -> section','sections',1,'p_sections','LatexParser.py',146),
+  ('section -> SECTION LB TEXT RB sectiontext','section',5,'p_section','LatexParser.py',169),
+  ('section -> SUBSECTION LB TEXT RB sectiontext','section',5,'p_section','LatexParser.py',170),
+  ('itemize -> BEGIN LB ITEMIZE RB item_list END LB ITEMIZE RB','itemize',9,'p_itemize','LatexParser.py',184),
+  ('item_list -> item_list item','item_list',2,'p_item_list','LatexParser.py',191),
+  ('item_list -> item','item_list',1,'p_item_list','LatexParser.py',192),
+  ('item -> ITEM TEXT','item',2,'p_item','LatexParser.py',201),
 ]
