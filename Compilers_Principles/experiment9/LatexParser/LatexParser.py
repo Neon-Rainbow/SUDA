@@ -6,15 +6,15 @@ import ply.yacc as yacc
 from AST.Node import Node
 
 
-def clear_text(text):
+def clear_text(text) -> str:
     """
-    Strip lines and join them into a single string.
+    用来清除文本中的空行和空格
 
     Args:
-        text: The text to be processed.
+        text: 需要被清除的文本
 
     Returns:
-        A string.
+        清除空行和空格后的文本
     """
     lines = [line.strip() for line in text.split('\n') if line.strip()]
     return ' '.join(lines)
@@ -25,7 +25,7 @@ tokens = ('TITLE', 'AUTHOR', 'ABS', 'DOC', 'SECTION', 'SUBSECTION', 'ITEMIZE',
           'ITEM', 'TEXT', 'BEGIN', 'END', 'LB', 'RB')
 
 
-# DEFINE OF TOKENS
+# Token的正则表达式
 def t_DOC(t):
     r"""document"""
     return t
@@ -233,7 +233,7 @@ def createNode(tex_file: str) -> Node:
         # print(data)
         return parse_tree
     except FileNotFoundError:
-        print("The file was not found.")
+        print(f"{tex_file} was not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
