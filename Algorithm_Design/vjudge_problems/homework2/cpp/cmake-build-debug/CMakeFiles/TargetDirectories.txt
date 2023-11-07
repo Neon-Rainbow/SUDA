@@ -1,3 +1,0 @@
-/Users/fanghaonan/File/study/Soochow_University/Algorithm_Design/vjudge_problems/homework2/cpp/cmake-build-debug/CMakeFiles/cpp.dir
-/Users/fanghaonan/File/study/Soochow_University/Algorithm_Design/vjudge_problems/homework2/cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/fanghaonan/File/study/Soochow_University/Algorithm_Design/vjudge_problems/homework2/cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

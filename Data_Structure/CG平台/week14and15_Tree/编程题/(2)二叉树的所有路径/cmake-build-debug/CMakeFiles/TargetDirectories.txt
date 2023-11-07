@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(2)二叉树的所有路径/cmake-build-debug/CMakeFiles/_2_.dir
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(2)二叉树的所有路径/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(2)二叉树的所有路径/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/Csteaching/experiment4_ImplementationAndApplicationOfLinearTable/cmake-build-debug/CMakeFiles/experiment4_ImplementationAndApplicationOfLinearTable.dir
-D:/Programming/C-CPP/Csteaching/experiment4_ImplementationAndApplicationOfLinearTable/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/Csteaching/experiment4_ImplementationAndApplicationOfLinearTable/cmake-build-debug/CMakeFiles/rebuild_cache.dir

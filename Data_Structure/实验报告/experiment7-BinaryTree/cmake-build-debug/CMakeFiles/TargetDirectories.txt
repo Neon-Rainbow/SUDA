@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/Csteaching/experiment7-BinaryTree/cmake-build-debug/CMakeFiles/experiment7_BinaryTree.dir
-D:/Programming/C-CPP/Csteaching/experiment7-BinaryTree/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/Csteaching/experiment7-BinaryTree/cmake-build-debug/CMakeFiles/rebuild_cache.dir

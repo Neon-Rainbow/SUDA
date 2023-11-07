@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/CourseGranding/week13and14_BinaryTree/(1)和为sum/cmake-build-debug/CMakeFiles/_1_sum.dir
-D:/Programming/C-CPP/CourseGranding/week13and14_BinaryTree/(1)和为sum/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/CourseGranding/week13and14_BinaryTree/(1)和为sum/cmake-build-debug/CMakeFiles/rebuild_cache.dir

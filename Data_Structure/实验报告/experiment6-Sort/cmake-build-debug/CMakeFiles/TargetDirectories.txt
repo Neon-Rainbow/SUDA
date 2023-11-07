@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/Csteaching/experiment6-Sort/cmake-build-debug/CMakeFiles/experiment6_Sort.dir
-D:/Programming/C-CPP/Csteaching/experiment6-Sort/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/Csteaching/experiment6-Sort/cmake-build-debug/CMakeFiles/rebuild_cache.dir

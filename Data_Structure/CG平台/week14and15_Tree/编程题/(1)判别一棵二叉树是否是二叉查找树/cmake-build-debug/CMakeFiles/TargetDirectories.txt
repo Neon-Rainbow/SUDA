@@ -1,3 +1,0 @@
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(1)判别一棵二叉树是否是二叉查找树/cmake-build-debug/CMakeFiles/_1_.dir
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(1)判别一棵二叉树是否是二叉查找树/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Programming/C-CPP/CourseGranding/week14and15_Tree/编程题/(1)判别一棵二叉树是否是二叉查找树/cmake-build-debug/CMakeFiles/rebuild_cache.dir

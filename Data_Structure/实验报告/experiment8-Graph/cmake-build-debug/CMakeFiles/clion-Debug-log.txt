@@ -1,6 +1,0 @@
-C:\Windows\system32\wsl.exe --distribution Ubuntu-20.04 --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/d/Programming/C-CPP/Csteaching/experiment8-Graph/cmake-build-debug && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' -S /mnt/d/Programming/C-CPP/Csteaching/experiment8-Graph -B /mnt/d/Programming/C-CPP/Csteaching/experiment8-Graph/cmake-build-debug"
-CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
-  CMake 3.24 or higher is required.  You are running version 3.16.3
-
-
--- Configuring incomplete, errors occurred!
