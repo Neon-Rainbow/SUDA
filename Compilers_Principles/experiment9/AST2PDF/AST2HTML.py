@@ -62,9 +62,7 @@ def Node2Html(node: Node) -> str:
                             <li>{list_item.getChildren()[0].getData()}</li>"""
                         current_section_content = f"""
         {current_section_content}
-        <ul>
-            {items_html}
-        </ul>
+        <ul>{items_html}</ul>
         """
                 if isSection:
                     isSection = False

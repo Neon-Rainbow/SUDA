@@ -239,4 +239,4 @@ def createNode(tex_file: str) -> Node:
 
 
 if __name__ == '__main__':
-    createNode("../data/example2.tex")
+    createNode("../data/example2.tex").printNode()
