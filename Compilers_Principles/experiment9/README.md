@@ -34,7 +34,6 @@
 |-- requirements.txt    # 项目依赖项说明
 ```
 
-
 ## 依赖项
 
 要运行此项目，需要安装以下依赖项：
@@ -159,7 +158,7 @@ Rule 18    item -> ITEM TEXT
 #### 主要函数:
 
 + `def Latex2Html(tex_file_name: str, html_output_filename: str = "") -> str:`读取tex_file_name中的Latex内容,将其转换为其对应的HTML格式,同时根据参数来决定是否将HTML
-输出到html_output_filename中
+  输出到html_output_filename中
   + 参数
     + tex_file_name (str): Latex文件路径。
     + html_output_filename (str): 输出的HTML文件路径。

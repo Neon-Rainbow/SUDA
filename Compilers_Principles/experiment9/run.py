@@ -19,7 +19,10 @@ if __name__ == "__main__":
             print(
                 f"""
             命令行参数不足.应该输入两个参数,分别是tex文件的路径和pdf文件的输出路径.
-            你输入了{len(arguments)}个参数,是{arguments}
+            你输入了{len(arguments)}个参数,分别是
+            tex_filename:{tex_filename} 
+            pdf_output_filename{pdf_output_filename} 
+            html_output_filename{html_output_filename}
             应该输入形如 python3 run.py tex文件路径 pdf文件输出路径 html文件输出路径(可选)
             例如:       python3 run.py data/example2.tex output/example2.pdf output/example2.html
             若不想使用命令行参数,请直接修改run.py中的main函数中的
