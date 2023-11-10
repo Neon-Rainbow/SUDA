@@ -1,0 +1,258 @@
+\documentclass{ctexart}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % For formal tables
+\usepackage{longtable} % For long tables
+\usepackage{geometry}
+\usepackage{tabularx} % Load the package
+\usepackage{lipsum} % Dummy text
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, arrows}
+
+\pgfplotsset{compat=1.15}
+\usepgfplotslibrary{dateplot}
+
+\pgfplotsset{compat=newest}
+
+\title{游戏装备买卖平台 Part9 成本控制报告}
+\author{作者:方浩楠 \\ 小组成员:吴佳骏,彭光,赵紫楚,方浩楠}
+
+\date{\today}
+
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+
+\maketitle
+
+\section{影响软件项目成本的因素}
+
+\subsection{项目的质量对成本的影响}
+
+在软件开发项目中，项目质量与成本之间的关系是多维度和复杂的。高质量的项目实施需要在初期阶段进行更多的投入，包括时间、人力和工具的投资，这通常意味着更高的初始开发成本。然而，这种投资能够在项目后期阶段减少返工和维护的需求，从而降低整体成本。此外，产品的高质量能够提升用户满意度，增强市场竞争力，并最终转化为公司的经济利益。质量不佳的软件可能导致安全风险，如数据泄露，进而引发经济损失和声誉损害，提高了项目的风险成本。技术债务也是一个重要考量因素，短期的质量牺牲可能会导致长期的高额修改和维护成本。因此，高质量的产品开发策略，虽然在前期成本上看似高昂，但从整个项目生命周期来看，实际上能够为企业带来更好的成本效益和市场优势。
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={该项目的项目成本与质量关系图},
+    xlabel={质量},
+    ylabel={成本},
+    xmin=0, xmax=100,
+    ymin=0, ymax=100,
+    xtick={0,20,40,60,80,100},
+    ytick={0,20,40,60,80,100},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (10,70)(20,50)(40,40)(60,30)(80,25)(100,20)
+    };
+    \addlegendentry{直接成本}
+
+\addplot[
+    color=red,
+    mark=triangle,
+    ]
+    coordinates {
+    (10,30)(20,45)(40,55)(60,65)(80,80)(100,90)
+    };
+    \addlegendentry{返工成本}
+
+\addplot[
+    color=green,
+    mark=*,
+    ]
+    coordinates {
+    (10,100)(20,95)(40,95)(60,95)(80,105)(100,110)
+    };
+    \addlegendentry{总成本}
+
+\end{axis}
+\end{tikzpicture}
+
+\subsection{项目管理水平对成本的影响}
+
+项目管理水平对软件项目成本的影响是多方面的，特别是在游戏设备交易平台这样的项目中。以下列出了主要的影响因素：
+
+\begin{itemize}
+    \item \textbf{成本估计的准确性}：高水平的项目管理意味着更准确的成本预测，减少超支风险。
+    \item \textbf{资源的有效分配}：确保资源被高效利用，减少资源浪费。
+    \item \textbf{风险管理}：识别和缓解潜在风险，减少因风险事件发生导致的成本。
+    \item \textbf{变更控制流程}：严格的变更控制流程减少无计划变更带来的成本。
+    \item \textbf{沟通管理}：高效的沟通避免误解和错误，防止不必要的成本。
+    \item \textbf{时间管理}：有效的时间管理遵守时间表，避免因项目延期而增加的成本。
+    \item \textbf{质量控制}：将质量控制整合到项目每个阶段，减少返工和修正成本。
+    \item \textbf{项目监控与控制}：项目按计划进行，及时发现和纠正偏差，控制成本。
+    \item \textbf{采购管理}：合理的采购决策避免不必要的成本，减少过高的支出。
+\end{itemize}
+
+项目管理的高效执行对确保项目在预算范围内完成至关重要，对项目的最终成功和市场表现有直接影响。
+
+\subsection{人力资源对成本的影响}
+
+人力资源是软件开发项目成本的重要组成部分，以下是游戏设备交易平台项目中人力资源对成本影响的分析：
+
+\begin{itemize}
+    \item \textbf{技能匹配与生产力}：合适的技能和经验可以提高工作效率，减少项目成本。
+    \item \textbf{招聘与留存}：有效的招聘流程和高员工留存率可以降低重复招聘和培训的成本。
+    \item \textbf{沟通与协作}：良好的沟通和团队协作提升效率，减少因误解引起的返工成本。
+    \item \textbf{工作量分配}：合理分配工作量和有效的时间管理，避免因紧急工作和加班导致的额外成本。
+    \item \textbf{项目团队结构}：适当的团队结构确保每个成员的效用最大化，减少资源浪费。
+\end{itemize}
+
+有效管理人力资源对控制项目成本至关重要，不仅影响项目的立即成本，也影响项目的长期成功和可持续性。
+
+\section{成本控制的挣值管理}
+
+挣值管理（EVM）是一种强大的项目管理工具，用于监控游戏设备交易平台项目的进度和绩效。进行EVM分析需要以下数据：
+
+\begin{description}
+    \item[计划价值 (PV)] 项目某个点上应该完成的工作的预算价值。
+    \item[实际成本 (AC)] 完成实际工作所需的实际成本。
+    \item[挣值 (EV)] 实际完成的工作的预算价值。
+\end{description}
+
+基于这些数据，我们可以计算以下指标：
+
+\begin{description}
+    \item[进度偏差 (SV)] \( SV = EV - PV \) 衡量项目是否按计划进度进行。
+    \item[成本偏差 (CV)] \( CV = EV - AC \) 衡量项目是否在预算内。
+    \item[进度绩效指标 (SPI)] \( SPI = \frac{EV}{PV} \) 衡量工作完成的速度。
+    \item[成本绩效指标 (CPI)] \( CPI = \frac{EV}{AC} \) 衡量资金使用的效率。
+\end{description}
+
+通过对这些指标的定期审查和分析，项目团队可以评估项目的健康状态，并采取适当的纠正或预防措施以确保项目目标的实现。
+
+为了对游戏设备交易平台项目进行具体的挣值分析（EVM），我们需要项目的实际数据，包括计划价值（PV），实际成本（AC），和挣值（EV）。项目周期分为5个阶段，每个阶段预计完成的工作价值均等，总预算为\$500,000，因此每个阶段的计划价值（PV）为\$100,000。实际成本（AC）和挣值（EV）会根据项目的实际执行情况进行记录。
+
+\textbf{以下是第一阶段的假设数据：}
+
+\begin{itemize}
+    \item 第一阶段结束时，实际成本（AC）是\$120,000。
+    \item 根据完成的工作量，挣值（EV）是\$80,000。
+\end{itemize}
+
+\textbf{基于这些数据，我们可以计算出：}
+
+\begin{itemize}
+    \item 进度偏差（SV）= EV - PV = \$80,000 - \$100,000 = -\$20,000。
+    \item 成本偏差（CV）= EV - AC = \$80,000 - \$120,000 = -\$40,000。
+    \item 进度绩效指标（SPI）= EV / PV = \$80,000 / \$100,000 = 0.8。
+    \item 成本绩效指标（CPI）= EV / AC = \$80,000 / \$120,000 = 0.67。
+\end{itemize}
+
+\textbf{这些指标说明：}
+项目在第一阶段结束时落后于计划，并且超出预算。SPI小于1表明项目的进度落后于计划。CPI小于1表明项目的成本效率低下。
+
+
+下面是对该项目的挣值分析图
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={游戏设备交易平台项目挣值分析图},
+    xlabel={时间},
+    ylabel={成本(\$)},
+    xmin=0, xmax=6,
+    ymin=0, ymax=650000, % 调整了y轴的最大值
+    xtick={0,1,2,3,4,5,6},
+    ytick={0,50000,100000,150000,200000,250000,300000,350000,400000,450000,500000,550000,600000,650000}, % 调整了y轴的刻度
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1,100000)(2,200000)(3,300000)(4,400000)(5,500000)
+    };
+    \addlegendentry{计划价值 (PV)}
+
+\addplot[
+    color=red,
+    mark=triangle,
+    ]
+    coordinates {
+    (1,120000)(2,230000)(3,360000)(4,480000)(5,610000)
+    };
+    \addlegendentry{实际成本 (AC)}
+
+\addplot[
+    color=green,
+    mark=o,
+    ]
+    coordinates {
+    (1,80000)(2,160000)(3,240000)(4,320000)(5,400000)
+    };
+    \addlegendentry{挣值 (EV)}
+
+\end{axis}
+\end{tikzpicture}
+
+\section{软件项目进度-成本平衡}
+
+在进行项目的成本平衡分析时，每个流程步骤和决策点的成本影响需要被仔细评估。以下为一个基于流程图的成本平衡分析方法：
+
+\begin{enumerate}
+  \item \textbf{成本识别：}审查流程图中的每个节点，识别与之关联的直接成本和间接成本。
+  \item \textbf{成本估计：}为流程中的每个步骤估算成本，考虑人工、材料和时间等资源消耗。
+  \item \textbf{累计成本：}计算整个流程的总成本，通过累加每个步骤的估算成本。
+  \item \textbf{成本对比：}将流程的累计成本与预算进行对比，确定任何成本偏差。
+  \item \textbf{成本效益分析：}比较每个步骤的成本与其产生的价值，以评估成本效益。
+  \item \textbf{优化：}识别并优化成本高但价值低的步骤，以改善成本效益。
+  \item \textbf{迭代：}在每次优化后，重复以上步骤以实现成本和效益的最佳平衡。
+\end{enumerate}
+
+该分析的目标是确保项目成本在预算范围内，同时达到或超过预期的项目价值。
+
+下图是该项目的进度-成本控制平衡图
+
+\begin{tikzpicture}[node distance=2cm]
+    \node (start) [startstop] {开始};
+    \node (in1) [io, below of=start] {输入数据};
+    \node (pro1) [process, below of=in1] {处理数据};
+    \node (dec1) [decision, below of=pro1, yshift=-0.5cm] {决策点1};
+    \node (pro2a) [process, below of=dec1, yshift=-0.5cm] {处理分支A};
+    \node (pro2b) [process, left of=dec1, xshift=-2cm] {处理分支B};
+    \node (out1) [io, below of=pro2a] {输出结果};
+    \node (stop) [startstop, below of=out1] {结束};
+    \node (dec2) [decision, right of=dec1, xshift=2cm] {决策点2};
+    \node (pro3) [process, right of=pro1, xshift=2cm] {处理数据3};
+    \node (pro2c) [process, above of=dec2, yshift=0.5cm] {处理分支C};
+
+    \draw [arrow] (start) -- (in1);
+    \draw [arrow] (in1) -- (pro1);
+    \draw [arrow] (pro1) -- (dec1);
+    \draw [arrow] (dec1) -- node[anchor=east] {是} (pro2a);
+    \draw [arrow] (pro2a) -- (out1);
+    \draw [arrow] (out1) -- (stop);
+    \draw [arrow] (dec1) -- node[anchor=south] {否} (pro2b);
+    \draw [arrow] (pro2b) |- (pro1);
+    \draw [arrow] (dec1) -- node[anchor=south] {复审} (dec2);
+    \draw [arrow] (dec2) |- node[anchor=west] {通过} (pro3);
+    \draw [arrow] (dec2) -- node[anchor=west] {不通过} (pro2c);
+    \draw [arrow] (pro3) |- (pro1);
+    \draw [arrow] (pro2c) -- (in1);
+\end{tikzpicture}
+
+\end{document}
