@@ -2,9 +2,11 @@
 #include <string>
 
 
-int CalculateDifferentChar(const std::string::iterator&left,
-                           const std::string::iterator&right,
-                           const char&target) {
+int CalculateDifferentChar(
+    const std::string::iterator&left,
+    const std::string::iterator&right,
+    const char&target
+    ) {
     int ans = 0;
     for (auto iter = left; iter != right + 1; ++iter) {
         if (*iter != target) {
@@ -14,9 +16,11 @@ int CalculateDifferentChar(const std::string::iterator&left,
     return ans;
 }
 
-int CalculateMinimumChangesToMakeStringAGood(const std::string::iterator&left,
-                                             const std::string::iterator&right,
-                                             const char&target) {
+int CalculateMinimumChangesToMakeStringAGood(
+    const std::string::iterator&left,
+    const std::string::iterator&right,
+    const char&target
+    ) {
     if (std::distance(left, right) == 0) {
         return CalculateDifferentChar(left, right, target);
     }
