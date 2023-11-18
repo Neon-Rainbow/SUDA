@@ -12,3 +12,10 @@
     + source:[Codeforces Round 790 (Div. 4)](https://codeforces.com/contest/1676)
     + [CodeForce原题链接](https://codeforces.com/contest/1676/problem/H2)
     + [my submit](./homework3/cpp/main.cpp)
+4. [good string](https://vjudge.net/contest/594369#problem)
+    + soruce:[[Codeforces Round 656 (Div. 3)](https://codeforces.com/contest/1385)]
+    + [CodeForce原题链接](https://codeforces.com/problemset/problem/1385/D)
+    + my submit
+    	+ [C++](./homework4/cpp/main.cpp)
+    		+ C++代码中使用了过多的iterator导致可读性不高
+    	+ [Golang](./homework4/golang/main.go)
