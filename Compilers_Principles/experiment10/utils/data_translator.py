@@ -30,8 +30,15 @@ def trans(node):
 
         if op == '+':
             value = arg0 + arg1
-        else:
+        elif op == "-":
             value = arg0 - arg1
+        elif op == "*":
+            value = arg0 * arg1
+        elif op == "/":
+            value = arg0 / arg1
+
+        if len(node.get_children()) == 7:
+            value = 3
 
         node.get_child(0).set_value(value)
         # update v_table

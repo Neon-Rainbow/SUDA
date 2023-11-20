@@ -12,18 +12,25 @@ Rule 6     statement -> print
 Rule 7     assignment -> VARIABLE = NUMBER
 Rule 8     operation -> VARIABLE = VARIABLE + VARIABLE
 Rule 9     operation -> VARIABLE = VARIABLE - VARIABLE
-Rule 10    print -> PRINT ( VARIABLE )
+Rule 10    operation -> VARIABLE = VARIABLE * VARIABLE
+Rule 11    operation -> VARIABLE = VARIABLE / VARIABLE
+Rule 12    operation -> VARIABLE = VARIABLE - NUMBER + VARIABLE
+Rule 13    print -> PRINT ( VARIABLE )
+Rule 14    print -> PRINT ( VARIABLE , VARIABLE , VARIABLE )
 
 Terminals, with rules where they appear
 
-(                    : 10
-)                    : 10
-+                    : 8
--                    : 9
-=                    : 7 8 9
-NUMBER               : 7
-PRINT                : 10
-VARIABLE             : 7 8 8 8 9 9 9 10
+(                    : 13 14
+)                    : 13 14
+*                    : 10
++                    : 8 12
+,                    : 14 14
+-                    : 9 12
+/                    : 11
+=                    : 7 8 9 10 11 12
+NUMBER               : 7 12
+PRINT                : 13 14
+VARIABLE             : 7 8 8 8 9 9 9 10 10 10 11 11 11 12 12 12 13 14 14 14
 error                : 
 
 Nonterminals, with rules where they appear
@@ -49,7 +56,11 @@ state 0
     (7) assignment -> . VARIABLE = NUMBER
     (8) operation -> . VARIABLE = VARIABLE + VARIABLE
     (9) operation -> . VARIABLE = VARIABLE - VARIABLE
-    (10) print -> . PRINT ( VARIABLE )
+    (10) operation -> . VARIABLE = VARIABLE * VARIABLE
+    (11) operation -> . VARIABLE = VARIABLE / VARIABLE
+    (12) operation -> . VARIABLE = VARIABLE - NUMBER + VARIABLE
+    (13) print -> . PRINT ( VARIABLE )
+    (14) print -> . PRINT ( VARIABLE , VARIABLE , VARIABLE )
 
     VARIABLE        shift and go to state 7
     PRINT           shift and go to state 8
@@ -77,7 +88,11 @@ state 2
     (7) assignment -> . VARIABLE = NUMBER
     (8) operation -> . VARIABLE = VARIABLE + VARIABLE
     (9) operation -> . VARIABLE = VARIABLE - VARIABLE
-    (10) print -> . PRINT ( VARIABLE )
+    (10) operation -> . VARIABLE = VARIABLE * VARIABLE
+    (11) operation -> . VARIABLE = VARIABLE / VARIABLE
+    (12) operation -> . VARIABLE = VARIABLE - NUMBER + VARIABLE
+    (13) print -> . PRINT ( VARIABLE )
+    (14) print -> . PRINT ( VARIABLE , VARIABLE , VARIABLE )
 
     $end            reduce using rule 1 (program -> statements .)
     VARIABLE        shift and go to state 7
@@ -129,13 +144,17 @@ state 7
     (7) assignment -> VARIABLE . = NUMBER
     (8) operation -> VARIABLE . = VARIABLE + VARIABLE
     (9) operation -> VARIABLE . = VARIABLE - VARIABLE
+    (10) operation -> VARIABLE . = VARIABLE * VARIABLE
+    (11) operation -> VARIABLE . = VARIABLE / VARIABLE
+    (12) operation -> VARIABLE . = VARIABLE - NUMBER + VARIABLE
 
     =               shift and go to state 10
 
 
 state 8
 
-    (10) print -> PRINT . ( VARIABLE )
+    (13) print -> PRINT . ( VARIABLE )
+    (14) print -> PRINT . ( VARIABLE , VARIABLE , VARIABLE )
 
     (               shift and go to state 11
 
@@ -154,6 +173,9 @@ state 10
     (7) assignment -> VARIABLE = . NUMBER
     (8) operation -> VARIABLE = . VARIABLE + VARIABLE
     (9) operation -> VARIABLE = . VARIABLE - VARIABLE
+    (10) operation -> VARIABLE = . VARIABLE * VARIABLE
+    (11) operation -> VARIABLE = . VARIABLE / VARIABLE
+    (12) operation -> VARIABLE = . VARIABLE - NUMBER + VARIABLE
 
     NUMBER          shift and go to state 13
     VARIABLE        shift and go to state 12
@@ -161,7 +183,8 @@ state 10
 
 state 11
 
-    (10) print -> PRINT ( . VARIABLE )
+    (13) print -> PRINT ( . VARIABLE )
+    (14) print -> PRINT ( . VARIABLE , VARIABLE , VARIABLE )
 
     VARIABLE        shift and go to state 14
 
@@ -170,9 +193,14 @@ state 12
 
     (8) operation -> VARIABLE = VARIABLE . + VARIABLE
     (9) operation -> VARIABLE = VARIABLE . - VARIABLE
+    (10) operation -> VARIABLE = VARIABLE . * VARIABLE
+    (11) operation -> VARIABLE = VARIABLE . / VARIABLE
+    (12) operation -> VARIABLE = VARIABLE . - NUMBER + VARIABLE
 
     +               shift and go to state 15
     -               shift and go to state 16
+    *               shift and go to state 17
+    /               shift and go to state 18
 
 
 state 13
@@ -186,35 +214,60 @@ state 13
 
 state 14
 
-    (10) print -> PRINT ( VARIABLE . )
+    (13) print -> PRINT ( VARIABLE . )
+    (14) print -> PRINT ( VARIABLE . , VARIABLE , VARIABLE )
 
-    )               shift and go to state 17
+    )               shift and go to state 19
+    ,               shift and go to state 20
 
 
 state 15
 
     (8) operation -> VARIABLE = VARIABLE + . VARIABLE
 
-    VARIABLE        shift and go to state 18
+    VARIABLE        shift and go to state 21
 
 
 state 16
 
     (9) operation -> VARIABLE = VARIABLE - . VARIABLE
+    (12) operation -> VARIABLE = VARIABLE - . NUMBER + VARIABLE
 
-    VARIABLE        shift and go to state 19
+    VARIABLE        shift and go to state 22
+    NUMBER          shift and go to state 23
 
 
 state 17
 
-    (10) print -> PRINT ( VARIABLE ) .
+    (10) operation -> VARIABLE = VARIABLE * . VARIABLE
 
-    VARIABLE        reduce using rule 10 (print -> PRINT ( VARIABLE ) .)
-    PRINT           reduce using rule 10 (print -> PRINT ( VARIABLE ) .)
-    $end            reduce using rule 10 (print -> PRINT ( VARIABLE ) .)
+    VARIABLE        shift and go to state 24
 
 
 state 18
+
+    (11) operation -> VARIABLE = VARIABLE / . VARIABLE
+
+    VARIABLE        shift and go to state 25
+
+
+state 19
+
+    (13) print -> PRINT ( VARIABLE ) .
+
+    VARIABLE        reduce using rule 13 (print -> PRINT ( VARIABLE ) .)
+    PRINT           reduce using rule 13 (print -> PRINT ( VARIABLE ) .)
+    $end            reduce using rule 13 (print -> PRINT ( VARIABLE ) .)
+
+
+state 20
+
+    (14) print -> PRINT ( VARIABLE , . VARIABLE , VARIABLE )
+
+    VARIABLE        shift and go to state 26
+
+
+state 21
 
     (8) operation -> VARIABLE = VARIABLE + VARIABLE .
 
@@ -223,11 +276,82 @@ state 18
     $end            reduce using rule 8 (operation -> VARIABLE = VARIABLE + VARIABLE .)
 
 
-state 19
+state 22
 
     (9) operation -> VARIABLE = VARIABLE - VARIABLE .
 
     VARIABLE        reduce using rule 9 (operation -> VARIABLE = VARIABLE - VARIABLE .)
     PRINT           reduce using rule 9 (operation -> VARIABLE = VARIABLE - VARIABLE .)
     $end            reduce using rule 9 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+
+
+state 23
+
+    (12) operation -> VARIABLE = VARIABLE - NUMBER . + VARIABLE
+
+    +               shift and go to state 27
+
+
+state 24
+
+    (10) operation -> VARIABLE = VARIABLE * VARIABLE .
+
+    VARIABLE        reduce using rule 10 (operation -> VARIABLE = VARIABLE * VARIABLE .)
+    PRINT           reduce using rule 10 (operation -> VARIABLE = VARIABLE * VARIABLE .)
+    $end            reduce using rule 10 (operation -> VARIABLE = VARIABLE * VARIABLE .)
+
+
+state 25
+
+    (11) operation -> VARIABLE = VARIABLE / VARIABLE .
+
+    VARIABLE        reduce using rule 11 (operation -> VARIABLE = VARIABLE / VARIABLE .)
+    PRINT           reduce using rule 11 (operation -> VARIABLE = VARIABLE / VARIABLE .)
+    $end            reduce using rule 11 (operation -> VARIABLE = VARIABLE / VARIABLE .)
+
+
+state 26
+
+    (14) print -> PRINT ( VARIABLE , VARIABLE . , VARIABLE )
+
+    ,               shift and go to state 28
+
+
+state 27
+
+    (12) operation -> VARIABLE = VARIABLE - NUMBER + . VARIABLE
+
+    VARIABLE        shift and go to state 29
+
+
+state 28
+
+    (14) print -> PRINT ( VARIABLE , VARIABLE , . VARIABLE )
+
+    VARIABLE        shift and go to state 30
+
+
+state 29
+
+    (12) operation -> VARIABLE = VARIABLE - NUMBER + VARIABLE .
+
+    VARIABLE        reduce using rule 12 (operation -> VARIABLE = VARIABLE - NUMBER + VARIABLE .)
+    PRINT           reduce using rule 12 (operation -> VARIABLE = VARIABLE - NUMBER + VARIABLE .)
+    $end            reduce using rule 12 (operation -> VARIABLE = VARIABLE - NUMBER + VARIABLE .)
+
+
+state 30
+
+    (14) print -> PRINT ( VARIABLE , VARIABLE , VARIABLE . )
+
+    )               shift and go to state 31
+
+
+state 31
+
+    (14) print -> PRINT ( VARIABLE , VARIABLE , VARIABLE ) .
+
+    VARIABLE        reduce using rule 14 (print -> PRINT ( VARIABLE , VARIABLE , VARIABLE ) .)
+    PRINT           reduce using rule 14 (print -> PRINT ( VARIABLE , VARIABLE , VARIABLE ) .)
+    $end            reduce using rule 14 (print -> PRINT ( VARIABLE , VARIABLE , VARIABLE ) .)
 

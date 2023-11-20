@@ -7,23 +7,23 @@ import ply.lex as lex
 # Tokens
 tokens = ('VARIABLE', 'NUMBER', 'PRINT')
 
-literals = ['=', '+', '-', '*', '(', ')', '{', '}', '<', '>']
+literals = ['=', '+', '-', '*', '(', ')', '{', '}', '<', '>', ","]
 
 
 # Define of tokens
 
 def t_NUMBER(t):
-    r'[0-9]+'
+    r"""[0-9]+"""
     return t
 
 
 def t_PRINT(t):
-    r'print'
+    r"""print"""
     return t
 
 
 def t_VARIABLE(t):
-    r'[a-zA-Z]+'
+    r"""[a-zA-Z]+"""
     return t
 
 
