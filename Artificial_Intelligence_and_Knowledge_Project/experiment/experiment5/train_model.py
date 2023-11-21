@@ -44,6 +44,18 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 训练模型的函数
 def train(dataloader, model, loss_fn, optimizer):
+    """
+    训练模型的函数
+
+    Args:
+        dataloader (DataLoader): 训练数据加载器
+        model (NeuralNet): 要训练的神经网络模型
+        loss_fn (nn.Module): 损失函数
+        optimizer (optim.Optimizer): 优化器
+
+    Returns:
+        无返回值
+    """
     size = len(dataloader.dataset)
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
@@ -59,6 +71,17 @@ def train(dataloader, model, loss_fn, optimizer):
 
 # 评估模型的函数
 def test(dataloader, model, loss_fn):
+    """
+    评估模型的函数
+
+    Args:
+        dataloader (DataLoader): 测试数据加载器
+        model (NeuralNet): 要评估的神经网络模型
+        loss_fn (nn.Module): 损失函数
+
+    Returns:
+        无返回值
+    """
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
     model.eval()
