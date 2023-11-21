@@ -22,6 +22,8 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from torch import optim, nn
 from model import NeuralNet  # 从 model.py 中导入 NeuralNet
+import matplotlib.pyplot as plt
+import os
 
 # 设置设备
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -97,6 +99,75 @@ def test(dataloader, model, loss_fn):
     print(f"Test Error: \n Accuracy: {(100 * correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 
+def plot_examples(model, dataloader, num_examples=5):
+    """显示MNIST数据集中的图片及模型预测的数字
+
+    Args:
+        model (NeuralNet): 训练好的模型
+        dataloader (DataLoader): 测试数据加载器
+        num_examples (int): 要显示的样本数量
+    """
+    model.eval()
+    fig, axs = plt.subplots(1, num_examples, figsize=(10, 2))
+    examples_shown = 0
+
+    for X, y in dataloader:
+        X, y = X.to(device), y.to(device)
+        with torch.no_grad():
+            pred = model(X)
+            preds = pred.argmax(1)  # 获取每个样本的预测标签
+
+        for i in range(X.size(0)):
+            if examples_shown >= num_examples:
+                break
+
+            axs[examples_shown].imshow(X[i].squeeze(), cmap='gray')
+            axs[examples_shown].set_title(f"Predicted: {preds[i].item()}")
+            axs[examples_shown].axis('off')
+            examples_shown += 1
+
+        if examples_shown >= num_examples:
+            break
+
+    plt.show()
+
+
+def save_examples(model, dataloader, num_examples=100, folder_path='./examples'):
+    """保存MNIST数据集中的图片及模型预测的数字
+
+    Args:
+        model (NeuralNet): 训练好的模型
+        dataloader (DataLoader): 测试数据加载器
+        num_examples (int): 要保存的样本数量
+        folder_path (str): 保存图片的文件夹路径
+    """
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    model.eval()
+    examples_shown = 0
+
+    for X, y in dataloader:
+        X, y = X.to(device), y.to(device)
+        with torch.no_grad():
+            pred = model(X)
+            preds = pred.argmax(1)  # 获取每个样本的预测标签
+
+        for i in range(X.size(0)):
+            if examples_shown >= num_examples:
+                break
+
+            img = X[i].squeeze().cpu().numpy()
+            plt.imshow(img, cmap='gray')
+            plt.title(f"Predicted: {preds[i].item()}")
+            plt.savefig(os.path.join(folder_path, f"example_{examples_shown}.png"))
+            plt.close()
+            examples_shown += 1
+
+        if examples_shown >= num_examples:
+            break
+
+
 # 主函数
 if __name__ == "__main__":
     epochs = 5
@@ -106,3 +177,7 @@ if __name__ == "__main__":
         test(test_loader, model, loss_fn)
     print("Done!")
     torch.save(model.state_dict(), './model.pth')
+    print("Displaying example predictions:")
+    plot_examples(model, test_loader)
+    print("Saving example predictions:")
+    save_examples(model, test_loader)
