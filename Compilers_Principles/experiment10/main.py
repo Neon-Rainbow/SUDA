@@ -5,7 +5,7 @@ from utils.text_utils import clear_text
 from utils.data_translator import trans, v_table
 
 if __name__ == "__main__":
-    text = clear_text(open('data/0.py', 'r').read())
+    text = clear_text(open('data/example.py', 'r').read())
 
     # syntax parse
     root = yacc.parse(text)

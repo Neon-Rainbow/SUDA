@@ -25,7 +25,10 @@ def trans(node):
         '''operation : VARIABLE '=' VARIABLE '+' VARIABLE
                      | VARIABLE '=' VARIABLE '-' VARIABLE'''
         arg0 = v_table[node.get_child(2).get_data()]
-        arg1 = v_table[node.get_child(4).get_data()]
+        if node.get_child(4).get_data() != "1":
+            arg1 = v_table[node.get_child(4).get_data()]
+        else:
+            arg1 = 1.0
         op = node.get_child(3).get_data()
 
         if op == '+':
@@ -47,5 +50,5 @@ def trans(node):
     # Print
     elif node.get_data() == '[PRINT]':
         '''print : PRINT '(' VARIABLE ')' '''
-        arg0 = v_table[node.get_child(2).get_data()]
-        print(arg0)
+        arg0 = v_table[node.get_child(0).get_data()]
+    # print(arg0)
