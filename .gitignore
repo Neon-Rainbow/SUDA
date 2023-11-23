@@ -2,6 +2,7 @@
 */.vs/
 */x64/
 */.vscode/
+*\.vscode\
 */.idea/
 **/cmake-build-debug/
 */venu/
@@ -11,7 +12,6 @@
 *.idea/
 */__pycache__/
 **/__pycache__/
-*/.vscode/
 */build/
 ~$*.docx
 ~$*.pptx
