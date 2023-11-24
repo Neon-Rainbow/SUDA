@@ -13,9 +13,15 @@
     + [CodeForce原题链接](https://codeforces.com/contest/1676/problem/H2)
     + [my submit](./homework3/cpp/main.cpp)
 4. [good string](https://vjudge.net/contest/594369#problem)
-    + soruce:[[Codeforces Round 656 (Div. 3)](https://codeforces.com/contest/1385)]
+    + source:[Codeforces Round 656 (Div. 3)](https://codeforces.com/contest/1385)
     + [CodeForce原题链接](https://codeforces.com/problemset/problem/1385/D)
     + my submit
     	+ [C++](./homework4/cpp/main.cpp)
     		+ C++代码中使用了过多的iterator导致可读性不高
     	+ [Golang](./homework4/golang/main.go)
+5. [Block Sequence](https://vjudge.net/contest/596151#problem/A)
+    + soruce:[Codeforces Round 903 (Div. 3)](https://codeforces.com/contest/1881)
+    + [CodeForce原题链接](https://codeforces.com/problemset/problem/1881/E)
+    + my submit
+        + [C++](./homework5/cpp/main.cpp)
+        + [Python](./homework5/python/pythonProject/main.py)
