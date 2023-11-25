@@ -2,6 +2,7 @@
 */.vs/
 */x64/
 */.vscode/
+*.vscode/
 *\.vscode\
 */.idea/
 **/cmake-build-debug/
