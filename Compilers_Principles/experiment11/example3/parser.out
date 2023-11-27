@@ -1,5 +1,9 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    BREAK
+
 Grammar
 
 Rule 0     S' -> program
@@ -20,20 +24,28 @@ Rule 14    if -> IF ( condition ) { statements }
 Rule 15    condition -> VARIABLE > VARIABLE
 Rule 16    condition -> VARIABLE < VARIABLE
 Rule 17    while -> WHILE ( condition ) { statements }
+Rule 18    exprs -> exprs , expr
+Rule 19    exprs -> expr
+Rule 20    expr -> NUMBER
+Rule 21    expr -> VARIABLE
+Rule 22    len -> LEN ( VARIABLE )
 
 Terminals, with rules where they appear
 
-(                    : 13 14 17
-)                    : 13 14 17
+(                    : 13 14 17 22
+)                    : 13 14 17 22
 +                    : 11
+,                    : 18
 -                    : 12
 <                    : 16
 =                    : 9 10 11 12
 >                    : 15
+BREAK                : 
 IF                   : 14
-NUMBER               : 9
+LEN                  : 22
+NUMBER               : 9 20
 PRINT                : 13
-VARIABLE             : 9 10 10 11 11 11 12 12 12 13 15 15 16 16
+VARIABLE             : 9 10 10 11 11 11 12 12 12 13 15 15 16 16 21 22
 WHILE                : 17
 error                : 
 {                    : 14 17
@@ -43,7 +55,10 @@ Nonterminals, with rules where they appear
 
 assignment           : 4
 condition            : 14 17
+expr                 : 18 19
+exprs                : 18
 if                   : 7
+len                  : 
 operation            : 5
 print                : 6
 program              : 0

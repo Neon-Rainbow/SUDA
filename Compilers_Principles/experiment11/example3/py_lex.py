@@ -5,7 +5,7 @@ import ply.lex as lex
 # LEX for parsing Python
 
 # Tokens
-tokens = ('VARIABLE', 'NUMBER', 'IF', 'WHILE', 'PRINT')
+tokens = ('VARIABLE', 'NUMBER', 'IF', 'WHILE', 'PRINT', 'LEN', 'BREAK')
 
 literals = ['=', '+', '-', '*', '(', ')', '{', '}', '<', '>']
 
@@ -34,6 +34,16 @@ def t_WHILE(t):
 
 def t_VARIABLE(t):
     r'[a-zA-Z]+'
+    return t
+
+
+def t_LEN(t):
+    r'len'
+    return t
+
+
+def t_BREAK(t):
+    r'break'
     return t
 
 

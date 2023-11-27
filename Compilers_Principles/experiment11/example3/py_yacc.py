@@ -55,24 +55,24 @@ def p_assignment(t):
         t[0] = node('[ASSIGNMENT]')
         t[0].add(node(t[1]))
         t[0].add(node(t[2]))
-        t[0].add(num_node(t[3]))
+        t[0].add(node(t[3]))
 
 
 def p_operation(t):
-    '''operation : VARIABLE '=' VARIABLE '+' VARIABLE
-                 | VARIABLE '=' VARIABLE '-' VARIABLE'''
+    """operation : VARIABLE '=' VARIABLE '+' VARIABLE
+                 | VARIABLE '=' VARIABLE '-' VARIABLE"""
     if len(t) == 6:
         t[0] = simple_node(t, '[OPERATION]')
 
 
 def p_print(t):
-    '''print : PRINT '(' VARIABLE ')' '''
+    """print : PRINT '(' VARIABLE ')' """
     if len(t) == 5:
         t[0] = simple_node(t, '[PRINT]')
 
 
 def p_if(t):
-    r'''if : IF '(' condition ')' '{' statements '}' '''
+    r"""if : IF '(' condition ')' '{' statements '}' """
     if len(t) == 8:
         t[0] = node('[IF]')
         t[0].add(t[3])
@@ -80,18 +80,53 @@ def p_if(t):
 
 
 def p_condition(t):
-    '''condition : VARIABLE '>' VARIABLE
-                 | VARIABLE '<' VARIABLE'''
+    """condition : VARIABLE '>' VARIABLE
+                 | VARIABLE '<' VARIABLE"""
     if len(t) == 4:
         t[0] = simple_node(t, '[CONDITION]')
 
 
 def p_while(t):
-    r'''while : WHILE '(' condition ')' '{' statements '}' '''
+    r"""while : WHILE '(' condition ')' '{' statements '}' """
     if len(t) == 8:
         t[0] = node('[WHILE]')
         t[0].add(t[3])
         t[0].add(t[6])
+
+
+def p_exprs(t):
+    """
+    exprs : exprs ',' expr
+          | expr
+    """
+    if len(t) == 4:
+        t[0] = node('Exprs')
+        t[0].add(t[1])
+        t[0].add(node(t[2]))
+        t[0].add(t[3])
+    elif len(t) == 2:
+        t[0] = node('Exprs')
+        t[0].add(t[1])
+
+
+def p_expr(t):
+    """
+    expr : NUMBER
+         | VARIABLE
+    """
+    if len(t) == 2:
+        t[0] = node('Expr')
+        t[0].add(node(t[1]))
+
+
+def p_len(t):
+    """len : LEN '(' VARIABLE ')'"""
+    if len(t) == 5:
+        t[0] = node('Len')
+        t[0].add(node(t[1]))
+        t[0].add(node(t[2]))
+        t[0].add(t[3])
+        t[0].add(node(t[4]))
 
 
 def p_error(t):

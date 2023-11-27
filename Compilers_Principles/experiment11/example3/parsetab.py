@@ -6,7 +6,7 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "IF NUMBER PRINT VARIABLE WHILEprogram : statementsstatements : statements statement\n                  | statement\n    statement : assignment\n                | operation\n                  | print\n                  | if\n                  | while\n    assignment : VARIABLE '=' NUMBER\n               | VARIABLE '=' VARIABLE\n    operation : VARIABLE '=' VARIABLE '+' VARIABLE\n                 | VARIABLE '=' VARIABLE '-' VARIABLEprint : PRINT '(' VARIABLE ')' if : IF '(' condition ')' '{' statements '}' condition : VARIABLE '>' VARIABLE\n                 | VARIABLE '<' VARIABLEwhile : WHILE '(' condition ')' '{' statements '}' "
+_lr_signature = "BREAK IF LEN NUMBER PRINT VARIABLE WHILEprogram : statementsstatements : statements statement\n                  | statement\n    statement : assignment\n                | operation\n                  | print\n                  | if\n                  | while\n    assignment : VARIABLE '=' NUMBER\n               | VARIABLE '=' VARIABLE\n    operation : VARIABLE '=' VARIABLE '+' VARIABLE\n                 | VARIABLE '=' VARIABLE '-' VARIABLEprint : PRINT '(' VARIABLE ')' if : IF '(' condition ')' '{' statements '}' condition : VARIABLE '>' VARIABLE\n                 | VARIABLE '<' VARIABLEwhile : WHILE '(' condition ')' '{' statements '}' \n    exprs : exprs ',' expr\n          | expr\n    \n    expr : NUMBER\n         | VARIABLE\n    len : LEN '(' VARIABLE ')'"
     
 _lr_action_items = {'VARIABLE':([0,2,3,4,5,6,7,8,13,14,15,16,17,18,19,24,25,26,28,29,31,32,33,36,37,38,39,40,],[9,9,-3,-4,-5,-6,-7,-8,-2,18,20,22,22,-10,-9,31,32,-13,34,35,-11,-12,9,9,9,9,-14,-17,]),'PRINT':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[10,10,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,10,10,10,10,-14,-17,]),'IF':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[11,11,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,11,11,11,11,-14,-17,]),'WHILE':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[12,12,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,12,12,12,12,-14,-17,]),'$end':([1,2,3,4,5,6,7,8,13,18,19,26,31,32,39,40,],[0,-1,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,-14,-17,]),'}':([3,4,5,6,7,8,13,18,19,26,31,32,37,38,39,40,],[-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,39,40,-14,-17,]),'=':([9,],[14,]),'(':([10,11,12,],[15,16,17,]),'NUMBER':([14,],[19,]),'+':([18,],[24,]),'-':([18,],[25,]),')':([20,21,23,34,35,],[26,27,30,-15,-16,]),'>':([22,],[28,]),'<':([22,],[29,]),'{':([27,30,],[33,36,]),}
 
@@ -44,4 +44,9 @@ _lr_productions = [
   ('condition -> VARIABLE > VARIABLE','condition',3,'p_condition','py_yacc.py',83),
   ('condition -> VARIABLE < VARIABLE','condition',3,'p_condition','py_yacc.py',84),
   ('while -> WHILE ( condition ) { statements }','while',7,'p_while','py_yacc.py',90),
+  ('exprs -> exprs , expr','exprs',3,'p_exprs','py_yacc.py',99),
+  ('exprs -> expr','exprs',1,'p_exprs','py_yacc.py',100),
+  ('expr -> NUMBER','expr',1,'p_expr','py_yacc.py',114),
+  ('expr -> VARIABLE','expr',1,'p_expr','py_yacc.py',115),
+  ('len -> LEN ( VARIABLE )','len',4,'p_len','py_yacc.py',123),
 ]

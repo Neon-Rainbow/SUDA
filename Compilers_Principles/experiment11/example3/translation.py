@@ -2,6 +2,8 @@
 # coding=utf-8
 
 v_table = {}  # variable table
+loop_flag = 0  # loop flag
+break_flag = False  # break flag
 
 
 def update_v_table(name, value):
