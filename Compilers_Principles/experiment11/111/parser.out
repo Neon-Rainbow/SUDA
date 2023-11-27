@@ -1,0 +1,2842 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements statement
+Rule 3     statements -> statement
+Rule 4     statement -> assignment
+Rule 5     statement -> expr
+Rule 6     statement -> print
+Rule 7     statement -> if
+Rule 8     statement -> while
+Rule 9     statement -> for
+Rule 10    statement -> break
+Rule 11    assignment -> leftval ASSIGN expr
+Rule 12    assignment -> leftval ASSIGN array
+Rule 13    leftval -> leftval LBRACKET expr RBRACKET
+Rule 14    leftval -> ID
+Rule 15    expr -> expr PLUS term
+Rule 16    expr -> expr MINUS term
+Rule 17    expr -> term
+Rule 18    term -> term TIMES factor
+Rule 19    term -> term DIVIDE factor
+Rule 20    term -> term EDIVIDE factor
+Rule 21    term -> factor
+Rule 22    factor -> leftval
+Rule 23    factor -> NUMBER
+Rule 24    factor -> len
+Rule 25    factor -> LPAREN expr RPAREN
+Rule 26    exprs -> exprs COMMA expr
+Rule 27    exprs -> expr
+Rule 28    len -> LEN LPAREN leftval RPAREN
+Rule 29    print -> PRINT LPAREN exprs RPAREN
+Rule 30    print -> PRINT LPAREN RPAREN
+Rule 31    array -> LBRACKET exprs RBRACKET
+Rule 32    array -> LBRACKET RBRACKET
+Rule 33    selfvar -> leftval DPLUS
+Rule 34    selfvar -> leftval DMINUS
+Rule 35    condition -> expr LT expr
+Rule 36    condition -> expr LE expr
+Rule 37    condition -> expr GT expr
+Rule 38    condition -> expr GE expr
+Rule 39    condition -> expr EQ expr
+Rule 40    condition -> expr NE expr
+Rule 41    condition -> expr
+Rule 42    if -> IF LPAREN condition RPAREN LBRACE statements RBRACE
+Rule 43    if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+Rule 44    if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+Rule 45    while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+Rule 46    for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+Rule 47    break -> BREAK
+
+Terminals, with rules where they appear
+
+ASSIGN               : 11 12
+BREAK                : 47
+COMMA                : 26
+DIVIDE               : 19
+DMINUS               : 34
+DPLUS                : 33
+EDIVIDE              : 20
+ELIF                 : 44
+ELSE                 : 43 44
+EQ                   : 39
+FOR                  : 46
+GE                   : 38
+GT                   : 37
+ID                   : 14
+IF                   : 42 43 44
+LBRACE               : 42 43 43 44 44 44 45 46
+LBRACKET             : 13 31 32
+LE                   : 36
+LEN                  : 28
+LPAREN               : 25 28 29 30 42 43 44 44 45 46
+LT                   : 35
+MINUS                : 16
+NE                   : 40
+NUMBER               : 23
+PLUS                 : 15
+PRINT                : 29 30
+RBRACE               : 42 43 43 44 44 44 45 46
+RBRACKET             : 13 31 32
+RPAREN               : 25 28 29 30 42 43 44 44 45 46
+SEMICOLON            : 46 46
+TIMES                : 18
+WHILE                : 45
+error                : 
+
+Nonterminals, with rules where they appear
+
+array                : 12
+assignment           : 4 46
+break                : 10
+condition            : 42 43 44 44 45 46
+expr                 : 5 11 13 15 16 25 26 27 35 35 36 36 37 37 38 38 39 39 40 40 41
+exprs                : 26 29 31
+factor               : 18 19 20 21
+for                  : 9
+if                   : 7
+leftval              : 11 12 13 22 28 33 34
+len                  : 24
+print                : 6
+program              : 0
+selfvar              : 46
+statement            : 2 3
+statements           : 1 2 42 43 43 44 44 44 45 46
+term                 : 15 16 17 18 19 20
+while                : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    $end            reduce using rule 1 (program -> statements .)
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 3
+
+    (3) statements -> statement .
+
+    PRINT           reduce using rule 3 (statements -> statement .)
+    IF              reduce using rule 3 (statements -> statement .)
+    WHILE           reduce using rule 3 (statements -> statement .)
+    FOR             reduce using rule 3 (statements -> statement .)
+    BREAK           reduce using rule 3 (statements -> statement .)
+    ID              reduce using rule 3 (statements -> statement .)
+    NUMBER          reduce using rule 3 (statements -> statement .)
+    LPAREN          reduce using rule 3 (statements -> statement .)
+    LEN             reduce using rule 3 (statements -> statement .)
+    $end            reduce using rule 3 (statements -> statement .)
+    RBRACE          reduce using rule 3 (statements -> statement .)
+
+
+state 4
+
+    (4) statement -> assignment .
+
+    PRINT           reduce using rule 4 (statement -> assignment .)
+    IF              reduce using rule 4 (statement -> assignment .)
+    WHILE           reduce using rule 4 (statement -> assignment .)
+    FOR             reduce using rule 4 (statement -> assignment .)
+    BREAK           reduce using rule 4 (statement -> assignment .)
+    ID              reduce using rule 4 (statement -> assignment .)
+    NUMBER          reduce using rule 4 (statement -> assignment .)
+    LPAREN          reduce using rule 4 (statement -> assignment .)
+    LEN             reduce using rule 4 (statement -> assignment .)
+    $end            reduce using rule 4 (statement -> assignment .)
+    RBRACE          reduce using rule 4 (statement -> assignment .)
+
+
+state 5
+
+    (5) statement -> expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    PRINT           reduce using rule 5 (statement -> expr .)
+    IF              reduce using rule 5 (statement -> expr .)
+    WHILE           reduce using rule 5 (statement -> expr .)
+    FOR             reduce using rule 5 (statement -> expr .)
+    BREAK           reduce using rule 5 (statement -> expr .)
+    ID              reduce using rule 5 (statement -> expr .)
+    NUMBER          reduce using rule 5 (statement -> expr .)
+    LPAREN          reduce using rule 5 (statement -> expr .)
+    LEN             reduce using rule 5 (statement -> expr .)
+    $end            reduce using rule 5 (statement -> expr .)
+    RBRACE          reduce using rule 5 (statement -> expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 6
+
+    (6) statement -> print .
+
+    PRINT           reduce using rule 6 (statement -> print .)
+    IF              reduce using rule 6 (statement -> print .)
+    WHILE           reduce using rule 6 (statement -> print .)
+    FOR             reduce using rule 6 (statement -> print .)
+    BREAK           reduce using rule 6 (statement -> print .)
+    ID              reduce using rule 6 (statement -> print .)
+    NUMBER          reduce using rule 6 (statement -> print .)
+    LPAREN          reduce using rule 6 (statement -> print .)
+    LEN             reduce using rule 6 (statement -> print .)
+    $end            reduce using rule 6 (statement -> print .)
+    RBRACE          reduce using rule 6 (statement -> print .)
+
+
+state 7
+
+    (7) statement -> if .
+
+    PRINT           reduce using rule 7 (statement -> if .)
+    IF              reduce using rule 7 (statement -> if .)
+    WHILE           reduce using rule 7 (statement -> if .)
+    FOR             reduce using rule 7 (statement -> if .)
+    BREAK           reduce using rule 7 (statement -> if .)
+    ID              reduce using rule 7 (statement -> if .)
+    NUMBER          reduce using rule 7 (statement -> if .)
+    LPAREN          reduce using rule 7 (statement -> if .)
+    LEN             reduce using rule 7 (statement -> if .)
+    $end            reduce using rule 7 (statement -> if .)
+    RBRACE          reduce using rule 7 (statement -> if .)
+
+
+state 8
+
+    (8) statement -> while .
+
+    PRINT           reduce using rule 8 (statement -> while .)
+    IF              reduce using rule 8 (statement -> while .)
+    WHILE           reduce using rule 8 (statement -> while .)
+    FOR             reduce using rule 8 (statement -> while .)
+    BREAK           reduce using rule 8 (statement -> while .)
+    ID              reduce using rule 8 (statement -> while .)
+    NUMBER          reduce using rule 8 (statement -> while .)
+    LPAREN          reduce using rule 8 (statement -> while .)
+    LEN             reduce using rule 8 (statement -> while .)
+    $end            reduce using rule 8 (statement -> while .)
+    RBRACE          reduce using rule 8 (statement -> while .)
+
+
+state 9
+
+    (9) statement -> for .
+
+    PRINT           reduce using rule 9 (statement -> for .)
+    IF              reduce using rule 9 (statement -> for .)
+    WHILE           reduce using rule 9 (statement -> for .)
+    FOR             reduce using rule 9 (statement -> for .)
+    BREAK           reduce using rule 9 (statement -> for .)
+    ID              reduce using rule 9 (statement -> for .)
+    NUMBER          reduce using rule 9 (statement -> for .)
+    LPAREN          reduce using rule 9 (statement -> for .)
+    LEN             reduce using rule 9 (statement -> for .)
+    $end            reduce using rule 9 (statement -> for .)
+    RBRACE          reduce using rule 9 (statement -> for .)
+
+
+state 10
+
+    (10) statement -> break .
+
+    PRINT           reduce using rule 10 (statement -> break .)
+    IF              reduce using rule 10 (statement -> break .)
+    WHILE           reduce using rule 10 (statement -> break .)
+    FOR             reduce using rule 10 (statement -> break .)
+    BREAK           reduce using rule 10 (statement -> break .)
+    ID              reduce using rule 10 (statement -> break .)
+    NUMBER          reduce using rule 10 (statement -> break .)
+    LPAREN          reduce using rule 10 (statement -> break .)
+    LEN             reduce using rule 10 (statement -> break .)
+    $end            reduce using rule 10 (statement -> break .)
+    RBRACE          reduce using rule 10 (statement -> break .)
+
+
+state 11
+
+    (11) assignment -> leftval . ASSIGN expr
+    (12) assignment -> leftval . ASSIGN array
+    (13) leftval -> leftval . LBRACKET expr RBRACKET
+    (22) factor -> leftval .
+
+    ASSIGN          shift and go to state 27
+    LBRACKET        shift and go to state 28
+    TIMES           reduce using rule 22 (factor -> leftval .)
+    DIVIDE          reduce using rule 22 (factor -> leftval .)
+    EDIVIDE         reduce using rule 22 (factor -> leftval .)
+    PLUS            reduce using rule 22 (factor -> leftval .)
+    MINUS           reduce using rule 22 (factor -> leftval .)
+    PRINT           reduce using rule 22 (factor -> leftval .)
+    IF              reduce using rule 22 (factor -> leftval .)
+    WHILE           reduce using rule 22 (factor -> leftval .)
+    FOR             reduce using rule 22 (factor -> leftval .)
+    BREAK           reduce using rule 22 (factor -> leftval .)
+    ID              reduce using rule 22 (factor -> leftval .)
+    NUMBER          reduce using rule 22 (factor -> leftval .)
+    LPAREN          reduce using rule 22 (factor -> leftval .)
+    LEN             reduce using rule 22 (factor -> leftval .)
+    $end            reduce using rule 22 (factor -> leftval .)
+    RBRACE          reduce using rule 22 (factor -> leftval .)
+
+
+state 12
+
+    (17) expr -> term .
+    (18) term -> term . TIMES factor
+    (19) term -> term . DIVIDE factor
+    (20) term -> term . EDIVIDE factor
+
+    PLUS            reduce using rule 17 (expr -> term .)
+    MINUS           reduce using rule 17 (expr -> term .)
+    PRINT           reduce using rule 17 (expr -> term .)
+    IF              reduce using rule 17 (expr -> term .)
+    WHILE           reduce using rule 17 (expr -> term .)
+    FOR             reduce using rule 17 (expr -> term .)
+    BREAK           reduce using rule 17 (expr -> term .)
+    ID              reduce using rule 17 (expr -> term .)
+    NUMBER          reduce using rule 17 (expr -> term .)
+    LPAREN          reduce using rule 17 (expr -> term .)
+    LEN             reduce using rule 17 (expr -> term .)
+    $end            reduce using rule 17 (expr -> term .)
+    RPAREN          reduce using rule 17 (expr -> term .)
+    SEMICOLON       reduce using rule 17 (expr -> term .)
+    RBRACE          reduce using rule 17 (expr -> term .)
+    RBRACKET        reduce using rule 17 (expr -> term .)
+    COMMA           reduce using rule 17 (expr -> term .)
+    LT              reduce using rule 17 (expr -> term .)
+    LE              reduce using rule 17 (expr -> term .)
+    GT              reduce using rule 17 (expr -> term .)
+    GE              reduce using rule 17 (expr -> term .)
+    EQ              reduce using rule 17 (expr -> term .)
+    NE              reduce using rule 17 (expr -> term .)
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    EDIVIDE         shift and go to state 31
+
+
+state 13
+
+    (29) print -> PRINT . LPAREN exprs RPAREN
+    (30) print -> PRINT . LPAREN RPAREN
+
+    LPAREN          shift and go to state 32
+
+
+state 14
+
+    (25) factor -> LPAREN . expr RPAREN
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 33
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 15
+
+    (42) if -> IF . LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> IF . LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF . LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 35
+
+
+state 16
+
+    (45) while -> WHILE . LPAREN condition RPAREN LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 36
+
+
+state 17
+
+    (46) for -> FOR . LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 37
+
+
+state 18
+
+    (47) break -> BREAK .
+
+    PRINT           reduce using rule 47 (break -> BREAK .)
+    IF              reduce using rule 47 (break -> BREAK .)
+    WHILE           reduce using rule 47 (break -> BREAK .)
+    FOR             reduce using rule 47 (break -> BREAK .)
+    BREAK           reduce using rule 47 (break -> BREAK .)
+    ID              reduce using rule 47 (break -> BREAK .)
+    NUMBER          reduce using rule 47 (break -> BREAK .)
+    LPAREN          reduce using rule 47 (break -> BREAK .)
+    LEN             reduce using rule 47 (break -> BREAK .)
+    $end            reduce using rule 47 (break -> BREAK .)
+    RBRACE          reduce using rule 47 (break -> BREAK .)
+
+
+state 19
+
+    (14) leftval -> ID .
+
+    ASSIGN          reduce using rule 14 (leftval -> ID .)
+    LBRACKET        reduce using rule 14 (leftval -> ID .)
+    TIMES           reduce using rule 14 (leftval -> ID .)
+    DIVIDE          reduce using rule 14 (leftval -> ID .)
+    EDIVIDE         reduce using rule 14 (leftval -> ID .)
+    PLUS            reduce using rule 14 (leftval -> ID .)
+    MINUS           reduce using rule 14 (leftval -> ID .)
+    PRINT           reduce using rule 14 (leftval -> ID .)
+    IF              reduce using rule 14 (leftval -> ID .)
+    WHILE           reduce using rule 14 (leftval -> ID .)
+    FOR             reduce using rule 14 (leftval -> ID .)
+    BREAK           reduce using rule 14 (leftval -> ID .)
+    ID              reduce using rule 14 (leftval -> ID .)
+    NUMBER          reduce using rule 14 (leftval -> ID .)
+    LPAREN          reduce using rule 14 (leftval -> ID .)
+    LEN             reduce using rule 14 (leftval -> ID .)
+    $end            reduce using rule 14 (leftval -> ID .)
+    RPAREN          reduce using rule 14 (leftval -> ID .)
+    SEMICOLON       reduce using rule 14 (leftval -> ID .)
+    RBRACE          reduce using rule 14 (leftval -> ID .)
+    RBRACKET        reduce using rule 14 (leftval -> ID .)
+    COMMA           reduce using rule 14 (leftval -> ID .)
+    LT              reduce using rule 14 (leftval -> ID .)
+    LE              reduce using rule 14 (leftval -> ID .)
+    GT              reduce using rule 14 (leftval -> ID .)
+    GE              reduce using rule 14 (leftval -> ID .)
+    EQ              reduce using rule 14 (leftval -> ID .)
+    NE              reduce using rule 14 (leftval -> ID .)
+    DPLUS           reduce using rule 14 (leftval -> ID .)
+    DMINUS          reduce using rule 14 (leftval -> ID .)
+
+
+state 20
+
+    (21) term -> factor .
+
+    TIMES           reduce using rule 21 (term -> factor .)
+    DIVIDE          reduce using rule 21 (term -> factor .)
+    EDIVIDE         reduce using rule 21 (term -> factor .)
+    PLUS            reduce using rule 21 (term -> factor .)
+    MINUS           reduce using rule 21 (term -> factor .)
+    PRINT           reduce using rule 21 (term -> factor .)
+    IF              reduce using rule 21 (term -> factor .)
+    WHILE           reduce using rule 21 (term -> factor .)
+    FOR             reduce using rule 21 (term -> factor .)
+    BREAK           reduce using rule 21 (term -> factor .)
+    ID              reduce using rule 21 (term -> factor .)
+    NUMBER          reduce using rule 21 (term -> factor .)
+    LPAREN          reduce using rule 21 (term -> factor .)
+    LEN             reduce using rule 21 (term -> factor .)
+    $end            reduce using rule 21 (term -> factor .)
+    RPAREN          reduce using rule 21 (term -> factor .)
+    SEMICOLON       reduce using rule 21 (term -> factor .)
+    RBRACE          reduce using rule 21 (term -> factor .)
+    RBRACKET        reduce using rule 21 (term -> factor .)
+    COMMA           reduce using rule 21 (term -> factor .)
+    LT              reduce using rule 21 (term -> factor .)
+    LE              reduce using rule 21 (term -> factor .)
+    GT              reduce using rule 21 (term -> factor .)
+    GE              reduce using rule 21 (term -> factor .)
+    EQ              reduce using rule 21 (term -> factor .)
+    NE              reduce using rule 21 (term -> factor .)
+
+
+state 21
+
+    (23) factor -> NUMBER .
+
+    TIMES           reduce using rule 23 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 23 (factor -> NUMBER .)
+    EDIVIDE         reduce using rule 23 (factor -> NUMBER .)
+    PLUS            reduce using rule 23 (factor -> NUMBER .)
+    MINUS           reduce using rule 23 (factor -> NUMBER .)
+    PRINT           reduce using rule 23 (factor -> NUMBER .)
+    IF              reduce using rule 23 (factor -> NUMBER .)
+    WHILE           reduce using rule 23 (factor -> NUMBER .)
+    FOR             reduce using rule 23 (factor -> NUMBER .)
+    BREAK           reduce using rule 23 (factor -> NUMBER .)
+    ID              reduce using rule 23 (factor -> NUMBER .)
+    NUMBER          reduce using rule 23 (factor -> NUMBER .)
+    LPAREN          reduce using rule 23 (factor -> NUMBER .)
+    LEN             reduce using rule 23 (factor -> NUMBER .)
+    $end            reduce using rule 23 (factor -> NUMBER .)
+    RPAREN          reduce using rule 23 (factor -> NUMBER .)
+    SEMICOLON       reduce using rule 23 (factor -> NUMBER .)
+    RBRACE          reduce using rule 23 (factor -> NUMBER .)
+    RBRACKET        reduce using rule 23 (factor -> NUMBER .)
+    COMMA           reduce using rule 23 (factor -> NUMBER .)
+    LT              reduce using rule 23 (factor -> NUMBER .)
+    LE              reduce using rule 23 (factor -> NUMBER .)
+    GT              reduce using rule 23 (factor -> NUMBER .)
+    GE              reduce using rule 23 (factor -> NUMBER .)
+    EQ              reduce using rule 23 (factor -> NUMBER .)
+    NE              reduce using rule 23 (factor -> NUMBER .)
+
+
+state 22
+
+    (24) factor -> len .
+
+    TIMES           reduce using rule 24 (factor -> len .)
+    DIVIDE          reduce using rule 24 (factor -> len .)
+    EDIVIDE         reduce using rule 24 (factor -> len .)
+    PLUS            reduce using rule 24 (factor -> len .)
+    MINUS           reduce using rule 24 (factor -> len .)
+    PRINT           reduce using rule 24 (factor -> len .)
+    IF              reduce using rule 24 (factor -> len .)
+    WHILE           reduce using rule 24 (factor -> len .)
+    FOR             reduce using rule 24 (factor -> len .)
+    BREAK           reduce using rule 24 (factor -> len .)
+    ID              reduce using rule 24 (factor -> len .)
+    NUMBER          reduce using rule 24 (factor -> len .)
+    LPAREN          reduce using rule 24 (factor -> len .)
+    LEN             reduce using rule 24 (factor -> len .)
+    $end            reduce using rule 24 (factor -> len .)
+    RPAREN          reduce using rule 24 (factor -> len .)
+    SEMICOLON       reduce using rule 24 (factor -> len .)
+    RBRACE          reduce using rule 24 (factor -> len .)
+    RBRACKET        reduce using rule 24 (factor -> len .)
+    COMMA           reduce using rule 24 (factor -> len .)
+    LT              reduce using rule 24 (factor -> len .)
+    LE              reduce using rule 24 (factor -> len .)
+    GT              reduce using rule 24 (factor -> len .)
+    GE              reduce using rule 24 (factor -> len .)
+    EQ              reduce using rule 24 (factor -> len .)
+    NE              reduce using rule 24 (factor -> len .)
+
+
+state 23
+
+    (28) len -> LEN . LPAREN leftval RPAREN
+
+    LPAREN          shift and go to state 38
+
+
+state 24
+
+    (2) statements -> statements statement .
+
+    PRINT           reduce using rule 2 (statements -> statements statement .)
+    IF              reduce using rule 2 (statements -> statements statement .)
+    WHILE           reduce using rule 2 (statements -> statements statement .)
+    FOR             reduce using rule 2 (statements -> statements statement .)
+    BREAK           reduce using rule 2 (statements -> statements statement .)
+    ID              reduce using rule 2 (statements -> statements statement .)
+    NUMBER          reduce using rule 2 (statements -> statements statement .)
+    LPAREN          reduce using rule 2 (statements -> statements statement .)
+    LEN             reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    RBRACE          reduce using rule 2 (statements -> statements statement .)
+
+
+state 25
+
+    (15) expr -> expr PLUS . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    term                           shift and go to state 39
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 26
+
+    (16) expr -> expr MINUS . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    term                           shift and go to state 40
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 27
+
+    (11) assignment -> leftval ASSIGN . expr
+    (12) assignment -> leftval ASSIGN . array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (31) array -> . LBRACKET exprs RBRACKET
+    (32) array -> . LBRACKET RBRACKET
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    LBRACKET        shift and go to state 43
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    leftval                        shift and go to state 34
+    expr                           shift and go to state 41
+    array                          shift and go to state 42
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 28
+
+    (13) leftval -> leftval LBRACKET . expr RBRACKET
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    leftval                        shift and go to state 34
+    expr                           shift and go to state 44
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 29
+
+    (18) term -> term TIMES . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    factor                         shift and go to state 45
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 30
+
+    (19) term -> term DIVIDE . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    factor                         shift and go to state 46
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 31
+
+    (20) term -> term EDIVIDE . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    factor                         shift and go to state 47
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 32
+
+    (29) print -> PRINT LPAREN . exprs RPAREN
+    (30) print -> PRINT LPAREN . RPAREN
+    (26) exprs -> . exprs COMMA expr
+    (27) exprs -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RPAREN          shift and go to state 49
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    exprs                          shift and go to state 48
+    expr                           shift and go to state 50
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 33
+
+    (25) factor -> LPAREN expr . RPAREN
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          shift and go to state 51
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 34
+
+    (22) factor -> leftval .
+    (13) leftval -> leftval . LBRACKET expr RBRACKET
+
+    TIMES           reduce using rule 22 (factor -> leftval .)
+    DIVIDE          reduce using rule 22 (factor -> leftval .)
+    EDIVIDE         reduce using rule 22 (factor -> leftval .)
+    RPAREN          reduce using rule 22 (factor -> leftval .)
+    PLUS            reduce using rule 22 (factor -> leftval .)
+    MINUS           reduce using rule 22 (factor -> leftval .)
+    PRINT           reduce using rule 22 (factor -> leftval .)
+    IF              reduce using rule 22 (factor -> leftval .)
+    WHILE           reduce using rule 22 (factor -> leftval .)
+    FOR             reduce using rule 22 (factor -> leftval .)
+    BREAK           reduce using rule 22 (factor -> leftval .)
+    ID              reduce using rule 22 (factor -> leftval .)
+    NUMBER          reduce using rule 22 (factor -> leftval .)
+    LPAREN          reduce using rule 22 (factor -> leftval .)
+    LEN             reduce using rule 22 (factor -> leftval .)
+    $end            reduce using rule 22 (factor -> leftval .)
+    SEMICOLON       reduce using rule 22 (factor -> leftval .)
+    RBRACE          reduce using rule 22 (factor -> leftval .)
+    RBRACKET        reduce using rule 22 (factor -> leftval .)
+    COMMA           reduce using rule 22 (factor -> leftval .)
+    LT              reduce using rule 22 (factor -> leftval .)
+    LE              reduce using rule 22 (factor -> leftval .)
+    GT              reduce using rule 22 (factor -> leftval .)
+    GE              reduce using rule 22 (factor -> leftval .)
+    EQ              reduce using rule 22 (factor -> leftval .)
+    NE              reduce using rule 22 (factor -> leftval .)
+    LBRACKET        shift and go to state 28
+
+
+state 35
+
+    (42) if -> IF LPAREN . condition RPAREN LBRACE statements RBRACE
+    (43) if -> IF LPAREN . condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN . condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (35) condition -> . expr LT expr
+    (36) condition -> . expr LE expr
+    (37) condition -> . expr GT expr
+    (38) condition -> . expr GE expr
+    (39) condition -> . expr EQ expr
+    (40) condition -> . expr NE expr
+    (41) condition -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    condition                      shift and go to state 52
+    expr                           shift and go to state 53
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 36
+
+    (45) while -> WHILE LPAREN . condition RPAREN LBRACE statements RBRACE
+    (35) condition -> . expr LT expr
+    (36) condition -> . expr LE expr
+    (37) condition -> . expr GT expr
+    (38) condition -> . expr GE expr
+    (39) condition -> . expr EQ expr
+    (40) condition -> . expr NE expr
+    (41) condition -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    condition                      shift and go to state 54
+    expr                           shift and go to state 53
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 37
+
+    (46) for -> FOR LPAREN . assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+
+    ID              shift and go to state 19
+
+    assignment                     shift and go to state 55
+    leftval                        shift and go to state 56
+
+state 38
+
+    (28) len -> LEN LPAREN . leftval RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+
+    ID              shift and go to state 19
+
+    leftval                        shift and go to state 57
+
+state 39
+
+    (15) expr -> expr PLUS term .
+    (18) term -> term . TIMES factor
+    (19) term -> term . DIVIDE factor
+    (20) term -> term . EDIVIDE factor
+
+    PLUS            reduce using rule 15 (expr -> expr PLUS term .)
+    MINUS           reduce using rule 15 (expr -> expr PLUS term .)
+    PRINT           reduce using rule 15 (expr -> expr PLUS term .)
+    IF              reduce using rule 15 (expr -> expr PLUS term .)
+    WHILE           reduce using rule 15 (expr -> expr PLUS term .)
+    FOR             reduce using rule 15 (expr -> expr PLUS term .)
+    BREAK           reduce using rule 15 (expr -> expr PLUS term .)
+    ID              reduce using rule 15 (expr -> expr PLUS term .)
+    NUMBER          reduce using rule 15 (expr -> expr PLUS term .)
+    LPAREN          reduce using rule 15 (expr -> expr PLUS term .)
+    LEN             reduce using rule 15 (expr -> expr PLUS term .)
+    $end            reduce using rule 15 (expr -> expr PLUS term .)
+    RPAREN          reduce using rule 15 (expr -> expr PLUS term .)
+    SEMICOLON       reduce using rule 15 (expr -> expr PLUS term .)
+    RBRACE          reduce using rule 15 (expr -> expr PLUS term .)
+    RBRACKET        reduce using rule 15 (expr -> expr PLUS term .)
+    COMMA           reduce using rule 15 (expr -> expr PLUS term .)
+    LT              reduce using rule 15 (expr -> expr PLUS term .)
+    LE              reduce using rule 15 (expr -> expr PLUS term .)
+    GT              reduce using rule 15 (expr -> expr PLUS term .)
+    GE              reduce using rule 15 (expr -> expr PLUS term .)
+    EQ              reduce using rule 15 (expr -> expr PLUS term .)
+    NE              reduce using rule 15 (expr -> expr PLUS term .)
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    EDIVIDE         shift and go to state 31
+
+
+state 40
+
+    (16) expr -> expr MINUS term .
+    (18) term -> term . TIMES factor
+    (19) term -> term . DIVIDE factor
+    (20) term -> term . EDIVIDE factor
+
+    PLUS            reduce using rule 16 (expr -> expr MINUS term .)
+    MINUS           reduce using rule 16 (expr -> expr MINUS term .)
+    PRINT           reduce using rule 16 (expr -> expr MINUS term .)
+    IF              reduce using rule 16 (expr -> expr MINUS term .)
+    WHILE           reduce using rule 16 (expr -> expr MINUS term .)
+    FOR             reduce using rule 16 (expr -> expr MINUS term .)
+    BREAK           reduce using rule 16 (expr -> expr MINUS term .)
+    ID              reduce using rule 16 (expr -> expr MINUS term .)
+    NUMBER          reduce using rule 16 (expr -> expr MINUS term .)
+    LPAREN          reduce using rule 16 (expr -> expr MINUS term .)
+    LEN             reduce using rule 16 (expr -> expr MINUS term .)
+    $end            reduce using rule 16 (expr -> expr MINUS term .)
+    RPAREN          reduce using rule 16 (expr -> expr MINUS term .)
+    SEMICOLON       reduce using rule 16 (expr -> expr MINUS term .)
+    RBRACE          reduce using rule 16 (expr -> expr MINUS term .)
+    RBRACKET        reduce using rule 16 (expr -> expr MINUS term .)
+    COMMA           reduce using rule 16 (expr -> expr MINUS term .)
+    LT              reduce using rule 16 (expr -> expr MINUS term .)
+    LE              reduce using rule 16 (expr -> expr MINUS term .)
+    GT              reduce using rule 16 (expr -> expr MINUS term .)
+    GE              reduce using rule 16 (expr -> expr MINUS term .)
+    EQ              reduce using rule 16 (expr -> expr MINUS term .)
+    NE              reduce using rule 16 (expr -> expr MINUS term .)
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    EDIVIDE         shift and go to state 31
+
+
+state 41
+
+    (11) assignment -> leftval ASSIGN expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    PRINT           reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    IF              reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    WHILE           reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    FOR             reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    BREAK           reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    ID              reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    NUMBER          reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    LPAREN          reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    LEN             reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    $end            reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    SEMICOLON       reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    RBRACE          reduce using rule 11 (assignment -> leftval ASSIGN expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 42
+
+    (12) assignment -> leftval ASSIGN array .
+
+    PRINT           reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    IF              reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    WHILE           reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    FOR             reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    BREAK           reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    ID              reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    NUMBER          reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    LPAREN          reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    LEN             reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    $end            reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    SEMICOLON       reduce using rule 12 (assignment -> leftval ASSIGN array .)
+    RBRACE          reduce using rule 12 (assignment -> leftval ASSIGN array .)
+
+
+state 43
+
+    (31) array -> LBRACKET . exprs RBRACKET
+    (32) array -> LBRACKET . RBRACKET
+    (26) exprs -> . exprs COMMA expr
+    (27) exprs -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACKET        shift and go to state 59
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    exprs                          shift and go to state 58
+    expr                           shift and go to state 50
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 44
+
+    (13) leftval -> leftval LBRACKET expr . RBRACKET
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RBRACKET        shift and go to state 60
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 45
+
+    (18) term -> term TIMES factor .
+
+    TIMES           reduce using rule 18 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 18 (term -> term TIMES factor .)
+    EDIVIDE         reduce using rule 18 (term -> term TIMES factor .)
+    PLUS            reduce using rule 18 (term -> term TIMES factor .)
+    MINUS           reduce using rule 18 (term -> term TIMES factor .)
+    PRINT           reduce using rule 18 (term -> term TIMES factor .)
+    IF              reduce using rule 18 (term -> term TIMES factor .)
+    WHILE           reduce using rule 18 (term -> term TIMES factor .)
+    FOR             reduce using rule 18 (term -> term TIMES factor .)
+    BREAK           reduce using rule 18 (term -> term TIMES factor .)
+    ID              reduce using rule 18 (term -> term TIMES factor .)
+    NUMBER          reduce using rule 18 (term -> term TIMES factor .)
+    LPAREN          reduce using rule 18 (term -> term TIMES factor .)
+    LEN             reduce using rule 18 (term -> term TIMES factor .)
+    $end            reduce using rule 18 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 18 (term -> term TIMES factor .)
+    SEMICOLON       reduce using rule 18 (term -> term TIMES factor .)
+    RBRACE          reduce using rule 18 (term -> term TIMES factor .)
+    RBRACKET        reduce using rule 18 (term -> term TIMES factor .)
+    COMMA           reduce using rule 18 (term -> term TIMES factor .)
+    LT              reduce using rule 18 (term -> term TIMES factor .)
+    LE              reduce using rule 18 (term -> term TIMES factor .)
+    GT              reduce using rule 18 (term -> term TIMES factor .)
+    GE              reduce using rule 18 (term -> term TIMES factor .)
+    EQ              reduce using rule 18 (term -> term TIMES factor .)
+    NE              reduce using rule 18 (term -> term TIMES factor .)
+
+
+state 46
+
+    (19) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 19 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 19 (term -> term DIVIDE factor .)
+    EDIVIDE         reduce using rule 19 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 19 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 19 (term -> term DIVIDE factor .)
+    PRINT           reduce using rule 19 (term -> term DIVIDE factor .)
+    IF              reduce using rule 19 (term -> term DIVIDE factor .)
+    WHILE           reduce using rule 19 (term -> term DIVIDE factor .)
+    FOR             reduce using rule 19 (term -> term DIVIDE factor .)
+    BREAK           reduce using rule 19 (term -> term DIVIDE factor .)
+    ID              reduce using rule 19 (term -> term DIVIDE factor .)
+    NUMBER          reduce using rule 19 (term -> term DIVIDE factor .)
+    LPAREN          reduce using rule 19 (term -> term DIVIDE factor .)
+    LEN             reduce using rule 19 (term -> term DIVIDE factor .)
+    $end            reduce using rule 19 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 19 (term -> term DIVIDE factor .)
+    SEMICOLON       reduce using rule 19 (term -> term DIVIDE factor .)
+    RBRACE          reduce using rule 19 (term -> term DIVIDE factor .)
+    RBRACKET        reduce using rule 19 (term -> term DIVIDE factor .)
+    COMMA           reduce using rule 19 (term -> term DIVIDE factor .)
+    LT              reduce using rule 19 (term -> term DIVIDE factor .)
+    LE              reduce using rule 19 (term -> term DIVIDE factor .)
+    GT              reduce using rule 19 (term -> term DIVIDE factor .)
+    GE              reduce using rule 19 (term -> term DIVIDE factor .)
+    EQ              reduce using rule 19 (term -> term DIVIDE factor .)
+    NE              reduce using rule 19 (term -> term DIVIDE factor .)
+
+
+state 47
+
+    (20) term -> term EDIVIDE factor .
+
+    TIMES           reduce using rule 20 (term -> term EDIVIDE factor .)
+    DIVIDE          reduce using rule 20 (term -> term EDIVIDE factor .)
+    EDIVIDE         reduce using rule 20 (term -> term EDIVIDE factor .)
+    PLUS            reduce using rule 20 (term -> term EDIVIDE factor .)
+    MINUS           reduce using rule 20 (term -> term EDIVIDE factor .)
+    PRINT           reduce using rule 20 (term -> term EDIVIDE factor .)
+    IF              reduce using rule 20 (term -> term EDIVIDE factor .)
+    WHILE           reduce using rule 20 (term -> term EDIVIDE factor .)
+    FOR             reduce using rule 20 (term -> term EDIVIDE factor .)
+    BREAK           reduce using rule 20 (term -> term EDIVIDE factor .)
+    ID              reduce using rule 20 (term -> term EDIVIDE factor .)
+    NUMBER          reduce using rule 20 (term -> term EDIVIDE factor .)
+    LPAREN          reduce using rule 20 (term -> term EDIVIDE factor .)
+    LEN             reduce using rule 20 (term -> term EDIVIDE factor .)
+    $end            reduce using rule 20 (term -> term EDIVIDE factor .)
+    RPAREN          reduce using rule 20 (term -> term EDIVIDE factor .)
+    SEMICOLON       reduce using rule 20 (term -> term EDIVIDE factor .)
+    RBRACE          reduce using rule 20 (term -> term EDIVIDE factor .)
+    RBRACKET        reduce using rule 20 (term -> term EDIVIDE factor .)
+    COMMA           reduce using rule 20 (term -> term EDIVIDE factor .)
+    LT              reduce using rule 20 (term -> term EDIVIDE factor .)
+    LE              reduce using rule 20 (term -> term EDIVIDE factor .)
+    GT              reduce using rule 20 (term -> term EDIVIDE factor .)
+    GE              reduce using rule 20 (term -> term EDIVIDE factor .)
+    EQ              reduce using rule 20 (term -> term EDIVIDE factor .)
+    NE              reduce using rule 20 (term -> term EDIVIDE factor .)
+
+
+state 48
+
+    (29) print -> PRINT LPAREN exprs . RPAREN
+    (26) exprs -> exprs . COMMA expr
+
+    RPAREN          shift and go to state 61
+    COMMA           shift and go to state 62
+
+
+state 49
+
+    (30) print -> PRINT LPAREN RPAREN .
+
+    PRINT           reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    IF              reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    WHILE           reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    FOR             reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    BREAK           reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    ID              reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    NUMBER          reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    LPAREN          reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    LEN             reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    $end            reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+    RBRACE          reduce using rule 30 (print -> PRINT LPAREN RPAREN .)
+
+
+state 50
+
+    (27) exprs -> expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 27 (exprs -> expr .)
+    COMMA           reduce using rule 27 (exprs -> expr .)
+    RBRACKET        reduce using rule 27 (exprs -> expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 51
+
+    (25) factor -> LPAREN expr RPAREN .
+
+    TIMES           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    EDIVIDE         reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    PRINT           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    IF              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    WHILE           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    FOR             reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    BREAK           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    ID              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    NUMBER          reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    LPAREN          reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    LEN             reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    $end            reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    SEMICOLON       reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    RBRACE          reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    RBRACKET        reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    COMMA           reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    LT              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    LE              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    GT              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    GE              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    EQ              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+    NE              reduce using rule 25 (factor -> LPAREN expr RPAREN .)
+
+
+state 52
+
+    (42) if -> IF LPAREN condition . RPAREN LBRACE statements RBRACE
+    (43) if -> IF LPAREN condition . RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN condition . RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    RPAREN          shift and go to state 63
+
+
+state 53
+
+    (35) condition -> expr . LT expr
+    (36) condition -> expr . LE expr
+    (37) condition -> expr . GT expr
+    (38) condition -> expr . GE expr
+    (39) condition -> expr . EQ expr
+    (40) condition -> expr . NE expr
+    (41) condition -> expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    LT              shift and go to state 64
+    LE              shift and go to state 65
+    GT              shift and go to state 66
+    GE              shift and go to state 67
+    EQ              shift and go to state 68
+    NE              shift and go to state 69
+    RPAREN          reduce using rule 41 (condition -> expr .)
+    SEMICOLON       reduce using rule 41 (condition -> expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 54
+
+    (45) while -> WHILE LPAREN condition . RPAREN LBRACE statements RBRACE
+
+    RPAREN          shift and go to state 70
+
+
+state 55
+
+    (46) for -> FOR LPAREN assignment . SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+
+    SEMICOLON       shift and go to state 71
+
+
+state 56
+
+    (11) assignment -> leftval . ASSIGN expr
+    (12) assignment -> leftval . ASSIGN array
+    (13) leftval -> leftval . LBRACKET expr RBRACKET
+
+    ASSIGN          shift and go to state 27
+    LBRACKET        shift and go to state 28
+
+
+state 57
+
+    (28) len -> LEN LPAREN leftval . RPAREN
+    (13) leftval -> leftval . LBRACKET expr RBRACKET
+
+    RPAREN          shift and go to state 72
+    LBRACKET        shift and go to state 28
+
+
+state 58
+
+    (31) array -> LBRACKET exprs . RBRACKET
+    (26) exprs -> exprs . COMMA expr
+
+    RBRACKET        shift and go to state 73
+    COMMA           shift and go to state 62
+
+
+state 59
+
+    (32) array -> LBRACKET RBRACKET .
+
+    PRINT           reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    IF              reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    WHILE           reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    FOR             reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    BREAK           reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    ID              reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    NUMBER          reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    LPAREN          reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    LEN             reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    $end            reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    SEMICOLON       reduce using rule 32 (array -> LBRACKET RBRACKET .)
+    RBRACE          reduce using rule 32 (array -> LBRACKET RBRACKET .)
+
+
+state 60
+
+    (13) leftval -> leftval LBRACKET expr RBRACKET .
+
+    ASSIGN          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    LBRACKET        reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    TIMES           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    DIVIDE          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    EDIVIDE         reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    PLUS            reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    MINUS           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    PRINT           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    IF              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    WHILE           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    FOR             reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    BREAK           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    ID              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    NUMBER          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    LPAREN          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    LEN             reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    $end            reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    RPAREN          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    SEMICOLON       reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    RBRACE          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    RBRACKET        reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    COMMA           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    LT              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    LE              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    GT              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    GE              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    EQ              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    NE              reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    DPLUS           reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+    DMINUS          reduce using rule 13 (leftval -> leftval LBRACKET expr RBRACKET .)
+
+
+state 61
+
+    (29) print -> PRINT LPAREN exprs RPAREN .
+
+    PRINT           reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    IF              reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    WHILE           reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    FOR             reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    BREAK           reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    ID              reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    NUMBER          reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    LPAREN          reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    LEN             reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    $end            reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+    RBRACE          reduce using rule 29 (print -> PRINT LPAREN exprs RPAREN .)
+
+
+state 62
+
+    (26) exprs -> exprs COMMA . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 74
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 63
+
+    (42) if -> IF LPAREN condition RPAREN . LBRACE statements RBRACE
+    (43) if -> IF LPAREN condition RPAREN . LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN condition RPAREN . LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 75
+
+
+state 64
+
+    (35) condition -> expr LT . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 76
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 65
+
+    (36) condition -> expr LE . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 77
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 66
+
+    (37) condition -> expr GT . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 78
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 67
+
+    (38) condition -> expr GE . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 79
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 68
+
+    (39) condition -> expr EQ . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 80
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 69
+
+    (40) condition -> expr NE . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    expr                           shift and go to state 81
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 70
+
+    (45) while -> WHILE LPAREN condition RPAREN . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 82
+
+
+state 71
+
+    (46) for -> FOR LPAREN assignment SEMICOLON . condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (35) condition -> . expr LT expr
+    (36) condition -> . expr LE expr
+    (37) condition -> . expr GT expr
+    (38) condition -> . expr GE expr
+    (39) condition -> . expr EQ expr
+    (40) condition -> . expr NE expr
+    (41) condition -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    condition                      shift and go to state 83
+    expr                           shift and go to state 53
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 72
+
+    (28) len -> LEN LPAREN leftval RPAREN .
+
+    TIMES           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    DIVIDE          reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    EDIVIDE         reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    PLUS            reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    MINUS           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    PRINT           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    IF              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    WHILE           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    FOR             reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    BREAK           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    ID              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    NUMBER          reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    LPAREN          reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    LEN             reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    $end            reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    RPAREN          reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    SEMICOLON       reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    RBRACE          reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    RBRACKET        reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    COMMA           reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    LT              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    LE              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    GT              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    GE              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    EQ              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+    NE              reduce using rule 28 (len -> LEN LPAREN leftval RPAREN .)
+
+
+state 73
+
+    (31) array -> LBRACKET exprs RBRACKET .
+
+    PRINT           reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    IF              reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    WHILE           reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    FOR             reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    BREAK           reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    ID              reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    NUMBER          reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    LPAREN          reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    LEN             reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    $end            reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    SEMICOLON       reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+    RBRACE          reduce using rule 31 (array -> LBRACKET exprs RBRACKET .)
+
+
+state 74
+
+    (26) exprs -> exprs COMMA expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 26 (exprs -> exprs COMMA expr .)
+    COMMA           reduce using rule 26 (exprs -> exprs COMMA expr .)
+    RBRACKET        reduce using rule 26 (exprs -> exprs COMMA expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 75
+
+    (42) if -> IF LPAREN condition RPAREN LBRACE . statements RBRACE
+    (43) if -> IF LPAREN condition RPAREN LBRACE . statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN condition RPAREN LBRACE . statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statements                     shift and go to state 84
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 76
+
+    (35) condition -> expr LT expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 35 (condition -> expr LT expr .)
+    SEMICOLON       reduce using rule 35 (condition -> expr LT expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 77
+
+    (36) condition -> expr LE expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 36 (condition -> expr LE expr .)
+    SEMICOLON       reduce using rule 36 (condition -> expr LE expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 78
+
+    (37) condition -> expr GT expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 37 (condition -> expr GT expr .)
+    SEMICOLON       reduce using rule 37 (condition -> expr GT expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 79
+
+    (38) condition -> expr GE expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 38 (condition -> expr GE expr .)
+    SEMICOLON       reduce using rule 38 (condition -> expr GE expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 80
+
+    (39) condition -> expr EQ expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 39 (condition -> expr EQ expr .)
+    SEMICOLON       reduce using rule 39 (condition -> expr EQ expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 81
+
+    (40) condition -> expr NE expr .
+    (15) expr -> expr . PLUS term
+    (16) expr -> expr . MINUS term
+
+    RPAREN          reduce using rule 40 (condition -> expr NE expr .)
+    SEMICOLON       reduce using rule 40 (condition -> expr NE expr .)
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+
+
+state 82
+
+    (45) while -> WHILE LPAREN condition RPAREN LBRACE . statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statements                     shift and go to state 85
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 83
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition . SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+
+    SEMICOLON       shift and go to state 86
+
+
+state 84
+
+    (42) if -> IF LPAREN condition RPAREN LBRACE statements . RBRACE
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements . RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements . RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 87
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 85
+
+    (45) while -> WHILE LPAREN condition RPAREN LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 88
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 86
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON . selfvar RPAREN LBRACE statements RBRACE
+    (33) selfvar -> . leftval DPLUS
+    (34) selfvar -> . leftval DMINUS
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+
+    ID              shift and go to state 19
+
+    selfvar                        shift and go to state 89
+    leftval                        shift and go to state 90
+
+state 87
+
+    (42) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE . ELSE LBRACE statements RBRACE
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE . ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    PRINT           reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    IF              reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    WHILE           reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    FOR             reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    BREAK           reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    ID              reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    NUMBER          reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    LEN             reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    $end            reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 42 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE .)
+    ELSE            shift and go to state 91
+    ELIF            shift and go to state 92
+
+
+state 88
+
+    (45) while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .
+
+    PRINT           reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    IF              reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    WHILE           reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    FOR             reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    BREAK           reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    ID              reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    NUMBER          reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    LEN             reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    $end            reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 45 (while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE .)
+
+
+state 89
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar . RPAREN LBRACE statements RBRACE
+
+    RPAREN          shift and go to state 93
+
+
+state 90
+
+    (33) selfvar -> leftval . DPLUS
+    (34) selfvar -> leftval . DMINUS
+    (13) leftval -> leftval . LBRACKET expr RBRACKET
+
+    DPLUS           shift and go to state 94
+    DMINUS          shift and go to state 95
+    LBRACKET        shift and go to state 28
+
+
+state 91
+
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 96
+
+
+state 92
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF . LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 97
+
+
+state 93
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 98
+
+
+state 94
+
+    (33) selfvar -> leftval DPLUS .
+
+    RPAREN          reduce using rule 33 (selfvar -> leftval DPLUS .)
+
+
+state 95
+
+    (34) selfvar -> leftval DMINUS .
+
+    RPAREN          reduce using rule 34 (selfvar -> leftval DMINUS .)
+
+
+state 96
+
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE . statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statements                     shift and go to state 99
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 97
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN . condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (35) condition -> . expr LT expr
+    (36) condition -> . expr LE expr
+    (37) condition -> . expr GT expr
+    (38) condition -> . expr GE expr
+    (39) condition -> . expr EQ expr
+    (40) condition -> . expr NE expr
+    (41) condition -> . expr
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    ID              shift and go to state 19
+    LEN             shift and go to state 23
+
+    condition                      shift and go to state 100
+    expr                           shift and go to state 53
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    leftval                        shift and go to state 34
+    len                            shift and go to state 22
+
+state 98
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE . statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    assignment                     shift and go to state 4
+    statements                     shift and go to state 101
+    statement                      shift and go to state 3
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 99
+
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 102
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 100
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition . RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    RPAREN          shift and go to state 103
+
+
+state 101
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 104
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    assignment                     shift and go to state 4
+    statement                      shift and go to state 24
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 102
+
+    (43) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .
+
+    PRINT           reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    IF              reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    WHILE           reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    FOR             reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    BREAK           reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    ID              reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    NUMBER          reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    LEN             reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    $end            reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 43 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+
+
+state 103
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN . LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 105
+
+
+state 104
+
+    (46) for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .
+
+    PRINT           reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    IF              reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    WHILE           reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    FOR             reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    BREAK           reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    ID              reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    NUMBER          reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    LEN             reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    $end            reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 46 (for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE .)
+
+
+state 105
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE . statements RBRACE ELSE LBRACE statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statements                     shift and go to state 106
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 106
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements . RBRACE ELSE LBRACE statements RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 107
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 107
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE . ELSE LBRACE statements RBRACE
+
+    ELSE            shift and go to state 108
+
+
+state 108
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 109
+
+
+state 109
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE . statements RBRACE
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statements                     shift and go to state 110
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 110
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . expr
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . for
+    (10) statement -> . break
+    (11) assignment -> . leftval ASSIGN expr
+    (12) assignment -> . leftval ASSIGN array
+    (15) expr -> . expr PLUS term
+    (16) expr -> . expr MINUS term
+    (17) expr -> . term
+    (29) print -> . PRINT LPAREN exprs RPAREN
+    (30) print -> . PRINT LPAREN RPAREN
+    (42) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE
+    (43) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (44) if -> . IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (45) while -> . WHILE LPAREN condition RPAREN LBRACE statements RBRACE
+    (46) for -> . FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
+    (47) break -> . BREAK
+    (13) leftval -> . leftval LBRACKET expr RBRACKET
+    (14) leftval -> . ID
+    (18) term -> . term TIMES factor
+    (19) term -> . term DIVIDE factor
+    (20) term -> . term EDIVIDE factor
+    (21) term -> . factor
+    (22) factor -> . leftval
+    (23) factor -> . NUMBER
+    (24) factor -> . len
+    (25) factor -> . LPAREN expr RPAREN
+    (28) len -> . LEN LPAREN leftval RPAREN
+
+    RBRACE          shift and go to state 111
+    PRINT           shift and go to state 13
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    FOR             shift and go to state 17
+    BREAK           shift and go to state 18
+    ID              shift and go to state 19
+    NUMBER          shift and go to state 21
+    LPAREN          shift and go to state 14
+    LEN             shift and go to state 23
+
+    statement                      shift and go to state 24
+    assignment                     shift and go to state 4
+    expr                           shift and go to state 5
+    print                          shift and go to state 6
+    if                             shift and go to state 7
+    while                          shift and go to state 8
+    for                            shift and go to state 9
+    break                          shift and go to state 10
+    leftval                        shift and go to state 11
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+    len                            shift and go to state 22
+
+state 111
+
+    (44) if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .
+
+    PRINT           reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    IF              reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    WHILE           reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    FOR             reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    BREAK           reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    ID              reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    NUMBER          reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    LEN             reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    $end            reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 44 (if -> IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+
