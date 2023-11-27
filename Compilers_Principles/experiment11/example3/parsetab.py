@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "IF NUMBER PRINT VARIABLE WHILEprogram : statementsstatements : statements statement\n                  | statement statement : assignment\n                  | operation\n                  | print\n                  | if\n                  | whileassignment : VARIABLE '=' NUMBER\n                  | VARIABLE '=' '[' ']' operation : VARIABLE '=' VARIABLE '+' VARIABLE\n                 | VARIABLE '=' VARIABLE '-' VARIABLEprint : PRINT '(' VARIABLE ')' if : IF '(' condition ')' '{' statements '}' condition : VARIABLE '>' VARIABLE\n                 | VARIABLE '<' VARIABLEwhile : WHILE '(' condition ')' '{' statements '}' "
+_lr_signature = "IF NUMBER PRINT VARIABLE WHILEprogram : statementsstatements : statements statement\n                  | statement\n    statement : assignment\n                | operation\n                  | print\n                  | if\n                  | while\n    assignment : VARIABLE '=' NUMBER\n               | VARIABLE '=' VARIABLE\n    operation : VARIABLE '=' VARIABLE '+' VARIABLE\n                 | VARIABLE '=' VARIABLE '-' VARIABLEprint : PRINT '(' VARIABLE ')' if : IF '(' condition ')' '{' statements '}' condition : VARIABLE '>' VARIABLE\n                 | VARIABLE '<' VARIABLEwhile : WHILE '(' condition ')' '{' statements '}' "
     
-_lr_action_items = {'VARIABLE':([0,2,3,4,5,6,7,8,13,14,15,16,17,19,25,26,27,28,30,31,33,34,35,38,39,40,41,42,],[9,9,-3,-4,-5,-6,-7,-8,-2,18,21,23,23,-9,33,34,-10,-13,36,37,-11,-12,9,9,9,9,-14,-17,]),'PRINT':([0,2,3,4,5,6,7,8,13,19,27,28,33,34,35,38,39,40,41,42,],[10,10,-3,-4,-5,-6,-7,-8,-2,-9,-10,-13,-11,-12,10,10,10,10,-14,-17,]),'IF':([0,2,3,4,5,6,7,8,13,19,27,28,33,34,35,38,39,40,41,42,],[11,11,-3,-4,-5,-6,-7,-8,-2,-9,-10,-13,-11,-12,11,11,11,11,-14,-17,]),'WHILE':([0,2,3,4,5,6,7,8,13,19,27,28,33,34,35,38,39,40,41,42,],[12,12,-3,-4,-5,-6,-7,-8,-2,-9,-10,-13,-11,-12,12,12,12,12,-14,-17,]),'$end':([1,2,3,4,5,6,7,8,13,19,27,28,33,34,41,42,],[0,-1,-3,-4,-5,-6,-7,-8,-2,-9,-10,-13,-11,-12,-14,-17,]),'}':([3,4,5,6,7,8,13,19,27,28,33,34,39,40,41,42,],[-3,-4,-5,-6,-7,-8,-2,-9,-10,-13,-11,-12,41,42,-14,-17,]),'=':([9,],[14,]),'(':([10,11,12,],[15,16,17,]),'NUMBER':([14,],[19,]),'[':([14,],[20,]),'+':([18,],[25,]),'-':([18,],[26,]),']':([20,],[27,]),')':([21,22,24,36,37,],[28,29,32,-15,-16,]),'>':([23,],[30,]),'<':([23,],[31,]),'{':([29,32,],[35,38,]),}
+_lr_action_items = {'VARIABLE':([0,2,3,4,5,6,7,8,13,14,15,16,17,18,19,24,25,26,28,29,31,32,33,36,37,38,39,40,],[9,9,-3,-4,-5,-6,-7,-8,-2,18,20,22,22,-10,-9,31,32,-13,34,35,-11,-12,9,9,9,9,-14,-17,]),'PRINT':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[10,10,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,10,10,10,10,-14,-17,]),'IF':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[11,11,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,11,11,11,11,-14,-17,]),'WHILE':([0,2,3,4,5,6,7,8,13,18,19,26,31,32,33,36,37,38,39,40,],[12,12,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,12,12,12,12,-14,-17,]),'$end':([1,2,3,4,5,6,7,8,13,18,19,26,31,32,39,40,],[0,-1,-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,-14,-17,]),'}':([3,4,5,6,7,8,13,18,19,26,31,32,37,38,39,40,],[-3,-4,-5,-6,-7,-8,-2,-10,-9,-13,-11,-12,39,40,-14,-17,]),'=':([9,],[14,]),'(':([10,11,12,],[15,16,17,]),'NUMBER':([14,],[19,]),'+':([18,],[24,]),'-':([18,],[25,]),')':([20,21,23,34,35,],[26,27,30,-15,-16,]),'>':([22,],[28,]),'<':([22,],[29,]),'{':([27,30,],[33,36,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'statements':([0,35,38,],[2,39,40,]),'statement':([0,2,35,38,39,40,],[3,13,3,3,13,13,]),'assignment':([0,2,35,38,39,40,],[4,4,4,4,4,4,]),'operation':([0,2,35,38,39,40,],[5,5,5,5,5,5,]),'print':([0,2,35,38,39,40,],[6,6,6,6,6,6,]),'if':([0,2,35,38,39,40,],[7,7,7,7,7,7,]),'while':([0,2,35,38,39,40,],[8,8,8,8,8,8,]),'condition':([16,17,],[22,24,]),}
+_lr_goto_items = {'program':([0,],[1,]),'statements':([0,33,36,],[2,37,38,]),'statement':([0,2,33,36,37,38,],[3,13,3,3,13,13,]),'assignment':([0,2,33,36,37,38,],[4,4,4,4,4,4,]),'operation':([0,2,33,36,37,38,],[5,5,5,5,5,5,]),'print':([0,2,33,36,37,38,],[6,6,6,6,6,6,]),'if':([0,2,33,36,37,38,],[7,7,7,7,7,7,]),'while':([0,2,33,36,37,38,],[8,8,8,8,8,8,]),'condition':([16,17,],[21,23,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -30,18 +30,18 @@ _lr_productions = [
   ('program -> statements','program',1,'p_program','py_yacc.py',18),
   ('statements -> statements statement','statements',2,'p_statements','py_yacc.py',25),
   ('statements -> statement','statements',1,'p_statements','py_yacc.py',26),
-  ('statement -> assignment','statement',1,'p_statement','py_yacc.py',37),
-  ('statement -> operation','statement',1,'p_statement','py_yacc.py',38),
-  ('statement -> print','statement',1,'p_statement','py_yacc.py',39),
-  ('statement -> if','statement',1,'p_statement','py_yacc.py',40),
-  ('statement -> while','statement',1,'p_statement','py_yacc.py',41),
-  ('assignment -> VARIABLE = NUMBER','assignment',3,'p_assignment','py_yacc.py',48),
-  ('assignment -> VARIABLE = [ ]','assignment',4,'p_assignment','py_yacc.py',49),
-  ('operation -> VARIABLE = VARIABLE + VARIABLE','operation',5,'p_operation','py_yacc.py',59),
-  ('operation -> VARIABLE = VARIABLE - VARIABLE','operation',5,'p_operation','py_yacc.py',60),
-  ('print -> PRINT ( VARIABLE )','print',4,'p_print','py_yacc.py',66),
-  ('if -> IF ( condition ) { statements }','if',7,'p_if','py_yacc.py',72),
-  ('condition -> VARIABLE > VARIABLE','condition',3,'p_condition','py_yacc.py',80),
-  ('condition -> VARIABLE < VARIABLE','condition',3,'p_condition','py_yacc.py',81),
-  ('while -> WHILE ( condition ) { statements }','while',7,'p_while','py_yacc.py',87),
+  ('statement -> assignment','statement',1,'p_statement','py_yacc.py',38),
+  ('statement -> operation','statement',1,'p_statement','py_yacc.py',39),
+  ('statement -> print','statement',1,'p_statement','py_yacc.py',40),
+  ('statement -> if','statement',1,'p_statement','py_yacc.py',41),
+  ('statement -> while','statement',1,'p_statement','py_yacc.py',42),
+  ('assignment -> VARIABLE = NUMBER','assignment',3,'p_assignment','py_yacc.py',50),
+  ('assignment -> VARIABLE = VARIABLE','assignment',3,'p_assignment','py_yacc.py',51),
+  ('operation -> VARIABLE = VARIABLE + VARIABLE','operation',5,'p_operation','py_yacc.py',62),
+  ('operation -> VARIABLE = VARIABLE - VARIABLE','operation',5,'p_operation','py_yacc.py',63),
+  ('print -> PRINT ( VARIABLE )','print',4,'p_print','py_yacc.py',69),
+  ('if -> IF ( condition ) { statements }','if',7,'p_if','py_yacc.py',75),
+  ('condition -> VARIABLE > VARIABLE','condition',3,'p_condition','py_yacc.py',83),
+  ('condition -> VARIABLE < VARIABLE','condition',3,'p_condition','py_yacc.py',84),
+  ('while -> WHILE ( condition ) { statements }','while',7,'p_while','py_yacc.py',90),
 ]

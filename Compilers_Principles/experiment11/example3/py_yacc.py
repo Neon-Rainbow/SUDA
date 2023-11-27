@@ -49,7 +49,6 @@ def p_assignment(t):
     """
     assignment : VARIABLE '=' NUMBER
                | VARIABLE '=' VARIABLE
-               | VARIABLE '=' ARRAY
     """
 
     if len(t) == 4:
