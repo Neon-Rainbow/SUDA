@@ -25,3 +25,8 @@
     + my submit
         + [C++](./homework5/cpp/main.cpp)
         + [Python](./homework5/python/pythonProject/main.py)
+6. [Sending a Sequence Over the Network](https://vjudge.net/contest/597442#problem)
+    +   source:[Codeforces Round 826 (Div. 3)](https://codeforces.com/contest/1741)
+    +   [Codeforce原题链接](https://codeforces.com/problemset/problem/1741/E)
+    +   my submit
+        +   [C++](./homework6/cpp/main.cpp)
