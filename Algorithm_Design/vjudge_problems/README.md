@@ -30,3 +30,4 @@
     +   [Codeforce原题链接](https://codeforces.com/problemset/problem/1741/E)
     +   my submit
         +   [C++](./homework6/cpp/main.cpp)
+        +   [Go](./homework6/golang/main.go) (不使用bufio package的缓冲读写会导致IO过慢而超时)
