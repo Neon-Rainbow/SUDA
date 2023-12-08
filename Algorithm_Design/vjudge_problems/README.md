@@ -31,3 +31,8 @@
     +   my submit
         +   [C++](./homework6/cpp/main.cpp)
         +   [Go](./homework6/golang/main.go) (不使用bufio package的缓冲读写会导致IO过慢而超时)
+7. [最长简单循环](https://vjudge.net/contest/598754#problem)
+    +   source:[Educational Codeforces Round 103 (Rated for Div. 2)](https://codeforces.com/contest/1476)
+    +   [Codeforce原题链接](https://codeforces.com/problemset/problem/1476/C)
+    +   my submit
+        +   [C++](./homework7/cpp/main.cpp)
