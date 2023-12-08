@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 void solve() {
     int n;
@@ -20,32 +21,23 @@ void solve() {
         std::cin >> b[i];
     }
 
-    int ans{0};
-    int curr{0};
+    long long ans{0};
+    long long curr{0};
 
-    for(int i = 0; i < n; i++) {
+    for(int i = 1; i < n; i++) {
         const auto distance{std::abs(a[i] - b[i])};
-        if(a[i] > b[i]) {
-            if(i == 1 || curr + c[i - 1] - 2 * distance - 1 < 0) {
-                curr = distance;
-            }else {
-                curr += c[i - 1] - distance - 1;
-            }
-            curr += 2;
+        if(distance == 0) {
+            curr = 2;
             ans = std::max(ans , curr + c[i] - 1);
-        }else {
-            if(distance == 0) {
-                curr = 0;
-            }else {
-                if(i == 1 || curr + c[i - 1] - 2 * distance - 1 < 0) {
-                    curr = distance;
-                }else {
-                    curr += c[i - 1] - distance - 1;
-                }
-            }
-            curr += 2;
-            ans = std::max(ans , curr + c[i] - 1);
+            continue;
         }
+        if(i == 1 || curr + c[i - 1] - 2 * distance - 1 < 0) {
+            curr = distance;
+        }else {
+            curr += c[i - 1] - distance - 1;
+        }
+        curr += 2;
+        ans = std::max(ans , curr + c[i] - 1);
     }
     std::cout << ans << std::endl;
 }
