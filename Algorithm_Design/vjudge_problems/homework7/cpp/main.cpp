@@ -9,16 +9,16 @@ void solve() {
     std::vector<int> b(n);
     std::vector<int> c(n);
 
-    for(int i = 0; i < n; i++) {
-        std::cin >> c[i];
+    for(auto &i:c) {
+        std::cin >> i;
     }
 
-    for(int i = 0; i < n; i++) {
-        std::cin >> a[i];
+    for(auto &i:a) {
+        std::cin >> i;
     }
 
-    for(int i = 0; i < n; i++) {
-        std::cin >> b[i];
+    for(auto &i:b) {
+        std::cin >> i;
     }
 
     long long ans{0};
@@ -26,17 +26,13 @@ void solve() {
 
     for(int i = 1; i < n; i++) {
         const auto distance{std::abs(a[i] - b[i])};
+        const auto temp{curr + c[i - 1] - distance - 1};
         if(distance == 0) {
             curr = 2;
-            ans = std::max(ans , curr + c[i] - 1);
-            continue;
-        }
-        if(i == 1 || curr + c[i - 1] - 2 * distance - 1 < 0) {
-            curr = distance;
         }else {
-            curr += c[i - 1] - distance - 1;
+            curr = i == 1 || temp < distance ? distance : temp;
+            curr += 2;
         }
-        curr += 2;
         ans = std::max(ans , curr + c[i] - 1);
     }
     std::cout << ans << std::endl;

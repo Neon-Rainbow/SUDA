@@ -36,3 +36,4 @@
     +   [Codeforce原题链接](https://codeforces.com/problemset/problem/1476/C)
     +   my submit
         +   [C++](./homework7/cpp/main.cpp)
+        +   [C](./homework7/c/main.c)
