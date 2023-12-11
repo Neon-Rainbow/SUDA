@@ -1,52 +1,15 @@
-# coding=utf-8
 """
-翻译动作：
-提前遍历翻译：
-if -> IF LPAREN condition RPAREN LBRACE statements RBRACE
-   | IF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
-   | IF LPAREN condition RPAREN LBRACE statements RBRACE ELIF LPAREN condition RPAREN LBRACE statements RBRACE ELSE LBRACE statements RBRACE
-while -> WHILE LPAREN condition RPAREN LBRACE statements RBRACE
-for -> FOR LPAREN assignment SEMICOLON condition SEMICOLON selfvar RPAREN LBRACE statements RBRACE
-break -> BREAK
-遍历时翻译：
-assignment -> leftval ASSIGN expr | leftval ASSIGN array { value = expr.value; set_value(var_table, leftval.id, value); }
-leftval -> leftval1 LLIST expr RLIST  { leftval.id = (leftval1.id, expr.value);
-                                        leftval.value = get_value(var_table, leftval.id); }
-leftval -> ID  { leftval.id = (ID.id, None);
-                 if (ID.value != NIL) { set_value(var_table, leftval.id, ID.value); } }
-leftval -> leftval1 LLIST expr RLIST  { leftval.id = (leftval1.id, expr.value); }
-expr -> expr1 '+' term  { expr.value = expr1.value + term.value; }
-expr -> expr1 '-' term  { expr.value = expr1.value - term.value; }
-expr -> term  { expr.value = term.value; }
-term -> term1 '*' factor  { term.value = term1.value * factor.value; }
-term -> term1 '/' factor  { term.value = term1.value / factor.value; }
-term -> term1 '//' factor  { term.value = term1.value // factor.value; }
-term -> factor { term.value = factor.value; }
-factor -> leftval  { value = get_value(var_table, leftval.id); factor.value = value; }
-factor -> NUMBER  { factor.value = NUMBER.value; }
-factor -> len  { factor.value = len.value; }
-factor -> '(' expr ')'  { fact.value = expr.value; }
-exprs -> exprs1 ',' expr  { exprs.value = exprs1.value + [expr.value]; }
-exprs -> expr  { exprs.value = [expr.value]; }
-print -> PRINT '(' exprs ')'  { print(*exprs.value); }
-print -> PRINT '(' ')'  { print(); }
-len -> LEN '(' leftval ')'  { len.value = len(get_value(var_table, leftval.id)) }
-array -> '[' exprs ']'  { array.value = exprs.value; }
-array -> '[' ']' { array.value = []; }
-selfvar -> leftval '++'  { value = get_value(var_table, tree.child(0).id);
-                           value = value + 1;
-                           set_value(var_table, leftval.id, value); }
-selfvar -> leftval '--'  { value = get_value(var_table, tree.child(0).id);
-                           value = value - 1;
-                           set_value(var_table, leftval.id, value); }
-condition -> expr '<' expr1  { condition.value = exp.value < expr1.value; }
-condition -> expr '<=' expr1  { condition.value = exp.value <= expr1.value; }
-condition -> expr '>' expr1  { condition.value = exp.value > expr1.value; }
-condition -> expr '>=' expr1  { condition.value = exp.value >= expr1.value; }
-condition -> expr '==' expr1  { condition.value = exp.value == expr1.value; }
-condition -> expr '!=' expr1  { condition.value = exp.value != expr1.value; }
-condition -> expr  { condition.value = bool(exp.value); }
+此脚本提供了一个基于抽象语法树（AST）的语法分析器和翻译器，用于处理和执行一个简化编程语言的代码。它包含用于识别和处理不同语法结构的类和函数，如条件语句（if-else-elif）、循环（while、for）、赋值、表达式计算等。
+
+主要功能包括：
+- 定义基本的节点类（如 NonTerminal、LeftValue、Number、ID、Terminal）以构建抽象语法树。
+- 实现了一个翻译函数 `translate`，它通过递归遍历语法树节点来执行相应的语言特性。
+- 提供了变量表 `var_table` 用于存储和检索变量值。
+- 处理和执行包括条件判断、循环控制、赋值、表达式计算等多种语言结构。
+- 支持打印操作和数组处理。
+
 """
+
 from node import *
 
 __DEBUG_MODE = False  # 调试时输出部分运行信息
