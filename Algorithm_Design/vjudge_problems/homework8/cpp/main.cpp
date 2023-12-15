@@ -1,29 +1,35 @@
-#include <iostream>
 #include <vector>
-#include <algorithm>
+#include <iostream>
+#include <ranges>
+
+using namespace std;
 
 int main() {
     int k;
-    std::cin >> k;
+    cin >> k;
     while (k--) {
-        int min_distance = INT_MAX;
         int n;
-        std::cin >> n;
-        std::vector<int> a(n), b(n);
-        for (int i = 0; i < n; i++) {
-            std::cin >> a[i];
+        cin >> n;
+
+        vector<int> a(n + 1), b(n + 1);
+        for (int i : std::views::iota(1, n + 1)) {
+            cin >> a[i];
         }
-        for (int i = 0; i < n; i++) {
-            std::cin >> b[i];
+        for (int i : std::views::iota(1, n + 1)) {
+            cin >> b[i];
         }
-        for (int i = 1; i < n; i++) {
-            b[i] = std::max(b[i], b[i - 1]);
+
+        for (int i : std::views::iota(2, n + 1)) {
+            b[i] = max(b[i], b[i - 1]);
         }
-        for (int i = 0; i < n; ++i) {
-            int t = std::upper_bound(b.begin(), b.end(), a[i]) - b.begin();
-            min_distance = std::min(min_distance, i + t - 1);
+
+        int min_index = INT_MAX;
+        for (int i : std::views::iota(1, n + 1)) {
+            int t = upper_bound(b.begin() + 1, b.end(), a[i]) - b.begin();
+            min_index = min(min_index, i + t - 2);
         }
-        std::cout << min_distance << std::endl;
+
+        cout << min_index << endl;
     }
     return 0;
 }
