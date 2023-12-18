@@ -3,7 +3,6 @@ from typing import *
 
 from node import *
 
-DEBUG_MODE = False
 
 
 class Function:
@@ -55,8 +54,6 @@ class Function:
         etb: Dict[str, Any] = {self.name: self}
         for k, v in zip(self.arg_names, args):
             etb[k] = v
-        if DEBUG_MODE:
-            print(etb)
         if env is None:
             tran = Translator(self.body, extend_table=etb)
         else:
@@ -187,11 +184,9 @@ class PyObject:
 
 
 class Translator:
-
     @staticmethod
     def get_value(tb, vid):
         name, sub = vid
-        if DEBUG_MODE: print(name, sub)
         if not isinstance(name, tuple):
             if sub is None:
                 return tb[name]
@@ -421,8 +416,6 @@ class Translator:
                     elif self._tree.child(1).text == '--':
                         value -= 1
                     self.set_value(self.var_table, self._tree.child(0).id, value)  # update var_table
-                    if DEBUG_MODE: print('SelfVar', self._tree.child(0).id, self._tree.child(1).text, value)
-            # Variable
             elif self._tree.type == 'Variable':
                 """variable : variable LBRACKET expr RBRACKET | ID | ID DOT ID"""
                 if len(self._tree.children) == 1:

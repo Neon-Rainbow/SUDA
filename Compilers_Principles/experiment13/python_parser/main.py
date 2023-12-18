@@ -17,10 +17,10 @@ try:
     if root is None:
         exit(0)
     # translation
-    print('运行结果：')
+    print('该python文件运行结果：')
     tran = Translator(root)
     tran.translate()
-    print("当前变量表：", tran.var_table)
+    print(f"变量表中存放的内容:{tran.var_table}")
 except Exception as e:
     sys.stdout.flush()
     sleep(0.05)
