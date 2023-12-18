@@ -1,0 +1,826 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements statement
+Rule 3     statements -> statement
+Rule 4     statement -> assignment
+Rule 5     statement -> operation
+Rule 6     statement -> print
+Rule 7     statement -> if
+Rule 8     statement -> while
+Rule 9     statement -> function
+Rule 10    statement -> runfunction
+Rule 11    assignment -> VARIABLE = NUMBER
+Rule 12    operation -> VARIABLE = VARIABLE + VARIABLE
+Rule 13    operation -> VARIABLE = VARIABLE - VARIABLE
+Rule 14    print -> PRINT ( VARIABLE )
+Rule 15    if -> IF ( condition ) { statements }
+Rule 16    function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+Rule 17    runfunction -> VARIABLE ( VARIABLE )
+Rule 18    condition -> VARIABLE > VARIABLE
+Rule 19    condition -> VARIABLE < VARIABLE
+Rule 20    while -> WHILE ( condition ) { statements }
+
+Terminals, with rules where they appear
+
+(                    : 14 15 16 17 20
+)                    : 14 15 16 17 20
++                    : 12
+-                    : 13
+<                    : 19
+=                    : 11 12 13
+>                    : 18
+DEF                  : 16
+IF                   : 15
+NUMBER               : 11
+PRINT                : 14
+RETURN               : 16
+VARIABLE             : 11 12 12 12 13 13 13 14 16 16 16 17 17 18 18 19 19
+WHILE                : 20
+error                : 
+{                    : 15 16 20
+}                    : 15 16 20
+
+Nonterminals, with rules where they appear
+
+assignment           : 4
+condition            : 15 20
+function             : 9
+if                   : 7
+operation            : 5
+print                : 6
+program              : 0
+runfunction          : 10
+statement            : 2 3
+statements           : 1 2 15 16 20
+while                : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    statements                     shift and go to state 1
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    program                        shift and go to state 7
+    statement                      shift and go to state 8
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 1
+
+    (1) program -> statements .
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    $end            reduce using rule 1 (program -> statements .)
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 16
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 2
+
+    (20) while -> WHILE . ( condition ) { statements }
+
+    (               shift and go to state 17
+
+
+state 3
+
+    (14) print -> PRINT . ( VARIABLE )
+
+    (               shift and go to state 18
+
+
+state 4
+
+    (5) statement -> operation .
+
+    }               reduce using rule 5 (statement -> operation .)
+    VARIABLE        reduce using rule 5 (statement -> operation .)
+    PRINT           reduce using rule 5 (statement -> operation .)
+    IF              reduce using rule 5 (statement -> operation .)
+    WHILE           reduce using rule 5 (statement -> operation .)
+    DEF             reduce using rule 5 (statement -> operation .)
+    RETURN          reduce using rule 5 (statement -> operation .)
+    $end            reduce using rule 5 (statement -> operation .)
+
+
+state 5
+
+    (16) function -> DEF . VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+
+    VARIABLE        shift and go to state 19
+
+
+state 6
+
+    (7) statement -> if .
+
+    }               reduce using rule 7 (statement -> if .)
+    VARIABLE        reduce using rule 7 (statement -> if .)
+    PRINT           reduce using rule 7 (statement -> if .)
+    IF              reduce using rule 7 (statement -> if .)
+    WHILE           reduce using rule 7 (statement -> if .)
+    DEF             reduce using rule 7 (statement -> if .)
+    RETURN          reduce using rule 7 (statement -> if .)
+    $end            reduce using rule 7 (statement -> if .)
+
+
+state 7
+
+    (0) S' -> program .
+
+
+
+state 8
+
+    (3) statements -> statement .
+
+    }               reduce using rule 3 (statements -> statement .)
+    VARIABLE        reduce using rule 3 (statements -> statement .)
+    PRINT           reduce using rule 3 (statements -> statement .)
+    IF              reduce using rule 3 (statements -> statement .)
+    WHILE           reduce using rule 3 (statements -> statement .)
+    DEF             reduce using rule 3 (statements -> statement .)
+    $end            reduce using rule 3 (statements -> statement .)
+    RETURN          reduce using rule 3 (statements -> statement .)
+
+
+state 9
+
+    (6) statement -> print .
+
+    }               reduce using rule 6 (statement -> print .)
+    VARIABLE        reduce using rule 6 (statement -> print .)
+    PRINT           reduce using rule 6 (statement -> print .)
+    IF              reduce using rule 6 (statement -> print .)
+    WHILE           reduce using rule 6 (statement -> print .)
+    DEF             reduce using rule 6 (statement -> print .)
+    RETURN          reduce using rule 6 (statement -> print .)
+    $end            reduce using rule 6 (statement -> print .)
+
+
+state 10
+
+    (9) statement -> function .
+
+    }               reduce using rule 9 (statement -> function .)
+    VARIABLE        reduce using rule 9 (statement -> function .)
+    PRINT           reduce using rule 9 (statement -> function .)
+    IF              reduce using rule 9 (statement -> function .)
+    WHILE           reduce using rule 9 (statement -> function .)
+    DEF             reduce using rule 9 (statement -> function .)
+    RETURN          reduce using rule 9 (statement -> function .)
+    $end            reduce using rule 9 (statement -> function .)
+
+
+state 11
+
+    (4) statement -> assignment .
+
+    }               reduce using rule 4 (statement -> assignment .)
+    VARIABLE        reduce using rule 4 (statement -> assignment .)
+    PRINT           reduce using rule 4 (statement -> assignment .)
+    IF              reduce using rule 4 (statement -> assignment .)
+    WHILE           reduce using rule 4 (statement -> assignment .)
+    DEF             reduce using rule 4 (statement -> assignment .)
+    RETURN          reduce using rule 4 (statement -> assignment .)
+    $end            reduce using rule 4 (statement -> assignment .)
+
+
+state 12
+
+    (11) assignment -> VARIABLE . = NUMBER
+    (12) operation -> VARIABLE . = VARIABLE + VARIABLE
+    (13) operation -> VARIABLE . = VARIABLE - VARIABLE
+    (17) runfunction -> VARIABLE . ( VARIABLE )
+
+    =               shift and go to state 21
+    (               shift and go to state 20
+
+
+state 13
+
+    (15) if -> IF . ( condition ) { statements }
+
+    (               shift and go to state 22
+
+
+state 14
+
+    (10) statement -> runfunction .
+
+    }               reduce using rule 10 (statement -> runfunction .)
+    VARIABLE        reduce using rule 10 (statement -> runfunction .)
+    PRINT           reduce using rule 10 (statement -> runfunction .)
+    IF              reduce using rule 10 (statement -> runfunction .)
+    WHILE           reduce using rule 10 (statement -> runfunction .)
+    DEF             reduce using rule 10 (statement -> runfunction .)
+    RETURN          reduce using rule 10 (statement -> runfunction .)
+    $end            reduce using rule 10 (statement -> runfunction .)
+
+
+state 15
+
+    (8) statement -> while .
+
+    }               reduce using rule 8 (statement -> while .)
+    VARIABLE        reduce using rule 8 (statement -> while .)
+    PRINT           reduce using rule 8 (statement -> while .)
+    IF              reduce using rule 8 (statement -> while .)
+    WHILE           reduce using rule 8 (statement -> while .)
+    DEF             reduce using rule 8 (statement -> while .)
+    RETURN          reduce using rule 8 (statement -> while .)
+    $end            reduce using rule 8 (statement -> while .)
+
+
+state 16
+
+    (2) statements -> statements statement .
+
+    }               reduce using rule 2 (statements -> statements statement .)
+    VARIABLE        reduce using rule 2 (statements -> statements statement .)
+    PRINT           reduce using rule 2 (statements -> statements statement .)
+    IF              reduce using rule 2 (statements -> statements statement .)
+    WHILE           reduce using rule 2 (statements -> statements statement .)
+    DEF             reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    RETURN          reduce using rule 2 (statements -> statements statement .)
+
+
+state 17
+
+    (20) while -> WHILE ( . condition ) { statements }
+    (18) condition -> . VARIABLE > VARIABLE
+    (19) condition -> . VARIABLE < VARIABLE
+
+    VARIABLE        shift and go to state 23
+
+    condition                      shift and go to state 24
+
+state 18
+
+    (14) print -> PRINT ( . VARIABLE )
+
+    VARIABLE        shift and go to state 25
+
+
+state 19
+
+    (16) function -> DEF VARIABLE . ( VARIABLE ) { statements RETURN VARIABLE }
+
+    (               shift and go to state 26
+
+
+state 20
+
+    (17) runfunction -> VARIABLE ( . VARIABLE )
+
+    VARIABLE        shift and go to state 27
+
+
+state 21
+
+    (11) assignment -> VARIABLE = . NUMBER
+    (12) operation -> VARIABLE = . VARIABLE + VARIABLE
+    (13) operation -> VARIABLE = . VARIABLE - VARIABLE
+
+    NUMBER          shift and go to state 29
+    VARIABLE        shift and go to state 28
+
+
+state 22
+
+    (15) if -> IF ( . condition ) { statements }
+    (18) condition -> . VARIABLE > VARIABLE
+    (19) condition -> . VARIABLE < VARIABLE
+
+    VARIABLE        shift and go to state 23
+
+    condition                      shift and go to state 30
+
+state 23
+
+    (18) condition -> VARIABLE . > VARIABLE
+    (19) condition -> VARIABLE . < VARIABLE
+
+    >               shift and go to state 32
+    <               shift and go to state 31
+
+
+state 24
+
+    (20) while -> WHILE ( condition . ) { statements }
+
+    )               shift and go to state 33
+
+
+state 25
+
+    (14) print -> PRINT ( VARIABLE . )
+
+    )               shift and go to state 34
+
+
+state 26
+
+    (16) function -> DEF VARIABLE ( . VARIABLE ) { statements RETURN VARIABLE }
+
+    VARIABLE        shift and go to state 35
+
+
+state 27
+
+    (17) runfunction -> VARIABLE ( VARIABLE . )
+
+    )               shift and go to state 36
+
+
+state 28
+
+    (12) operation -> VARIABLE = VARIABLE . + VARIABLE
+    (13) operation -> VARIABLE = VARIABLE . - VARIABLE
+
+    +               shift and go to state 38
+    -               shift and go to state 37
+
+
+state 29
+
+    (11) assignment -> VARIABLE = NUMBER .
+
+    VARIABLE        reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    PRINT           reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    IF              reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    WHILE           reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    DEF             reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    $end            reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    }               reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+    RETURN          reduce using rule 11 (assignment -> VARIABLE = NUMBER .)
+
+
+state 30
+
+    (15) if -> IF ( condition . ) { statements }
+
+    )               shift and go to state 39
+
+
+state 31
+
+    (19) condition -> VARIABLE < . VARIABLE
+
+    VARIABLE        shift and go to state 40
+
+
+state 32
+
+    (18) condition -> VARIABLE > . VARIABLE
+
+    VARIABLE        shift and go to state 41
+
+
+state 33
+
+    (20) while -> WHILE ( condition ) . { statements }
+
+    {               shift and go to state 42
+
+
+state 34
+
+    (14) print -> PRINT ( VARIABLE ) .
+
+    VARIABLE        reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    PRINT           reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    IF              reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    WHILE           reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    DEF             reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    $end            reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    }               reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+    RETURN          reduce using rule 14 (print -> PRINT ( VARIABLE ) .)
+
+
+state 35
+
+    (16) function -> DEF VARIABLE ( VARIABLE . ) { statements RETURN VARIABLE }
+
+    )               shift and go to state 43
+
+
+state 36
+
+    (17) runfunction -> VARIABLE ( VARIABLE ) .
+
+    }               reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    VARIABLE        reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    PRINT           reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    IF              reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    WHILE           reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    DEF             reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    $end            reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+    RETURN          reduce using rule 17 (runfunction -> VARIABLE ( VARIABLE ) .)
+
+
+state 37
+
+    (13) operation -> VARIABLE = VARIABLE - . VARIABLE
+
+    VARIABLE        shift and go to state 44
+
+
+state 38
+
+    (12) operation -> VARIABLE = VARIABLE + . VARIABLE
+
+    VARIABLE        shift and go to state 45
+
+
+state 39
+
+    (15) if -> IF ( condition ) . { statements }
+
+    {               shift and go to state 46
+
+
+state 40
+
+    (19) condition -> VARIABLE < VARIABLE .
+
+    )               reduce using rule 19 (condition -> VARIABLE < VARIABLE .)
+
+
+state 41
+
+    (18) condition -> VARIABLE > VARIABLE .
+
+    )               reduce using rule 18 (condition -> VARIABLE > VARIABLE .)
+
+
+state 42
+
+    (20) while -> WHILE ( condition ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    statements                     shift and go to state 47
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 8
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 43
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) . { statements RETURN VARIABLE }
+
+    {               shift and go to state 48
+
+
+state 44
+
+    (13) operation -> VARIABLE = VARIABLE - VARIABLE .
+
+    VARIABLE        reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    PRINT           reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    IF              reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    WHILE           reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    DEF             reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    $end            reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    RETURN          reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+    }               reduce using rule 13 (operation -> VARIABLE = VARIABLE - VARIABLE .)
+
+
+state 45
+
+    (12) operation -> VARIABLE = VARIABLE + VARIABLE .
+
+    VARIABLE        reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    PRINT           reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    IF              reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    WHILE           reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    DEF             reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    $end            reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    RETURN          reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+    }               reduce using rule 12 (operation -> VARIABLE = VARIABLE + VARIABLE .)
+
+
+state 46
+
+    (15) if -> IF ( condition ) { . statements }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    statements                     shift and go to state 49
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 8
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 47
+
+    (20) while -> WHILE ( condition ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    }               shift and go to state 50
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 16
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 48
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) { . statements RETURN VARIABLE }
+    (2) statements -> . statements statement
+    (3) statements -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    statements                     shift and go to state 51
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 8
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 49
+
+    (15) if -> IF ( condition ) { statements . }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    }               shift and go to state 52
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 16
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 50
+
+    (20) while -> WHILE ( condition ) { statements } .
+
+    VARIABLE        reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    PRINT           reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    IF              reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    WHILE           reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    DEF             reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    $end            reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    }               reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+    RETURN          reduce using rule 20 (while -> WHILE ( condition ) { statements } .)
+
+
+state 51
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) { statements . RETURN VARIABLE }
+    (2) statements -> statements . statement
+    (4) statement -> . assignment
+    (5) statement -> . operation
+    (6) statement -> . print
+    (7) statement -> . if
+    (8) statement -> . while
+    (9) statement -> . function
+    (10) statement -> . runfunction
+    (11) assignment -> . VARIABLE = NUMBER
+    (12) operation -> . VARIABLE = VARIABLE + VARIABLE
+    (13) operation -> . VARIABLE = VARIABLE - VARIABLE
+    (14) print -> . PRINT ( VARIABLE )
+    (15) if -> . IF ( condition ) { statements }
+    (20) while -> . WHILE ( condition ) { statements }
+    (16) function -> . DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE }
+    (17) runfunction -> . VARIABLE ( VARIABLE )
+
+    RETURN          shift and go to state 53
+    VARIABLE        shift and go to state 12
+    PRINT           shift and go to state 3
+    IF              shift and go to state 13
+    WHILE           shift and go to state 2
+    DEF             shift and go to state 5
+
+    function                       shift and go to state 10
+    runfunction                    shift and go to state 14
+    assignment                     shift and go to state 11
+    while                          shift and go to state 15
+    statement                      shift and go to state 16
+    print                          shift and go to state 9
+    operation                      shift and go to state 4
+    if                             shift and go to state 6
+
+state 52
+
+    (15) if -> IF ( condition ) { statements } .
+
+    RETURN          reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    VARIABLE        reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    PRINT           reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    IF              reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    WHILE           reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    DEF             reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    }               reduce using rule 15 (if -> IF ( condition ) { statements } .)
+    $end            reduce using rule 15 (if -> IF ( condition ) { statements } .)
+
+
+state 53
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) { statements RETURN . VARIABLE }
+
+    VARIABLE        shift and go to state 54
+
+
+state 54
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE . }
+
+    }               shift and go to state 55
+
+
+state 55
+
+    (16) function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .
+
+    VARIABLE        reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    PRINT           reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    IF              reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    WHILE           reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    DEF             reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    $end            reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    }               reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+    RETURN          reduce using rule 16 (function -> DEF VARIABLE ( VARIABLE ) { statements RETURN VARIABLE } .)
+
