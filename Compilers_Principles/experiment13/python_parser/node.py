@@ -1,35 +1,82 @@
-# coding=utf-8
+"""
+该模块定义了用于构建抽象语法树（AST）的各种节点类型。
+
+主要包含的类有：
+- _node：所有节点的基类，提供基本的节点数据结构。
+- NonTerminal：非终结符节点，用于表示具有特定类型和可选值的非终结符。
+- Variable：左值节点，表示引用的变量，包含类型和标识符。
+- Number：数字节点，直接包含一个数字值。
+- ID：标识符节点，包含标识符的名称和值。
+- Terminal：终结符节点，用于表示除标识符外的其他终结符，包含其文本内容。
+
+这些节点类型在解析Python代码并构建其AST时发挥核心作用。
+"""
+
 import re
 import threading
+from typing import *
 
 
 class _node:
     """
-    所有节点的基类
+    所有节点的基类。
+
+    Attributes:
+        _data (Any): 节点存储的数据。
+        _children (List['_node']): 节点的子节点列表。
+        _value (Any): 节点的值。
     """
 
-    def __init__(self, data):
+    def __init__(self, data: Any):
         self._data = data
-        self._children = []
-        self._value = NIL
+        self._children: List['_node'] = []
+        self._value: Any = NIL
 
     @property
-    def value(self):
+    def value(self) -> Any:
+        """
+        Returns:
+            节点的值
+        """
         return self._value
 
     @value.setter
-    def value(self, value):
+    def value(self, value: Any) -> None:
+        """
+        Args:
+            value (Any): 节点的值
+        Returns:
+            None
+        """
         self._value = value
 
-    def child(self, i):
-        assert -len(self._children) <= i < len(self._children), f'{i}'
+    def child(self, i: int) -> '_node':
+        """获取指定索引的子节点。
+
+        Args:
+            i (int): 子节点的索引。
+
+        Returns:
+            _node: 指定索引的子节点。
+
+        Raises:
+            AssertionError: 如果索引超出范围。
+        """
         return self._children[i]
 
     @property
-    def children(self):
+    def children(self) -> List['_node']:
+        """
+        子节点列表
+        """
         return self._children
 
-    def add(self, node):
+    def add(self, node: '_node'):
+        """添加子节点。
+
+        Args:
+            node (_node): 要添加的子节点。
+        """
         self._children.append(node)
 
 
@@ -39,10 +86,18 @@ class NonTerminal(_node):
     """
 
     @property
-    def type(self):
+    def type(self) -> Any:
+        """
+        Returns:
+            非终结符的类型
+        """
         return self._data
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns:
+            str: 非终结符的字符串表示
+        """
         if len(self.children) == 0:
             children = ''
         else:
@@ -54,9 +109,20 @@ class NonTerminal(_node):
 class Variable(NonTerminal):
     """
     左值节点，提供type表示非终结符的类型，id表示引用的变量
+    Attributes:
+        _data (Any): 节点存储的数据。
+        _id (Optional[str]): 引用的变量标识符。
+        _children (List['_node']): 节点的子节点列表。
+        _value (Any): 节点的值。
     """
 
-    def __init__(self, data):
+    def __init__(self, data: Any) -> None:
+        """
+        Args:
+            data (Any): 节点存储的数据。
+        Returns:
+            None
+        """
         super(Variable, self).__init__(data)
         self._id = None
         del self._value
@@ -70,7 +136,10 @@ class Variable(NonTerminal):
         return re.sub(r'\s+', ' ', r)
 
     @property
-    def id(self):
+    def id(self) -> Optional[str]:
+        """
+        变量表示符
+        """
         return self._id
 
     @property
@@ -78,7 +147,13 @@ class Variable(NonTerminal):
         raise ValueError('Variable 的 value 属性不被允许使用，请通过检索符号表实现')
 
     @id.setter
-    def id(self, i):
+    def id(self, i: str) -> None:
+        """
+        Args:
+            i (str): 变量表示符
+        Returns:
+            None
+        """
         self._id = i
 
 
@@ -99,9 +174,17 @@ class Number(_node):
 class String(_node):
     """
     字符串节点，value为值
+    Attributes:
+        _data (Any): 节点存储的数据。
     """
 
-    def __init__(self, data):
+    def __init__(self, data: Any) -> None:
+        """
+        Args:
+            data (Any): 节点存储的数据。
+        Returns:
+            None
+        """
         super(String, self).__init__(data)
         self._data = 'string'
         self._value = str(data[1:-1])
@@ -113,10 +196,18 @@ class String(_node):
 class ID(_node):
     """
     标识符节点，提供id表示标识符名称，value为值
+
+    Attributes:
+        _data (Any): 节点存储的数据。
     """
 
     @property
-    def id(self):
+    def id(self) -> str:
+        """
+        标识符名称
+        Returns:
+            str: 标识符名称
+        """
         return self._data
 
     def __init__(self, data):
@@ -131,10 +222,16 @@ class ID(_node):
 class Terminal(_node):
     """
     除标识符以外的终结符节点，提供text表示其内容
+
+    Attributes:
+        _data (Any): 节点存储的数据。
     """
 
     @property
-    def text(self):
+    def text(self) -> Any:
+        """
+        终结符的文本内容
+        """
         return self._data
 
     def __str__(self):
