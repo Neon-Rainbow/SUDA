@@ -3,7 +3,9 @@
 cmake-build-debug
 .DS_Store
 __pycache__
-venu
+venv
+.venv
+.run
 .vs
 x64
 build
