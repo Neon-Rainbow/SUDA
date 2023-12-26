@@ -37,3 +37,8 @@
     +   my submit
         +   [C++](./homework7/cpp/main.cpp)
         +   [C](./homework7/c/main.c)
+8. [阿伟换数](https://vjudge.net/contest/599998#problem)
+    +   source:[Codeforces Round 743 (Div. 2)](https://codeforces.com/contest/1573)
+    +   [Codeforce原题链接](https://codeforces.com/problemset/problem/1573/B)
+    +   my submit
+        +   [C++](./homework8/cpp/main.cpp)
