@@ -1,0 +1,9 @@
+
+230903_1432	1	summary	Period	
+230903_1432	1	summary	1	
+230903_1432	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+230903_1432	1	session	1	0	0	0	0	0	0	
+230903_1432	1	session	2	0	0	0	0	0	0	
+230903_1432	1	session	3	0	0	0	0	0	0	
+230903_1432	1	session	4	0	0	0	0	0	0	
+230903_1432	1	session	5	0	0	0	0	0	0	

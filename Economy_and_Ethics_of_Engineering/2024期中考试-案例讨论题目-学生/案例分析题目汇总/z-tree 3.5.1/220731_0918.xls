@@ -1,0 +1,8 @@
+220731_0918	1	globals	Period	NumPeriods	RepeatTreatment	
+220731_0918	1	globals	1	1	0	
+220731_0918	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	group_size_max	subject_num	p[1]	rand_1	group_size	N	i	rand_2	TimeOKAgreementOK	Decision	Contribution	TimeOKContributionEntryOK	SumC	TimeContinueProfitDisplayOK	
+220731_0918	1	subjects	1	1	2	32	32	1	1.6	20	3	10	1	0.5779092682422647	2	1	2	0.5257405119602292	22	1	20	-144	20	0	
+220731_0918	1	summary	Period	
+220731_0918	1	summary	1	
+220731_0918	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220731_0918	1	session	1	32	0	0	0	32	32	

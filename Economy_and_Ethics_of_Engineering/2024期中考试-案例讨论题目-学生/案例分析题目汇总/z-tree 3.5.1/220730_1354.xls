@@ -1,0 +1,10 @@
+220730_1354	1	globals	Period	NumPeriods	RepeatTreatment	
+220730_1354	1	globals	1	1	0	
+220730_1354	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	group_size_max	subject_num	rand_1	group_size	TimeOKAgreementOK	Decision	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220730_1354	1	subjects	1	1	1	32	32	1	1.6	20	3	11	0.8757879761400577	3	5	1	20	14	40	2	0	
+220730_1354	1	subjects	1	2	1	32	32	1	1.6	20	3	10	0.7019989088652651	2	18	1	20	0	40	2	23	
+220730_1354	1	summary	Period	
+220730_1354	1	summary	1	
+220730_1354	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220730_1354	1	session	1	32	0	0	0	32	32	
+220730_1354	1	session	2	32	0	0	0	32	32	

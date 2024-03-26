@@ -1,0 +1,13 @@
+220726_0853	1	globals	Period	NumPeriods	RepeatTreatment	answer_q1	rand_1	asset_value	AuctionStop	AuctionNoStop	
+220726_0853	1	globals	1	1	0	"1,2,3"	57.83522071216033	0	0	0	
+220726_0853	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	subject_num	TimeOKAgreementOK	subject_answer	TimeOKQuestionOK	account	owned_n_asset	
+220726_0853	1	subjects	1	1	1	0	0	1	1	23	"1,2,3"	25	100	30	
+220726_0853	1	summary	Period	
+220726_0853	1	summary	1	
+220726_0853	1	contracts	Period	price	volume	buyer	seller	creator	TimeOKMarketOfferSellMake	
+220726_0853	1	contracts	1	10	20	-2	1	1	273	
+220726_0853	1	contracts	1	10	20	-2	1	1	260	
+220726_0853	1	contracts	1	10	20	-2	1	1	259	
+220726_0853	1	contracts	1	10	20	-1	1	1	27	
+220726_0853	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220726_0853	1	session	1	0	0	0	0	0	0	

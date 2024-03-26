@@ -1,0 +1,32 @@
+220723_1912	1	globals	Period	NumPeriods	RepeatTreatment	
+220723_1912	1	globals	1	1	0	
+220723_1912	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	
+220723_1912	1	subjects	1	1	1	0	0	1	
+220723_1912	1	summary	Period	
+220723_1912	1	summary	1	
+220723_1912	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220723_1912	1	session	1	0	0	0	0	0	0	
+220723_1912	2	globals	Period	NumPeriods	RepeatTreatment	
+220723_1912	2	globals	1	1	0	
+220723_1912	2	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220723_1912	2	subjects	1	1	1	27.2	27.2	1	1.6	20	12	-21	12	1	0	
+220723_1912	2	summary	Period	
+220723_1912	2	summary	1	
+220723_1912	2	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220723_1912	2	session	1	27.2	0	0	0	27.2	27.2	
+220723_1912	3	globals	Period	NumPeriods	RepeatTreatment	
+220723_1912	3	globals	1	1	0	
+220723_1912	3	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220723_1912	3	subjects	1	1	1	27.8	27.8	1	1.6	20	13	19	13	1	21	
+220723_1912	3	summary	Period	
+220723_1912	3	summary	1	
+220723_1912	3	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220723_1912	3	session	1	55	0	0	0	55	55	
+220723_1912	4	globals	Period	NumPeriods	RepeatTreatment	
+220723_1912	4	globals	1	1	0	
+220723_1912	4	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220723_1912	4	subjects	1	1	1	26.6	26.6	1	1.6	20	11	24	11	1	29	
+220723_1912	4	summary	Period	
+220723_1912	4	summary	1	
+220723_1912	4	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220723_1912	4	session	1	81.59999999999999	0	0	0	81.59999999999999	81.59999999999999	

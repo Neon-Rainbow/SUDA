@@ -1,0 +1,10 @@
+220725_1458	1	globals	Period	NumPeriods	RepeatTreatment	
+220725_1458	1	globals	1	1	0	
+220725_1458	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	subject_num	TimeOKStage1OK	subject_num_2	TimeOKStage2OK	
+220725_1458	1	subjects	1	1	1	0	0	1	2	-151	4	-30	
+220725_1458	1	subjects	1	2	1	0	0	1	1	-147	3	-25	
+220725_1458	1	summary	Period	
+220725_1458	1	summary	1	
+220725_1458	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220725_1458	1	session	1	0	0	0	0	0	0	
+220725_1458	1	session	2	0	0	0	0	0	0	

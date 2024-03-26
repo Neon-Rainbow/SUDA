@@ -1,0 +1,10 @@
+220807_1344	1	globals	Period	NumPeriods	RepeatTreatment	gu	NumInGroup	R	rand_2	rand_1	
+220807_1344	1	globals	1	1	0	2	2	0.6896150571711431	7	2	
+220807_1344	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N1	TimeContinueProfitDisplayOK	
+220807_1344	1	subjects	1	1	1	24	24	1	1.6	20	20	18	30	2	0	
+220807_1344	1	subjects	1	2	1	34	34	1	1.6	20	10	26	30	2	-	
+220807_1344	1	summary	Period	
+220807_1344	1	summary	1	
+220807_1344	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220807_1344	1	session	1	24	0	0	0	24	24	
+220807_1344	1	session	2	34	0	0	0	34	34	

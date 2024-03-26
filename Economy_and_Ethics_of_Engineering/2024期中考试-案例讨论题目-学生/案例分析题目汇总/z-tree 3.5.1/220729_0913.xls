@@ -1,0 +1,20 @@
+220729_0913	1	globals	Period	NumPeriods	RepeatTreatment	
+220729_0913	1	globals	1	1	0	
+220729_0913	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220729_0913	1	subjects	1	1	1	21	21	1	1.6	20	3	0	5	2	0	
+220729_0913	1	subjects	1	2	1	22	22	1	1.6	20	2	19	5	2	-	
+220729_0913	1	summary	Period	
+220729_0913	1	summary	1	
+220729_0913	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220729_0913	1	session	1	21	0	0	0	21	21	
+220729_0913	1	session	2	22	0	0	0	22	22	
+220729_0913	2	globals	Period	NumPeriods	RepeatTreatment	
+220729_0913	2	globals	1	1	0	
+220729_0913	2	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	Pi11	Pi12	Pi21	Pi22	Choice	TimeOKDecisionOK	OthersChoice	TimeContinueProfitDisplayOK	
+220729_0913	2	subjects	1	1	1	0	0	1	3	1	0	2	2	-37	1	24	
+220729_0913	2	subjects	1	2	1	0	0	1	2	0	1	3	1	-20	2	0	
+220729_0913	2	summary	Period	
+220729_0913	2	summary	1	
+220729_0913	2	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220729_0913	2	session	1	21	0	0	0	21	21	
+220729_0913	2	session	2	22	0	0	0	22	22	

@@ -1,0 +1,117 @@
+z-Tree License Agreement
+
+University of Zurich ("UZH") is willing to license the software package z-Tree
+including the programs z-Tree and z-Leaf, which is designed to program and
+conduct economic experiments ("Software") to you ("You") only upon the
+condition that You accept all of the terms contained in this license agreement
+("Agreement"). Please read the Agreement carefully. By selecting the "Accept
+License Agreement" (or the equivalent) button and/or by using the Software You
+acknowledge that You have read the Agreement, understand it and agree to be
+bound by its terms and conditions.
+
+1.  LICENSE
+
+1.1 UZH grants You herewith a non exclusive license to use the Software.
+
+1.2 The use of the Software is restricted exclusively to academic research
+    conducted or supervised by You.
+
+1.3 Your are not permitted to transfer the rights under this agreement to
+    any third party or to make the Software and/or the respective intellectual
+    property rights in any other way accessible or available to any third
+    party.
+
+1.4 Title, ownership rights, and intellectual property rights in and to the
+    Software shall remain with UZH.
+
+2.  CHANGES OF THE SOFTWARE PROVIDED BY YOU
+
+2.1 UZH is entitled to incorporate at its sole and exclusive discretion all
+    changes or supplements or all proposed changes or supplements to the
+    Software (improvements) developed by You free of charge and You herewith
+    grant to UZH a perpetual, unrestricted license to use and sublicense such
+    improvements.
+
+3.  LICENSE FEE
+
+3.1 UZH does not charge a license fee for the use of the Software as set
+    out herein.
+
+3.2 In return for the license YOU undertake to mention the name of the
+    Department of Economics of the University of Zurich as well as the name
+    z-Tree and to cite the following article in all publications in which
+    results of experiments conducted with the Software are published:
+
+    Urs Fischbacher, z-Tree: Zurich Toolbox for Ready-made Economic
+    Experiments, Experimental Economics 10(2), 171-178.
+
+4.  TERM
+
+4.1 This Agreement becomes effective at the moment You are authorized by UZH
+    to download the Software. This Agreement is valid for the duration of one
+    year and shall thereafter continue for subsequent one-year periods unless
+    terminated by any party giving not less than three months advance notice
+    of such termination prior to the expiration of the initial or any
+    subsequent one-year terms. In case of material violation of this agreement
+    by You, UZH is entitled to terminate this agreement immediately.
+
+4.2 Should this agreement be terminated, irrespective of the reasons, You
+    shall refrain from all and any use of the Software and delete and/or
+    destroy all copies of this Software.
+
+5.  NO WARRANTY/INDEMNIFICATION
+
+5.1 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. UZH MAKES NO
+    REPRESENTATION OR WARRANTY THAT THE SOFTWARE OR THE USE OF THE SOFTWARE
+    WILL NOT INFRINGE ANY PATENT OR OTHER PROPRIETARY RIGHTS. IN NO EVENT SHALL
+    UZH BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+5.2 YOU ARE RESPONSIBLE FOR THE SELECTION OF THE SOFTWARE TO ACHIEVE ITS
+    INTENDED RESULTS, USE OF THE SOFTWARE, AND THE RESULTS OBTAINED THEREFROM.
+    YOU AGREE TO INDEMNIFY AND HOLD UZH AND ITS EMPLOYEES HARMLESS WITH RESPECT
+    TO ALL CLAIMS BY THIRD PARTIES ARISING OUT OF YOUR USE OF THE SOFTWARE.
+
+6.  GENERAL
+
+6.1 This Agreement and the license granted herein or any part thereof under
+    this Agreement are not assignable by YOU without the prior written approval
+    of UZH.
+
+6.2 Neither party shall use the names or trademarks of the other, its related
+    entities and its employees, or any adaptations thereof, in any advertising,
+    promotional or sales literature without the prior written consent of the
+    party so affected.
+
+6.3 Each party is acting as an independent contractor and not as an agent,
+    partner, or joint venture with the other party for any purpose. Neither
+    party shall have any right, power or authority to act or create any
+    obligation, express or implied, on behalf of the other.
+
+6.4 This Agreement sets forth the entire Agreement between the parties with
+    respect to the subject matter hereof. No supplement, modification or
+    amendment of this Agreement shall be binding, unless in writing signed by
+    a duly authorized representative of each party to the Agreement.
+
+6.5 Should some or several provisions of this Agreement be ineffective or
+    invalid, or should there be an omission in this Agreement, the
+    effectiveness, respectively the validity of the remaining provisions shall
+    not be affected thereby. An ineffective, respectively, invalid provision
+    shall be re-placed by the interpretation of the agreement which comes
+    nearest to the economic meaning and the envisaged economic purpose of the
+    ineffective respectively, invalid provision. The same applies in the case
+    of a contractual gap.
+
+6.6 The terms stipulated in this Agreement may not be modified in any way
+    without the mutual consent of the parties in writing.
+
+6.7 THIS AGREEMENT SHALL BE GOVERNED BY THE LAWS OF SWITZERLAND. Any dispute
+    arising from or in connection with this Agreement will be finally settled
+    by the courts of Zurich, Switzerland.

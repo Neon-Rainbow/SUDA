@@ -1,0 +1,10 @@
+220728_1549	1	globals	Period	NumPeriods	RepeatTreatment	answer_q1	rand_1	asset_value	AuctionStop	AuctionNoStop	
+220728_1549	1	globals	1	1	0	"1,2,3"	73.02234278666896	0	0	0	
+220728_1549	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	subject_num	TimeOKAgreementOK	subject_answer	TimeOKQuestionOK	account	owned_n_asset	
+220728_1549	1	subjects	1	1	1	0	0	1	1	24	"1,2,3"	26	80	40	
+220728_1549	1	summary	Period	
+220728_1549	1	summary	1	
+220728_1549	1	contracts	Period	price	volume	buyer	seller	creator	deal_n_asset	TimeOKMarketOfferSellMake	TimeOKMarketListBuyersOfferSelect	TimeOKMarketOfferBuyMake	TimeOKMarketListSellersOfferSelect	
+220728_1549	1	contracts	1	2	10	-1	-1	1	10	-	-	250	240	
+220728_1549	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220728_1549	1	session	1	0	0	0	0	0	0	

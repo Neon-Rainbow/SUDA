@@ -1,0 +1,565 @@
+================================================================================
+Release 3.5.1 - March 16, 2015
+================================================================================
+
+Bugfixes
+--------
+
+* Absolut period start time is not recorded on timeout
+* Button text in checkers with a "no" button only can't be changed
+
+Improvements
+------------
+
+* Allow function names to be used as names for variables
+* Table dumper accepts variables in output file name
+
+================================================================================
+Release 3.5.0 - February 9, 2015
+================================================================================
+
+The file format for treatments has changed. Treatments created with this version
+can not be opened with older versions of z-Tree.
+
+Bugfixes
+--------
+
+* Radioline is reset on a click on another active item
+* Radio buttons can change after other subject's input
+* Value of radio buttons with empty label is not saved
+* Line height in chat box output is not adjusted to font size
+* Table dropdown list may not select the correct value
+
+New Features
+------------
+
+* Exact timing (frame) for slide shows
+* Function stringtonumber
+* Record absolute period start time
+* Event time in active items
+* ON-OFF trigger for boxes
+
+================================================================================
+Release 3.4.7 - July 22, 2014
+================================================================================
+
+Bugfixes
+--------
+
+* Fast mouse moves over plot inputs let z-Leaf freeze
+* Rounding numbers (assignment in program vs. input item)
+* Video in multimedia box has always a frame and a gray background that is
+  different from the other gray
+
+================================================================================
+Release 3.4.6 - May 8, 2014
+================================================================================
+
+Improvements
+------------
+
+* Enable TCP keep-alive
+* Disable Nagle's algorithm
+
+================================================================================
+Release 3.4.5 - May 6, 2014
+================================================================================
+
+Bugfixes
+--------
+
+* Special program like table loader and dumper do not work in plot input
+* z-Tree crashes in program editor (string handling syntax errors)
+* z-Tree crashes on the start of a treatment if z-Leafs are disconnected
+* Circle (plot pie) has a black border even if line size is set to 0
+
+Improvements
+------------
+
+* Input field is resized for the entry of large numbers
+* Strings with length > 250 won't be splitted no more
+
+================================================================================
+Release 3.4.4 - April 16, 2014
+================================================================================
+
+Bugfixes
+--------
+
+* Import of help box (forced distance to bottom, cuttbottom; text not escaped)
+* Program in plot input drag has wrong scope after first call
+* Memory leak in compiler
+
+Improvements
+------------
+
+* String variables can be used in layout
+* Single quotes can be used as text qualifier in layout strings
+* '\q' can be used as text qualifier in layout strings
+
+================================================================================
+Release 3.4.2 - September 6, 2013
+================================================================================
+
+Bugfixes
+--------
+
+* Text in plot text items is not escaped when exported.
+* Text formatted with RTF in labels is cut off at the bottom when large font
+  size is used.
+* Treatment with practice periods can't be imported.
+* z-Tree crashes if second parameter (precision) of function format(x, y) is
+  zero.
+* Pictures in mutlimedia boxes are placed off the box.
+* Condition of "Start if..." is not checked for a subject if this subject did
+  not participate in previous stage.
+
+Improvements
+------------
+
+* Table function find(a, s) can be used on string variables.
+* Escaping quotes, tabs, and newlines in texts (string variables) prevents
+  problems in Excel when reading the datafile.
+
+New Features
+------------
+
+* Function char(x) for finding the character or symbol for a code number.
+* Function code(s) for finding the code number of a character or symbol.
+
+Known Issues
+------------
+
+* z-Tree may crash in a program in a contract creation/list box.
+  If a program in a contracts creation box doesn't contain a condition, the
+  record number of the scope environment is set to the last record that has just
+  been inserted. If the program works on a table other than specified for the
+  contracts creation box, it must be ensured that the table contains at least as
+  many records as the table of the contracts creation box.
+
+================================================================================
+Release 3.4.1 - March 15, 2013
+================================================================================
+
+Bugfixes
+--------
+
+* RTF text in labels gets truncated (introduced with new programming environment
+  in version 3.4.0)
+
+================================================================================
+Release 3.4.0 - December 28, 2012
+================================================================================
+
+New Features - Support for Strings
+----------------------------------
+
+* text entry in input items: use !string in Layout.
+
+* output of sting variables: expression in Layout determines how much space
+  (number of characters) will be reserved for the string output
+
+* string functions
+
+  x, y, z: numbers
+  s, t, u: strings
+
++ mid(s, x, y)
+  Returns the middle of the string 's', starting at character number 'x' and
+  going for 'y' characters. The counting process starts at 1, that is the first
+  character which has a place value of 1.
+
++ pos(s, t, x)
+  Returns place number where string 't' occurs in string 's', starting the
+  counting process at number 'x'.
+
++ len(u)
+  Returns the number of characters in string 'u'.
+
++ upper(s)
+  Returns string 's' in capital letters.
+
++ lower(s)
+  Returns string 's' in lower case letters.
+
++ trim("    s    ") 		
+  Trims the outside spaces around text letters, but not spaces within the text.
+
++ format(x, y) 
+  Returns 'x' as a string variable rounded to the precision of 'y'.
+
++ if(a, s, t)
+  Returns string s if a evaluates to true, otherwise string t.
+
++ relational operators can be applied to pairs of sting expressions
+
+Please note
+-----------
+
+* we switched to a new programming environment (compiler, class library and
+  parser generator), please test your treatments thoroughly
+* two error messages for handling text input have been added, so you may have to
+  update the file with your own texts (position 14 and 15)
+
+  You have to enter at least %s characters into field \"%s\".
+  You cannot enter more than %s characters into field \"%s\".
+
+Known Issues
+------------
+
+* new error messages have not yet been translated for Mongolian
+
+================================================================================
+Release 3.3.12 - November 25, 2011
+================================================================================
+
+Bugfixes
+--------
+
+* tree crashes when table loader reads data that is not in the required format
+* resource leak in multimedia box
+* setting of enlarge to fit option of mutlimedia box has no effect
+
+New Features
+------------
+
+* added Bahasa Indonesia to the list of supported languages
+* added Melayu to the list of supported languages
+* added Vietnamese to the list of supported languages
+
+================================================================================
+Release 3.3.11 - January 17, 2011
+================================================================================
+
+Bugfixes
+--------
+
+* accessing variables in the subjects table with only the scope operator in 
+  programs which have the owner variable set does not work
+* variables in session table are not initialized
+* moving the mouse triggers mouse enter events (plot input) even when the object
+  beneath the mouse cursor didn't change
+
+================================================================================
+Release 3.3.10 - January 6, 2011
+================================================================================
+
+Bugfixes
+--------
+
+* text layout in right-to-left languages
+* sound did not stop after hide of multimedia box
+
+================================================================================
+Release 3.3.9 - November 25, 2010
+================================================================================
+
+Bugfixes
+--------
+
+* programs attached to a chat box are not exported
+* scope operator is not allowed/recognized in layout
+* buttons (layout !button in input items) in old treatment don't work in recent
+  versions
+* items in grid boxes disappear in right-to-left languages
+
+================================================================================
+Release 3.3.8 - January 29, 2010
+================================================================================
+
+Bugfixes
+--------
+
+* plot pies can't be dragged
+* click in plot rects doesn't take filling and frame into account
+* program for table summary in the background leads to a z-Tree crash
+
+New Feature
+-----------
+
+* added magyar to the list of supported languages
+
+================================================================================
+Release 3.3.7 - April 1, 2009
+================================================================================
+
+Bugfixes
+--------
+
+* items with 'empty allowed' are not correctly handled after a checker dialog
+* '!text' option in plot axis will crash z-leaf
+
+Improvement
+-----------
+* plot box gets input focus only when it is clicked and when it contains key
+  input items (revises change in version 3.3.1)
+
+================================================================================
+Release 3.3.6 - December 15, 2008
+================================================================================
+
+Bugfixes
+--------
+
+* missing data in stages with single entry (follow up bugfix in 3.3.5)
+
+================================================================================
+Release 3.3.5 - December 10, 2008
+================================================================================
+
+Bugfixes
+--------
+
+* missing data in stages with single entry
+* revised redraw of contract list box
+
+================================================================================
+Release 3.3.4 - November 19, 2008
+================================================================================
+
+Bugfix
+------
+
+* replay w/o gamesafe only works in first period
+
+================================================================================
+Release 3.3.3 - November 11, 2008
+================================================================================
+
+Bugfixes
+--------
+
+* editing of a program clears the condition of the program
+  (introduced in version 3.3.0)
+* positioning of cursor in plot box
+
+================================================================================
+Release 3.3.2 - November 3, 2008
+================================================================================
+
+Improvement
+-----------
+
+* prevent later commands from overtaking each other
+
+================================================================================
+Release 3.3.1 - October 17, 2008
+================================================================================
+
+Bugfix
+------
+
+* contract list box is not redrawn when rows are removed from list box
+  (introduced in version 3.3.0)
+
+Improvements
+------------
+
+* plot box with input item gets input focus on mouse enter (key press events)
+* key press when plot box has input focus doesn't cause a beep
+* insering and moving of items in the stage tree has been revised
+  (i.e. new points are placed into the selected plot graph)
+
+================================================================================
+Release 3.3.0 - September 5, 2008
+================================================================================
+
+The file format for treatments has changed. Treatments created with this version
+can not be opened with older versions of z-Tree.
+
+Bugfixes
+--------
+
+* leaf crashes after frequent redraw of contract list box
+* tree crashes before writing the payment file if variables in a question on
+  the address form don't exist in the session table
+* export of contract list box (selected table not written)
+* export of chat box (newlines stripped from output text)
+* spelling mistakes in message on waiting screen (German)
+
+Improvements
+------------
+
+* replay w/o gamesafe (with option to fall back on old restart procedure)
+* contract list box is only redrawn when data has changed
+
+New Features
+------------
+
+* 'Table Loader' reads in table data from text files
+* 'Table Dumper' writes table data into a text file
+* 'External Program' starts programs (command line) on server or clients
+* bitmap image as background in plot rectangles
+* 'Slide Show' with 'Slide Sequence' and 'Slide'
+* option 'Rewind' in multimedia box
+* logging of errors occurred on the client (new 'logfile' table)
+
+================================================================================
+Release 3.2.12 - April 29, 2008
+================================================================================
+
+Bugfix
+------
+
+* value of output items not shown if initial value is assigned in a program of
+  a button or an active item
+
+Improvement
+-----------
+
+* prevent overwriting of files from pevious sessions
+
+================================================================================
+Release 3.2.11 - March 04, 2008
+================================================================================
+
+Bugfix
+------
+
+* z-tree crashes if first subject suffers losses
+
+================================================================================
+Release 3.2.10 - December 05, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* array variables in subjects table of first client are updated with default
+  values (Zeros) if more than one record changed
+* undefined variable in same() function crashes z-Tree
+
+================================================================================
+Release 3.2.9 - September 20, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* "Reload database" only loads the data for the first session array variable
+* array variables in input items may crash z-Tree
+* (default) value is not shown for input items
+
+================================================================================
+Release 3.2.8 - June 5, 2007
+================================================================================
+
+New Feature
+-----------
+
+* String variables in output items
+
+================================================================================
+Release 3.2.7 - May 21, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* Input is not processed if first stage in group has timeout -1 and some
+  subjects do not participate
+* “Clear Entry After OK” does not work
+* Expressions in size and position of boxes are not checked
+
+================================================================================
+Release 3.2.6 - May 10, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* Performance problems, gsf-File getting very big (messages are sent more than
+  once in stage groups)
+* OLDsubjects query in if statement doesn't work (handling of return type of if
+  statement)
+* Import function error (detecting start of comment)
+* Content of container box is covered by container window (box order)
+
+Improvement
+-----------
+
+* Evaluation of expressions connected by & or | stops as soon as the truth or
+  falsehood of the result is known
+
+New Feature
+-----------
+
+* Added Mongolian to the list of supported languages
+
+================================================================================
+Release 3.2.5 - April 24, 2007
+================================================================================
+
+Improvements
+------------
+
+* Beautified layout of radioline and radiolinelabel in questionnaires
+* Resizing options in multimedia box are available to videos
+
+================================================================================
+Release 3.2.4 - April 17, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* Questionnaire crash after import w/o save, close and reopen
+* After RepeatTreatment numPracticePeriods is negativ
+* Memory leak (messages sent to clients)
+
+Improvements
+------------
+
+* Size and position of program dialog is saved
+* Automatic silent checker to enforce unique contracts
+* Flicker-free drawing in plot window
+
+================================================================================
+Release 3.2.3 - March 7, 2007
+================================================================================
+
+Improvements
+------------
+
+* Size and position of boxes can be specified with expressions
+* Resizable program dialog
+
+================================================================================
+Release 3.2.2 - February 16, 2007
+================================================================================
+
+New Feature
+-----------
+
+* New options in Join Files... (ignore white space in keys, ignore leading zeros
+  in keys, store line w/o key)
+
+================================================================================
+Release 3.2.1 - February 12, 2007
+================================================================================
+
+Bugfixes
+--------
+
+* Variables are not transmitted to the clients if they are changed in a “start
+  if possible” stage program
+* Typos in set language
+
+================================================================================
+Release 3.2.0 - January 18, 2007
+================================================================================
+
+Improvement
+-----------
+
+* The box order was changed to "one on top of the previous". Compatibility is
+  guaranteed with a compatibility option in the background of the treatment.
+
+================================================================================
+Release 3.1.2 - January 2007
+================================================================================
+
+New Features
+------------
+
+See https://www.unizh.ch/iew/ztree/ssl-dir/wiki/index.php?n=Main.NewInVersion3

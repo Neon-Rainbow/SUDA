@@ -1,0 +1,8 @@
+220804_0837	1	globals	Period	NumPeriods	RepeatTreatment	gu	NumInGroup	rand_2	rand_1	N	NumGroups	
+220804_0837	1	globals	1	1	0	3	2	1	2	1	1	
+220804_0837	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N1	TimeContinueProfitDisplayOK	
+220804_0837	1	subjects	1	1	1	32	32	1	1.6	20	20	-48	20	1	0	
+220804_0837	1	summary	Period	
+220804_0837	1	summary	1	
+220804_0837	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220804_0837	1	session	1	32	0	0	0	32	32	

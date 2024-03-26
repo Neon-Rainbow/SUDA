@@ -1,0 +1,8 @@
+220723_1715	1	globals	Period	NumPeriods	RepeatTreatment	COOPERATE	DEFECT	PiCC	PiDD	PiCD	PiDC	IncProfit	
+220723_1715	1	globals	1	1	0	1	2	2	3	1	4	1	
+220723_1715	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	Decision	TimeOKDecisionOK	OthersDecision	TimeOKProfitDisplayOK	
+220723_1715	1	subjects	1	1	1	3	3	1	2	-122	0	6	
+220723_1715	1	summary	Period	
+220723_1715	1	summary	1	
+220723_1715	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220723_1715	1	session	1	3	0	0	0	3	3	
