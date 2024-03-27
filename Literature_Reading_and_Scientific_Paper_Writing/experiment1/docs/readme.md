@@ -36,12 +36,7 @@ M. Schuurmans, P. Sopasakis and P. Patrinos, "Safe Learning-Based Control of Sto
 
 引用格式:
 Niklas Åkerblom, Yuxin Chen, Morteza Haghir Chehreghani,
-Online learning of energy consumption for navigation of electric vehicles,
-Artificial Intelligence,
-Volume 317,
-2023,
-103879,
-ISSN 0004-3702,
+Online learning of energy consumption for navigation of electric vehicles,Artificial Intelligence,Volume 317,2023,103879,ISSN 0004-3702,
 https://doi.org/10.1016/j.artint.2023.103879.
 (https://www.sciencedirect.com/science/article/pii/S0004370223000255)
 Abstract: Energy efficient navigation constitutes an important challenge in electric vehicles, due to their limited battery capacity. We employ a Bayesian approach to model the energy consumption at road segments for efficient navigation. In order to learn the model parameters, we develop an online learning framework and investigate several exploration strategies such as Thompson Sampling and Upper Confidence Bound. We then extend our online learning framework to the multi-agent setting, where multiple vehicles adaptively navigate and learn the parameters of the energy model. We analyze Thompson Sampling and establish rigorous regret bounds on its performance in the single-agent and multi-agent settings, through an analysis of the algorithm under batched feedback. Finally, we demonstrate the performance of our methods via experiments on several real-world city road networks.
