@@ -1,6 +1,6 @@
 # 第一周
 
-## [基于网络化主动适应的鲁棒车辆保持车道控制](./Robust_Vehicle_Lane_Keeping_Control_with_Networked_Proactive_Adaptation.pdf)
+## [基于网络化主动适应的鲁棒车辆保持车道控制](../Robust_Vehicle_Lane_Keeping_Control_with_Networked_Proactive_Adaptation.pdf)
 
 文章来源:
 [链接](https://www.sciencedirect.com/science/article/abs/pii/S0004370223001662?via%3Dihub)
@@ -15,7 +15,7 @@ H. Kim, W. Wan, N. Hovakimyan, L. Sha and P. Voulgaris, "Robust Vehicle Lane Kee
 
 ---
 
-## [随机跳跃线性系统的安全学习控制：一种分布鲁棒方法](./Safe_Learning-Based_Control_of_Stochastic_Jump_Linear_Systems_a_Distributionally_Robust_Approach.pdf)
+## [随机跳跃线性系统的安全学习控制：一种分布鲁棒方法](../Safe_Learning-Based_Control_of_Stochastic_Jump_Linear_Systems_a_Distributionally_Robust_Approach.pdf)
 文章来源:
 [链接](https://www.sciencedirect.com/science/article/abs/pii/S0004370223000668?via%3Dihub)
 [Artificial Intelligence, Volume 320](https://dblp.uni-trier.de/db/journals/ai/ai320.html)
@@ -28,7 +28,7 @@ M. Schuurmans, P. Sopasakis and P. Patrinos, "Safe Learning-Based Control of Sto
 
 ---
 
-## [电动车辆导航中能耗的在线学习](./Online_learning_of_energy_consumption_for_navigation_of_electric_vehicles.pdf)
+## [电动车辆导航中能耗的在线学习](../Online_learning_of_energy_consumption_for_navigation_of_electric_vehicles.pdf)
 文章来源:
 [链接](https://www.sciencedirect.com/science/article/pii/S0004370223000255?via%3Dihub)
 [Artificial Intelligence, Volume 317](https://dblp.uni-trier.de/db/journals/ai/ai317.html)
@@ -44,7 +44,7 @@ Keywords: Energy efficient navigation; Online learning; Multi-armed bandits; Tho
 
 ---
 
-## [自动驾驶中的奖励(误)设计](./Reward%20(Mis)design%20for%20autonomous%20driving.pdf)
+## [自动驾驶中的奖励(误)设计](../Reward%20(Mis)design%20for%20autonomous%20driving.pdf)
 文章来源:
 [链接](https://www.sciencedirect.com/science/article/pii/S0004370222001692?via%3Dihub)
 [Artificial Intelligence, Volume 316](https://dblp.uni-trier.de/db/journals/ai/ai316.html)
@@ -66,7 +66,7 @@ Keywords: Reinforcement learning; Reward design; Utility; Cost; Safety; Risk; Au
 
 ---
 
-## [卫星车辆感知](Vehicle_Perception_From_Satellite)
+## [卫星车辆感知](../Vehicle_Perception_From_Satellite)
 文章来源:
 [链接](https://ieeexplore.ieee.org/document/10330623)
 [TPAMI Volume 46: 2024](https://dblp.uni-trier.de/db/journals/pami/pami46.html)
@@ -77,7 +77,7 @@ keywords: {Satellites;Videos;Task analysis;Object detection;Surveillance;Traffic
 
 ---
 
-## [视觉重建和导航的仅姿势解决方案](./A_Pose-Only_Solution_to_Visual_Reconstruction_and_Navigation.pdf)
+## [视觉重建和导航的仅姿势解决方案](../A_Pose-Only_Solution_to_Visual_Reconstruction_and_Navigation.pdf)
 来源:
 [链接](https://ieeexplore.ieee.org/document/9667245)
 [TPAMI Volume 45: 2023](https://dblp.uni-trier.de/db/journals/pami/pami45.html)
@@ -89,7 +89,7 @@ keywords: {Three-dimensional displays;Cameras;Geometry;Visualization;Optimizatio
 
 ---
 
-## [DoTA：驾驶视频中交通异常的无监督检测](./DoTA_Unsupervised_Detection_of_Traffic_Anomaly_in_Driving_Videos.pdf)
+## [DoTA：驾驶视频中交通异常的无监督检测](../DoTA_Unsupervised_Detection_of_Traffic_Anomaly_in_Driving_Videos.pdf)
 来源:
 [链接](https://ieeexplore.ieee.org/document/9712446)
 [TPAMI Volume 45: 2023](https://dblp.uni-trier.de/db/journals/pami/pami45.html)
@@ -101,7 +101,7 @@ keywords: {Videos;Measurement;Cameras;Annotations;Benchmark testing;Anomaly dete
 
 ---
 
-## [道路: 自主驾驶的道路事件意识数据集](./ROAD_The_Road_Event_Awareness_Dataset_for_Autonomous_Driving.pdf)
+## [道路: 自主驾驶的道路事件意识数据集](../ROAD_The_Road_Event_Awareness_Dataset_for_Autonomous_Driving.pdf)
 来源:
 [链接](https://ieeexplore.ieee.org/document/9712346)
 [TPAMI Volume 45: 2023](https://dblp.uni-trier.de/db/journals/pami/pami45.html)
@@ -113,7 +113,7 @@ keywords: {Roads;Autonomous vehicles;Task analysis;Videos;Benchmark testing;Deci
 
 ---
 
-## [基于 Deep Q 学习的自主驾驶系统](./Autonomous_Driving_System_based_on_Deep_Q_Learnig.pdf)
+## [基于 Deep Q 学习的自主驾驶系统](../Autonomous_Driving_System_based_on_Deep_Q_Learnig.pdf)
 
 来源:
 [链接](https://ieeexplore.ieee.org/document/8494053)
@@ -124,7 +124,7 @@ T. Okuyama, T. Gonsalves and J. Upadhay, "Autonomous Driving System based on Dee
 
 ---
 
-## [自主驾驶系统: 基于模型的安全性分析](./Autonomous_Driving_System__Model_Based_Safety_Analysis.pdf)
+## [自主驾驶系统: 基于模型的安全性分析](../Autonomous_Driving_System__Model_Based_Safety_Analysis.pdf)
 
 来源:
 [链接](https://ieeexplore.ieee.org/document/8416197)
