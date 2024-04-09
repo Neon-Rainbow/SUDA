@@ -7,6 +7,8 @@
 [Artificial Intelligence, Volume 325](https://dblp.uni-trier.de/db/journals/ai/ai325.html)
 [Artificial Intelligence, Volume 325](https://www.sciencedirect.com/journal/artificial-intelligence/vol/325/suppl/C)
 
+[文章的原始版本](https://arxiv.org/abs/2009.12349)
+
 
 引用格式:
 H. Kim, W. Wan, N. Hovakimyan, L. Sha and P. Voulgaris, "Robust Vehicle Lane Keeping Control with Networked Proactive Adaptation," 2021 American Control Conference (ACC), New Orleans, LA, USA, 2021, pp. 136-141, doi: 10.23919/ACC50511.2021.9482669. keywords: {Uncertainty;Roads;Measurement uncertainty;Weather forecasting;Information filters;Robustness;Ice},

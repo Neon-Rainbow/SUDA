@@ -1,0 +1,68 @@
+\usepackage{cite}
+
+\usepackage[framemethod=tikz]{mdframed}
+\newenvironment{editing}{\begin{mdframed}[hidealllines=false,backgroundcolor=black!15] \noindent{ \it Editing}:\\ \ }{\end{mdframed}}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linktoc=all,
+	linkcolor=blue, %blue,
+	citecolor=blue
+}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm,algorithmicx,algpseudocode}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mwe}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\definecolor{Blue}{RGB}{88, 105, 225}
+\definecolor{QOrange}{RGB}{255, 153, 51}
+\definecolor{Orange}{RGB}{255, 153, 50}
+\newcommand{\Orange}[1]{\color{Orange} #1}
+\newcommand{\Blue}[1]{\color{Blue} #1}
+\newcommand{\bO}[1]{\bf \color{QOrange} #1}
+\usepackage{dsfont}
+\usepackage{bbm}
+
+
+\DeclareMathOperator{\arginf}{arg\,inf}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\argmax}{arg\,max}
+\DeclareMathOperator{\argsup}{arg\,sup}
+\DeclareMathOperator*{\diag}{\textit{diag}}
+\DeclareMathOperator*{\trace}{\textit{tr}}
+\DeclareMathOperator*{\rank}{\textit{rk}}
+
+\newtheorem{theorem}{\bf Theorem}[section]
+\newtheorem{lemma}{\bf Lemma}[section]
+\newtheorem{definition}{\bf Definition}[section]
+\newtheorem{remark}{\bf Remark}[section]
+\newtheorem{corollary}{\bf Corollary}[section]
+\newtheorem{proposition}{\bf Proposition}[section]
+\newtheorem{assumption}{\bf Assumption}[section]
+\newtheorem{information}{\bf Information}[section]
+\newtheorem{problem}{\bf Problem}[section]
+
+\newcommand{\nnum}{\nonumber}
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\newcommand{\blue}[1]{\color{blue} #1}
+\newcommand{\red}[1]{\color{red} #1}
+
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\II}{\mathbb{I}}
+\algnewcommand{\LineComment}[1]{\Statex \(\triangleright\) #1}
+
+\newcommand\oprocendsymbol{\hbox{$\blacksquare$}}
+\newcommand\oprocend{\relax\ifmmode\else\unskip\hfill\fi\oprocendsymbol}
+\def\eqoprocend{\tag*{$\blacksquare$}}
+
+%\pagestyle{empty} % stops the pages being numbered
+% \pagestyle{plain} % this is the default; it puts the numbers at the bottom of the page
+%\pagestyle{headings} % puts the numbers at the top of the page; the precise style and content depends on the document class
+%\pagenumbering{roman} % numbers pages using Roman numerals; use arabic to switch it back
