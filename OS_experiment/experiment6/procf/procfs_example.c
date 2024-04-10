@@ -119,7 +119,7 @@ static int __init init_procfs_example(void) {
     strcpy(foo_data.value, "foo");
     foo_len = strlen(foo_data.name) + strlen(foo_data.value);
     foo_temp = foo_len + 4;
-    foo_file = proc_create("foo", 0666, example_dir, &foo_proc_ops);
+    foo_file = proc_create("foo", 0444, example_dir, &foo_proc_ops);
     if (!foo_file)
         goto out_foo;
 
@@ -127,7 +127,7 @@ static int __init init_procfs_example(void) {
     strcpy(bar_data.value, "bar");
     bar_len = strlen(bar_data.name) + strlen(bar_data.value);
     bar_temp = bar_len + 4;
-    bar_file = proc_create("bar", 0666, example_dir, &bar_proc_ops);
+    bar_file = proc_create("bar", 0444, example_dir, &bar_proc_ops);
     if (!bar_file)
         goto out_bar;
 
