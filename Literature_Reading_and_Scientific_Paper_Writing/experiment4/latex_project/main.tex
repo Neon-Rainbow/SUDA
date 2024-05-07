@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{titling}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+
+\begin{document}
+
+\title{自动驾驶的能效提升}
+\author{方浩楠 2127405048}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+随着自动驾驶技术的迅速发展，如何实现更高效、安全的自动驾驶车辆成为研究的热点。
+本文综合多篇关于自动驾驶的学术论文,探讨了自动驾驶系统中深度Q学习的应用、奖励系统设计的优化以及自动驾驶车辆的能耗学习等方向。
+本文旨在为自动驾驶车辆的发展提供一个多角度、多维度的科学研究视角，为未来自动驾驶技术的发展提供理论支持和实践指导。
+\end{abstract}
+
+关键词:自动驾驶,深度Q学习,奖励系统,能耗学习
+
+
+\title{Improved energy efficiency of autonomous driving}
+\author{Haonan Fang 2127405048}
+\date{\today}
+\maketitle
+\begin{abstract}
+With the rapid development of autonomous driving technology, how to achieve more efficient and safe autonomous vehicles has become a research hotspot.
+Based on several academic papers on autonomous driving, this paper discusses the application of deep Q learning in autonomous driving system, optimization of reward system design and energy consumption learning of autonomous driving vehicle.
+This paper aims to provide a multi-angle and multi-dimensional scientific research perspective for the development of autonomous vehicles, and provide theoretical support and practical guidance for the development of autonomous driving technology in the future.
+\end{abstract}
+
+Keyword:Autonomous driving, deep Q learning, reward systems, energy learning
+
+\section{引言}
+自动驾驶汽车一直是最活跃的研究领域之一\cite{paden2016survey}近年来自动驾驶发展迅速,同时,自动驾驶的安全性成了许多人的考虑范围.
+而自动驾驶汽车多为新能源电动汽车.
+如今，电动汽车在许多不同的交通系统中发挥着快速增长的作用。然而，适用性电动汽车的发展常常受到电池容量有限的限制。
+由于历史上的高成本在电池方面，电动汽车的续航里程通常比传统汽车短得多。
+这导致了对电池耗尽时被困的恐惧，这种效应被称为“里程焦虑”。
+这些担忧可能是通过改进这些系统的导航算法和路线规划方法来缓解这一问题。\cite{AKERBLOM2023103879}.
+同时我们还可以根据强化学习,强化学习等方式来增加自动驾驶的精准度,来降低人们对自动驾驶的顾虑
+
+在日本,政府已经拨出巨额资金,使自动驾驶技术成为2020年奥运会的现实,因为它被认为是安全高效的交通方式。
+虽然一辆功能齐全的自动驾驶汽车还有很长的路要走，但世界上大多数主要的汽车制造商已经达到了开发自动驾驶汽车的高级阶段。
+然而，目前的自动驾驶非常昂贵，因为它往往依赖高度专业化的基础设施和设备，如用于导航的光探测和测距(LIDAR)、用于定位的全球定位系统(GPS)和用于障碍物检测的激光测距仪(LRF)\cite{Aly2008RealTD}
+
+因此如何完善自动驾驶,降低成本,增加安全性,增加效率成为了本文即将讨论的重点.
+本文将探讨自动驾驶汽车的当前技术和挑战，尤其是在学习算法、奖励系统设计以及能效管理方面的最新进展，以期为未来自动驾驶汽车的安全、可靠和经济高效运行提供见解和解决方案。
+
+\subsection{相关工作}
+自动驾驶汽车的研究已经有很多年了,而且在不同的国家都有不同的研究方向.
+深度Q网络(Deep Q Network, DQN)是强化学习的一种形式.我们可以使用DNQ来训练自动驾驶汽车,使其能够在不同的环境下做出正确的决策.
+其中,CNN的输出不是分类,而是对输入产生的动作给予的Q值(奖励)。DQN代理直接学习成功的策略
+从高维感官输入使用端到端强化学习。最近，DQN在经典Atari 2600游戏的挑战领域取得了成功\cite{mnih2015human}。人类驾驶的大量标记数据
+是训练任何自主派生系统所必需的。DQN学习使代理能够从自己的行为中学习，而不是从标记的数据中学习。经过几个小时的训练，它
+学习在车道之间平稳驾驶，并仅通过视觉信息输入来避开障碍物。\cite{8494053}
+
+\section{研究现状}
+在\cite{AKERBLOM2023103879}中,作者在描述我们如何建模道路网络和影响能量的不同因素,以及车辆穿越特定路段的消耗量。然后概述了两种不同的贝叶斯方法将确定性能源消耗模型扩展到概率设置。
+这篇文章提出了一个关于电动车辆能效导航的新型在线学习框架。在这个设定中，道路段的车辆能耗被假设为随机的，并且相应的分布事先未知。通过利用车辆能耗的物理模型来指定贝叶斯乐手算法（如汤普森采样和BayesUCB）的先验分布参数，从而智能地引导必要的探索朝向合理的路径。多臂老虎机问题可以视为资源分配问题，因此在数据收集代理数量有限的情况下，乐手算法尤其有用。
+尽管路网中的行驶时间既是随机的也是最短路径问题中常见的边权重，但从各种来源（例如，来自手机设备）可以获取大量的行驶时间数据。然而，对于车辆能耗，因为能耗严重依赖于所使用的具体车型，需要内部车辆传感器来收集数据。此外，能耗还取决于所行驶道路的特性，如坡度、曲率、凹凸等。因此，这是一个非常适合应用贝叶斯乐手算法的问题设置。
+虽然多个关于贝叶斯组合乐手算法的研究已经通过使用非信息性先验进行了实证评估，但使用信息性先验来更有效地探索组合武器集的实验较少。我们不仅在实验中使用信息性先验，还通过地理空间图的视觉检查来研究道路网络的探索。此外，我们还实验评估了所提框架对先验错误指定的鲁棒性。我们针对多个城市的道路网络进行了实验，使用了现实的交通环境数据。
+并且没有先前的作品分析过批量组合汤普森采样的贝叶斯遗憾。我们还将分析扩展到同步多代理设置。虽然有关于批量线性上下文乐手（例如，UCB在\cite{han2020sequential}和\cite{ren2020batched}中）的先前工作，但组合乐手问题只是对于线性奖励函数的线性乐手问题的一个特殊案例。然而，我们的技术可扩展用于非线性奖励函数，如在\cite{aakerblom2023online}中所用，其中组合汤普森采样被用来解决寻找最大化其最大边权重的路径的问题。
+最后，这是首个将BayesUCB算法\cite{kaufmann2012bayesian}扩展并评估应用于在线最短路径问题的工作，实证显示了该算法在这一问题设置中的良好表现。
+
+这篇文章里开发了一个在线学习框架，以适应性地探索能源模型的参数，并连续解决在不同时间步骤上的导航优化问题。
+所谓时间步，是指我们每次选择并遍历一条路径的过程。初始时，道路段的具体能耗及模型参数并不明确，
+因此，\cite{AKERBLOM2023103879}从对这些参数的初步估计开始，用以解决当前的导航任务。
+随后，基于在实际导航中所观测到的能耗数据，更新这些参数以优化后续的导航任务。
+
+具体的算法步骤在算法 \ref{alg:online_algorithm} 中有详细描述，
+其中涉及能量模型参数如何根据观测数据进行更新的过程，则在算法 \ref{alg:gaussian_update_parameters} 中进行了阐释。
+在算法 \ref{alg:online_algorithm} 中，向量 $\bm{\mu}{t-1}$ 和 $\bm{\varsigma}{t-1}$ 表示当前时间步 $t$ 所有道路段的能源模型后验参数，
+这些参数用来计算当前的道路权重向量 $\bm{w}_t$。
+
+文中选择使用 $\bm{w}_t$ 来解决优化问题，并确定最优路径 $\bm{a}_t$，即多臂老虎机问题中的“手臂”。
+实施该行动后，我们将观测到包含每条道路段实际能耗的奖励 $r_t(\bm{a}_t)$。假设每条道路的能耗分布在时间上是固定的，期望奖励为 $\mathbb{E}[r (\bm{a}_t)]$。
+
+鉴于目标是最小化能耗，因此该文章选择将观测到的能耗视为负奖励，并据此更新模型参数。总的时间步数用 $T$ 表示，有时也称为“视界”。
+
+为了评估这个学习算法的性能，文中考察了其遗憾值，即按照算法行动与始终执行最优行动之间的期望奖励差额。
+具体而言，时间 $t$ 的即时遗憾定义为 $\Delta_t := \mathbb{E}[r (\bm{a}^*)] - \mathbb{E}[r (\bm{a}_t)]$，
+其中 $\bm{a}^*$ 是使期望奖励最大化的行动。累积遗憾定义为 $\text{Regret}(T) := \sum_{t=1}^T \Delta_t$.
+在采用贝叶斯方法的框架中，我们还需计算贝叶斯遗憾，即 $\text{BayesRegret}(T) := \mathbb{E}[\text{Regret}(T)]$，它是基于先验分布的问题实例上遗憾的期望值。\cite{AKERBLOM2023103879}
+
+\begin{algorithm}[tb]
+	\caption{在线学习节能导航}
+	\label{alg:online_algorithm}
+	\begin{algorithmic}[1]
+	\Require $\bm{\mu}_0, \bm{\varsigma}_0$
+	\For{$t \leftarrow 1, \dots, T$}
+		\label{row:optimization_objective}\State $\bm{w}_t \leftarrow $ \Call{GetEdgeWeights}{$t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
+		\label{row:optimization_solution}\State $\bm{a}_t \leftarrow $ \Call{SolveOptimizationToFindAction}{$\bm{w}_t$}
+		\label{row:apply_action}\State $\bm{r}_t \leftarrow $ \Call{ApplyActionAndObserveReward}{$\bm{a}_t$}
+		\label{row:update_parameters}\State $\bm{\mu}_{t}, \bm{\varsigma}_{t} \leftarrow $ \Call{UpdateParameters}{$\bm{a}_t, \bm{r}_t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
+	\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[tb]
+	\caption{能量模型的高斯参数更新}
+	\label{alg:gaussian_update_parameters}
+	\begin{algorithmic}[1]
+	\Procedure{UpdateParameters}{$\bm{a}_t, \bm{r}_t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
+	\For{each edge $e \in \bm{a}_t$}
+	\State $\varsigma_{e,t}^2 \leftarrow \left(\frac{1}{\varsigma_{e,t-1}^2} + \frac{1}{\sigma_{e}^2}\right)^{-1}$
+	\State $\mu_{e,t} \leftarrow \varsigma_{e,t}^2 \left( \frac{\mu_{e,t-1}}{\varsigma_{e,t-1}^2} + \frac{r_t(e)}{\sigma^2_e}\right)$
+	\EndFor
+	\State \Return $\bm{\mu}_{t}, \bm{\varsigma}_{t}$
+	\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\section{未来展望}
+在未来的研究中,我们可以进一步研究如何将深度Q学习应用到自动驾驶汽车中,以提高自动驾驶汽车的性能.随着自动驾驶技术的发展，未来的研究可以从以下几个方向进行深入：
+
+\subsection{算法与模型的融合与创新}
+尽管深度Q学习在决策过程中已显示出其有效性，我们预计通过与其他机器学习技术如卷积神经网络（CNN）或递归神经网络（RNN）的结合，可以进一步优化决策过程。例如，使用CNN处理视觉输入以识别路况和障碍物，而RNN可以用来处理时间序列数据，以预测交通流量和车辆动态。
+\subsection{能效优化的深层研究}
+当前研究已涉及到如何通过算法优化能源消耗，未来可以在此基础上，探索更多维度的能源管理策略，如考虑不同气候条件和路面状况下的能源效率，以及如何在车队管理中实施这些策略。
+\subsection{实验与实际应用}
+理论研究和算法开发后，进行实地测试至关重要。建议设计一系列基于模拟环境的实验，进而在封闭道路或指定测试区域进行现实世界的试验，以验证算法在实际驾驶场景中的表现和可靠性。
+\subsection{跨领域的应用研究}
+探索深度Q学习在自动驾驶以外领域的应用，例如无人物流、自动化仓储系统等，这些领域对自动化和精确控制的需求日益增加。
+\subsection{伦理与法律研究}
+自动驾驶技术的推广不仅是技术问题，还涉及伦理和法律问题。
+当前有关自动驾驶汽车伦理困境的讨论主要与道德哲学中著名的“电车难题”相关。
+“电车难题”是由哲学家Philippa Foot于1967年提出的著名思想实验，用以批判功利主义，其基本设定是：你可以通过变轨使一辆失控的电车撞向一个人或者不变轨使电车撞向5个人。
+在后来的几十年时间里，道德哲学家发展出了大量变体。而如果一辆自动驾驶汽车也面临类似不可规避的交通事故，AI系统会选择撞向谁？应该牺牲车内乘客还是路上行人？
+2015年Mitchell Waldrop在《自然》发表的报告显示：如果事故不可避免，多数人不愿将选择权交由机器。如果没有明确的伦理规则出台以指导无人驾驶汽车的事故决策，将很难改变用户目前的不信任状态，甚至可能导致人们拒绝购买自动驾驶汽车。\cite{waldrop2015no}
+因此，界定自动价值汽车伦理规范已经迫在眉睫，但当前的理论研究尚处于起步阶段。\cite{白惠仁2018自动驾驶汽车的伦理}
+研究如何制定合理的政策和法规，确保自动驾驶技术的发展既符合道德标准，又符合法律规定，尤其是在处理可能的事故和责任归属时。
+
+通过上述方向的探索，未来的研究将有望在提高自动驾驶汽车的性能、安全性和能效方面取得重要进展。同时，这些研究将有助于自动驾驶技术的广泛应用，推动相关行业的进一步发展。
+
+\section{写作心得}
+本文主要讨论了自动驾驶汽车的能效提升问题,并且从多个角度进行了分析,包括深度Q学习,奖励系统设计,能耗学习等方面.
+在撰写这篇关于自动驾驶汽车能效提升的论文的过程中,我遇到了许多挑战和收获。
+首先,我需要收集研究资料,因为自动驾驶是一个跨学科的领域,涉及到机器学习、能源管理和电子工程等多个领域。
+通过仔细阅读多篇学术论文和技术报告,我了解到自动驾驶的技术框架和关键问题。
+
+接下来,深度 Q 学习模型的应用是本文的核心之一。为了解释深度 Q 学习如何优化自动驾驶系统的决策过程,我不仅需要了解相关技术细节,还需要能够简明扼要地解释这些复杂的概念。
+通过资料的查阅,我逐渐改进了论文的表述方式,使其更加清晰易懂。
+
+最后,关于写作风格和结构的安排,我努力使文章的结构清晰且逻辑严密。通过多次修改,我了解到如何更有效地组织学术论文,使每个部分都紧密联系在一起,逻辑流畅。
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\end{document}
+
+

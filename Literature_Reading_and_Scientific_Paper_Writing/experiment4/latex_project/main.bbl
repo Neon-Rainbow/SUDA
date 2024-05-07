@@ -1,0 +1,58 @@
+\begin{thebibliography}{10}
+
+\bibitem{paden2016survey}
+Brian Paden, Michal {\v{C}}{\'a}p, Sze~Zheng Yong, Dmitry Yershov, and Emilio Frazzoli.
+\newblock A survey of motion planning and control techniques for self-driving urban vehicles.
+\newblock {\em IEEE Transactions on Intelligent Vehicles}, 1(1):33--55, 2016.
+
+\bibitem{AKERBLOM2023103879}
+Niklas Åkerblom, Yuxin Chen, and Morteza {Haghir Chehreghani}.
+\newblock Online learning of energy consumption for navigation of electric vehicles.
+\newblock {\em Artificial Intelligence}, 317:103879, 2023.
+
+\bibitem{Aly2008RealTD}
+Mohamed Aly.
+\newblock Real time detection of lane markers in urban streets.
+\newblock {\em 2008 IEEE Intelligent Vehicles Symposium}, pages 7--12, 2008.
+
+\bibitem{mnih2015human}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A Rusu, Joel Veness, Marc~G Bellemare, Alex Graves, Martin Riedmiller, Andreas~K Fidjeland, Georg Ostrovski, et~al.
+\newblock Human-level control through deep reinforcement learning.
+\newblock {\em nature}, 518(7540):529--533, 2015.
+
+\bibitem{8494053}
+Takafumi Okuyama, Tad Gonsalves, and Jaychand Upadhay.
+\newblock Autonomous driving system based on deep q learnig.
+\newblock In {\em 2018 International Conference on Intelligent Autonomous Systems (ICoIAS)}, pages 201--205, 2018.
+
+\bibitem{han2020sequential}
+Yanjun Han, Zhengqing Zhou, Zhengyuan Zhou, Jose Blanchet, Peter~W Glynn, and Yinyu Ye.
+\newblock Sequential batch learning in finite-action linear contextual bandits.
+\newblock {\em arXiv preprint arXiv:2004.06321}, 2020.
+
+\bibitem{ren2020batched}
+Zhimei Ren, Zhengyuan Zhou, and Jayant~R Kalagnanam.
+\newblock Batched learning in generalized linear contextual bandits with general decision sets.
+\newblock {\em IEEE Control Systems Letters}, 6:37--42, 2020.
+
+\bibitem{aakerblom2023online}
+Niklas {\AA}kerblom, Fazeleh~Sadat Hoseini, and Morteza Haghir~Chehreghani.
+\newblock Online learning of network bottlenecks via minimax paths.
+\newblock {\em Machine Learning}, 112(1):131--150, 2023.
+
+\bibitem{kaufmann2012bayesian}
+Emilie Kaufmann, Olivier Capp{\'e}, and Aur{\'e}lien Garivier.
+\newblock On bayesian upper confidence bounds for bandit problems.
+\newblock In {\em Artificial intelligence and statistics}, pages 592--600. PMLR, 2012.
+
+\bibitem{waldrop2015no}
+M~Mitchell Waldrop et~al.
+\newblock No drivers required.
+\newblock {\em Nature}, 518(7537):20, 2015.
+
+\bibitem{白惠仁2018自动驾驶汽车的伦理}
+白惠仁.
+\newblock 自动驾驶汽车的伦理, 法律与社会问题研究述评.
+\newblock {\em 科学与社会}, 8(1):72--87, 2018.
+
+\end{thebibliography}
