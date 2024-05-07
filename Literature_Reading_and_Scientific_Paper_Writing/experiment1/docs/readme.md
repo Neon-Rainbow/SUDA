@@ -31,6 +31,7 @@ M. Schuurmans, P. Sopasakis and P. Patrinos, "Safe Learning-Based Control of Sto
 ---
 
 ## [电动车辆导航中能耗的在线学习](../Online_learning_of_energy_consumption_for_navigation_of_electric_vehicles.pdf)
+
 文章来源:
 [链接](https://www.sciencedirect.com/science/article/pii/S0004370223000255?via%3Dihub)
 [Artificial Intelligence, Volume 317](https://dblp.uni-trier.de/db/journals/ai/ai317.html)
