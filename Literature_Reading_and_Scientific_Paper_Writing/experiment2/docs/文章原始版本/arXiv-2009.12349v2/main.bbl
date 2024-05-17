@@ -1,0 +1,195 @@
+\begin{thebibliography}{10}
+
+\bibitem{paden2016survey}
+B.~Paden, M.~{\v{C}}{\'a}p, S.~Z. Yong, D.~Yershov, and E.~Frazzoli, ``A survey
+  of motion planning and control techniques for self-driving urban vehicles,''
+  {\em IEEE Transactions on Intelligent Vehicles}, vol.~1, no.~1, pp.~33--55,
+  2016.
+
+\bibitem{roe1998high}
+P.~Roe, A.~Parry, and H.~Viner, ``High and low speed skidding resistance: The
+  influence of texture depth,'' Tech. Rep. Transport Research Laboratory Report
+  367, Crowthorne, Berkshire, 1998.
+
+\bibitem{falcone2007predictive}
+P.~Falcone, F.~Borrelli, J.~Asgari, H.~E. Tseng, and D.~Hrovat, ``Predictive
+  active steering control for autonomous vehicle systems,'' {\em IEEE
+  Transactions on Control Systems Technology}, vol.~15, no.~3, pp.~566--580,
+  2007.
+
+\bibitem{funke2016collision}
+J.~Funke, M.~Brown, S.~M. Erlien, and J.~C. Gerdes, ``Collision avoidance and
+  stabilization for autonomous vehicles in emergency scenarios,'' {\em IEEE
+  Transactions on Control Systems Technology}, vol.~25, no.~4, pp.~1204--1216,
+  2016.
+
+\bibitem{williams2018best}
+G.~Williams, B.~Goldfain, P.~Drews, J.~M. Rehg, and E.~A. Theodorou, ``Best
+  response model predictive control for agile interactions between autonomous
+  ground vehicles,'' in {\em IEEE International Conference on Robotics and
+  Automation}, pp.~2403--2410, 2018.
+
+\bibitem{carvalho2014stochastic}
+A.~Carvalho, Y.~Gao, S.~Lefevre, and F.~Borrelli, ``Stochastic predictive
+  control of autonomous vehicles in uncertain environments,'' in {\em 12th
+  International Symposium on Advanced Vehicle Control}, pp.~712--719, 2014.
+
+\bibitem{na2020disturbance}
+G.~Na, G.~Park, V.~Turri, K.~H. Johansson, H.~Shim, and Y.~Eun, ``Disturbance
+  observer approach for fuel-efficient heavy-duty vehicle platooning,'' {\em
+  Vehicle System Dynamics}, vol.~58, no.~5, pp.~748--767, 2020.
+
+\bibitem{bertoni2017adaptive}
+L.~Bertoni, J.~Guanetti, M.~Basso, M.~Masoero, S.~Cetinkunt, and F.~Borrelli,
+  ``An adaptive cruise control for connected energy-saving electric vehicles,''
+  {\em IFAC-PapersOnLine}, vol.~50, no.~1, pp.~2359--2364, 2017.
+
+\bibitem{kamal2012model}
+M.~A.~S. Kamal, M.~Mukai, J.~Murata, and T.~Kawabe, ``Model predictive control
+  of vehicles on urban roads for improved fuel economy,'' {\em IEEE
+  Transactions on control systems technology}, vol.~21, no.~3, pp.~831--841,
+  2012.
+
+\bibitem{hewing2019cautious}
+L.~Hewing, J.~Kabzan, and M.~N. Zeilinger, ``Cautious model predictive control
+  using {G}aussian process regression,'' {\em IEEE Transactions on Control
+  Systems Technology}, 2019.
+
+\bibitem{rosolia2017learning}
+U.~Rosolia and F.~Borrelli, ``Learning model predictive control for iterative
+  tasks. a data-driven control framework,'' {\em IEEE Transactions on Automatic
+  Control}, vol.~63, no.~7, pp.~1883--1896, 2017.
+
+\bibitem{rosolia2017robust}
+U.~Rosolia, X.~Zhang, and F.~Borrelli, ``Robust learning model predictive
+  control for iterative tasks: Learning from experience,'' in {\em IEEE
+  Conference on Decision and Control}, pp.~1157--1162, 2017.
+
+\bibitem{miller2002adaptive}
+R.~Miller and Q.~Huang, ``An adaptive peer-to-peer collision warning system,''
+  in {\em Vehicular Technology Conference. IEEE 55th Vehicular Technology
+  Conference. VTC Spring 2002 (Cat. No. 02CH37367)}, vol.~1, pp.~317--321,
+  2002.
+
+\bibitem{biswas2006vehicle}
+S.~Biswas, R.~Tatchikou, and F.~Dion, ``Vehicle-to-vehicle wireless
+  communication protocols for enhancing highway traffic safety,'' {\em IEEE
+  Communications Magazine}, vol.~44, no.~1, pp.~74--82, 2006.
+
+\bibitem{hafner2013cooperative}
+M.~R. Hafner, D.~Cunningham, L.~Caminiti, and D.~Del~Vecchio, ``Cooperative
+  collision avoidance at intersections: Algorithms and experiments,'' {\em IEEE
+  Transactions on Intelligent Transportation Systems}, vol.~14, no.~3,
+  pp.~1162--1175, 2013.
+
+\bibitem{cao2008design}
+C.~Cao and N.~Hovakimyan, ``Design and analysis of a novel $\mathcal{L}_1$
+  adaptive control architecture with guaranteed transient performance,'' {\em
+  IEEE Transactions on Automatic Control}, vol.~53, no.~2, pp.~586--591, 2008.
+
+\bibitem{hovakimyan2010L1}
+N.~Hovakimyan and C.~Cao, {\em $\mathcal{L}_1$ Adaptive Control Theory:
+  Guaranteed Robustness with Fast Adaptation}.
+\newblock SIAM, 2010.
+
+\bibitem{pravitra2020l1}
+J.~Pravitra, K.~A. Ackerman, C.~Cao, N.~Hovakimyan, and E.~A. Theodorou,
+  ``$\mathcal{L}_1$-adaptive {MPPI} architecture for robust and agile control
+  of multirotors,'' {\em arXiv preprint arXiv:2004.00152}, 2020.
+
+\bibitem{lakshmanan2020safe}
+A.~Lakshmanan, A.~Gahlawat, and N.~Hovakimyan, ``Safe feedback motion planning:
+  A contraction theory and $\mathcal{L}_1$-adaptive control based approach,''
+  {\em IEEE Conference on Decision and Control}, 2020, accepted.
+
+\bibitem{gahlawat2020mathcal}
+A.~Gahlawat, A.~Lakshmanan, L.~Song, A.~Patterson, Z.~Wu, N.~Hovakimyan, and
+  E.~Theodorou, ``$\mathcal{RL}_1$-$\mathcal{GP}$: Safe simultaneous learning
+  and control,'' {\em arXiv preprint arXiv:2009.03864}, 2020.
+
+\bibitem{shirazi2017mathcal}
+M.~M. Shirazi and A.~B. Rad, ``$\mathcal{L}_1$ adaptive control of vehicle
+  lateral dynamics,'' {\em IEEE Transactions on Intelligent Vehicles}, vol.~3,
+  no.~1, pp.~92--101, 2017.
+
+\bibitem{evensen2009data}
+G.~Evensen, {\em Data assimilation: the ensemble {K}alman filter}.
+\newblock Springer Science \& Business Media, 2009.
+
+\bibitem{hunt2007efficient}
+B.~R. Hunt, E.~J. Kostelich, and I.~Szunyogh, ``Efficient data assimilation for
+  spatiotemporal chaos: A local ensemble transform {K}alman filter,'' {\em
+  Physica D: Nonlinear Phenomena}, vol.~230, no.~1-2, pp.~112--126, 2007.
+
+\bibitem{cressie2010fixed}
+N.~Cressie, T.~Shi, and E.~L. Kang, ``Fixed rank filtering for spatio-temporal
+  data,'' {\em Journal of Computational and Graphical Statistics}, vol.~19,
+  no.~3, pp.~724--745, 2010.
+
+\bibitem{nguyen2014spatio}
+H.~Nguyen, M.~Katzfuss, N.~Cressie, and A.~Braverman, ``Spatio-temporal data
+  fusion for very large remote sensing datasets,'' {\em Technometrics},
+  vol.~56, no.~2, pp.~174--185, 2014.
+
+\bibitem{rajamani2011vehicle}
+R.~Rajamani, {\em Vehicle dynamics and control}.
+\newblock Springer Science \& Business Media, 2011.
+
+\bibitem{gillijns2007unbiased}
+S.~Gillijns and B.~De~Moor, ``Unbiased minimum-variance input and state
+  estimation for linear discrete-time systems,'' {\em Automatica}, vol.~43,
+  no.~1, pp.~111--116, 2007.
+
+\bibitem{wan2019attack}
+W.~Wan, H.~Kim, N.~Hovakimyan, and P.~G. Voulgaris, ``Attack-resilient
+  estimation for linear discrete-time stochastic systems with input and state
+  constraints,'' in {\em IEEE Conference on Decision and Control},
+  pp.~5107--5112, 2019.
+
+\bibitem{bevly2006integrating}
+D.~M. Bevly, J.~Ryu, and J.~C. Gerdes, ``Integrating {INS} sensors with {GPS}
+  measurements for continuous estimation of vehicle sideslip, roll, and tire
+  cornering stiffness,'' {\em IEEE Transactions on Intelligent Transportation
+  Systems}, vol.~7, no.~4, pp.~483--493, 2006.
+
+\bibitem{baffet2009estimation}
+G.~Baffet, A.~Charara, and D.~Lechner, ``Estimation of vehicle sideslip, tire
+  force and wheel cornering stiffness,'' {\em Control Engineering Practice},
+  vol.~17, no.~11, pp.~1255--1264, 2009.
+
+\bibitem{sierra2006cornering}
+C.~Sierra, E.~Tseng, A.~Jain, and H.~Peng, ``Cornering stiffness estimation
+  based on vehicle lateral dynamics,'' {\em Vehicle System Dynamics}, vol.~44,
+  no.~sup1, pp.~24--38, 2006.
+
+\bibitem{li2008filter}
+D.~Li, N.~Hovakimyan, C.~Cao, and K.~Wise, ``Filter design for feedback-loop
+  trade-off of $\mathcal{L}_1$ adaptive controller: A linear matrix inequality
+  approach,'' in {\em AIAA Guidance, Navigation and Control Conference and
+  Exhibit}, p.~6280, 2008.
+
+\bibitem{kwong1994w}
+M.~K. Kwong and P.~P. Tang, ``W-matrices, nonorthogonal multiresolution
+  analysis, and finite signals of arbitrary length,'' Tech. Rep. No.
+  ANL/MCS/CP-84114; CONF-9407170-1, Argonne National Lab., IL, 1994.
+
+\bibitem{kailath2000linear}
+T.~Kailath, A.~H. Sayed, and B.~Hassibi, {\em Linear estimation}.
+\newblock No.~BOOK, Prentice Hall, 2000.
+
+\bibitem{reif1999stochastic}
+K.~Reif, S.~Gunther, E.~Yaz, and R.~Unbehauen, ``Stochastic stability of the
+  discrete-time extended {K}alman filter,'' {\em IEEE Transactions on Automatic
+  control}, vol.~44, no.~4, pp.~714--728, 1999.
+
+\bibitem{bonnabel2014contraction}
+S.~Bonnabel and J.-J. Slotine, ``A contraction theory-based analysis of the
+  stability of the deterministic extended {K}alman filter,'' {\em IEEE
+  Transactions on Automatic Control}, vol.~60, no.~2, pp.~565--569, 2014.
+
+\bibitem{wan2019attackArx}
+W.~Wan, H.~Kim, N.~Hovakimyan, and P.~G. Voulgaris, ``Attack-resilient
+  estimation for linear discrete-time stochastic systems with input and state
+  constraints,'' {\em arXiv preprint arXiv:1903.08282}, 2019.
+
+\end{thebibliography}

@@ -28,8 +28,8 @@
 + [算法设计与分析](Algorithm_Design) COMS3006 吴庭芳
 + [Linux操作系统](Linux_Operating_System) COMS1009 曹敏
 + [操作系统课程实践](OS_experiment) COMS2036 王红玲 
-+ [微型计算机技术]() COMS2041 罗喜召
-+ [工程经济与伦理]()  COMS2058 梁合兰
++ [微型计算机技术](./Microcomputer) COMS2041 罗喜召
++ [工程经济与伦理](Economy_and_Ethics_of_Engineering)  COMS2058 梁合兰
 + [综合项目实践]() SOEN2014 杜扬
 + [大数据管理](./Big_Data_Management/) SOEN2079  王晶晶
 

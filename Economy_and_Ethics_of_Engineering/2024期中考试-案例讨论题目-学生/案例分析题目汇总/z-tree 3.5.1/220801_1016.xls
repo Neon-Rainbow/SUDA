@@ -1,0 +1,10 @@
+220801_1016	1	globals	Period	NumPeriods	RepeatTreatment	
+220801_1016	1	globals	1	1	0	
+220801_1016	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	Type	CakeSize	Offer	TimeOKAOffersOK	Accept	TimeOKBAcceptsOK	Share	TimeContinueProfitAOK	TimeContinueProfitBOK	
+220801_1016	1	subjects	1	1	1	0	0	0	1	100	1	-9	0	0	99	0	0	
+220801_1016	1	subjects	1	2	1	0	0	1	2	100	1	0	0	17	1	-	7	
+220801_1016	1	summary	Period	
+220801_1016	1	summary	1	
+220801_1016	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220801_1016	1	session	1	0	0	0	0	0	0	
+220801_1016	1	session	2	0	0	0	0	0	0	

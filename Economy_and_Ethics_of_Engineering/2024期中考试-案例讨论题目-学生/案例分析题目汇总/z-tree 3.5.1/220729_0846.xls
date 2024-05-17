@@ -1,0 +1,11 @@
+220729_0846	1	globals	Period	NumPeriods	RepeatTreatment	
+220729_0846	1	globals	1	1	0	
+220729_0846	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	TimeOKStageOK	
+220729_0846	1	subjects	1	1	1	0	0	1	99999	
+220729_0846	1	summary	Period	
+220729_0846	1	summary	1	
+220729_0846	1	contracts	Period	Owner	Box	t		TimeStageChatMessage	
+220729_0846	1	contracts	1	1	1	"hello"	-	99999	
+220729_0846	1	contracts	1	1	1	"hi"	-	99999	
+220729_0846	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220729_0846	1	session	1	0	0	0	0	0	0	

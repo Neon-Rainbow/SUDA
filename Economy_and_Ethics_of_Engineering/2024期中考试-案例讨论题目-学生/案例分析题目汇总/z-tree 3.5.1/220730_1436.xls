@@ -1,0 +1,8 @@
+220730_1436	1	globals	Period	NumPeriods	RepeatTreatment	
+220730_1436	1	globals	1	1	0	
+220730_1436	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	group_size_max	subject_num	rand_1	group_size	TimeOKAgreementOK	Decision	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	
+220730_1436	1	subjects	1	1	1	32	32	1	1.6	20	3	1	0.8112377514183697	2	20	1	20	27	20	1	0	
+220730_1436	1	summary	Period	
+220730_1436	1	summary	1	
+220730_1436	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220730_1436	1	session	1	32	0	0	0	32	32	

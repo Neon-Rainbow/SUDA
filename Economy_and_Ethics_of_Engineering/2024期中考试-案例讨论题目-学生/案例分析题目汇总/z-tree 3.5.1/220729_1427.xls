@@ -1,0 +1,8 @@
+220729_1427	1	globals	Period	NumPeriods	RepeatTreatment	
+220729_1427	1	globals	1	1	0	
+220729_1427	1	subjects	Period	Subject	Group	Profit	TotalProfit	Participate	ruturn_ratio	own_n_payoff	account	
+220729_1427	1	subjects	1	1	1	0	0	1	1.2	0	100	
+220729_1427	1	summary	Period	
+220729_1427	1	summary	1	
+220729_1427	1	session	Subject	FinalProfit	ShowUpFee	ShowUpFeeInvested	MoneyAdded	MoneyToPay	MoneyEarned	
+220729_1427	1	session	1	0	0	0	0	0	0	
