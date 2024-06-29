@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
 \bibitem{paden2016survey}
 Brian Paden, Michal {\v{C}}{\'a}p, Sze~Zheng Yong, Dmitry Yershov, and Emilio Frazzoli.
@@ -25,25 +25,10 @@ Takafumi Okuyama, Tad Gonsalves, and Jaychand Upadhay.
 \newblock Autonomous driving system based on deep q learnig.
 \newblock In {\em 2018 International Conference on Intelligent Autonomous Systems (ICoIAS)}, pages 201--205, 2018.
 
-\bibitem{han2020sequential}
-Yanjun Han, Zhengqing Zhou, Zhengyuan Zhou, Jose Blanchet, Peter~W Glynn, and Yinyu Ye.
-\newblock Sequential batch learning in finite-action linear contextual bandits.
-\newblock {\em arXiv preprint arXiv:2004.06321}, 2020.
-
-\bibitem{ren2020batched}
-Zhimei Ren, Zhengyuan Zhou, and Jayant~R Kalagnanam.
-\newblock Batched learning in generalized linear contextual bandits with general decision sets.
-\newblock {\em IEEE Control Systems Letters}, 6:37--42, 2020.
-
-\bibitem{aakerblom2023online}
-Niklas {\AA}kerblom, Fazeleh~Sadat Hoseini, and Morteza Haghir~Chehreghani.
-\newblock Online learning of network bottlenecks via minimax paths.
-\newblock {\em Machine Learning}, 112(1):131--150, 2023.
-
-\bibitem{kaufmann2012bayesian}
-Emilie Kaufmann, Olivier Capp{\'e}, and Aur{\'e}lien Garivier.
-\newblock On bayesian upper confidence bounds for bandit problems.
-\newblock In {\em Artificial intelligence and statistics}, pages 592--600. PMLR, 2012.
+\bibitem{Qlearning}
+Christopher J. C.~H. Watkins and Peter Dayan.
+\newblock Q-learning.
+\newblock {\em Machine Learning}, 8(3):279--292, 1992.
 
 \bibitem{waldrop2015no}
 M~Mitchell Waldrop et~al.
