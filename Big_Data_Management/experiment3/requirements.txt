@@ -1,0 +1,4 @@
+tensorflow
+numpy
+scikit-learn
+chardet

@@ -9,14 +9,15 @@
 \usepackage{algpseudocode}
 \usepackage{bm}
 \usepackage{amssymb}
-\usepackage{geometry} % 导入geometry包
+\usepackage{geometry}
+\usepackage{booktabs}
 
 \renewcommand{\baselinestretch}{1.5}
 
 \begin{document}
 
-\title{自动驾驶的能效提升}
-\author{方浩楠 2127405048}
+\title{迈向高效自动驾驶：深度 Q 学习与能耗优化的结合}
+\author{第15小组.小组成员:赵紫楚,方浩楠,张明明,吴小龙}
 \date{\today}
 \maketitle
 
@@ -29,8 +30,8 @@
 关键词:自动驾驶,深度Q学习,奖励系统,能耗学习
 
 
-\title{Improved energy efficiency of autonomous driving}
-\author{Haonan Fang 2127405048}
+\title{Towards Efficient Autonomous Driving: Integration of Deep Q Learning and Energy Consumption Optimization}
+\author{Group 15. Panelists: Zhao Zichu, Fang Haonan, Zhang Mingming, Wu Xiaolong}
 \date{\today}
 \maketitle
 \begin{abstract}
@@ -43,7 +44,7 @@ Keyword:Autonomous driving, deep Q learning, reward systems, energy learning
 
 \section{引言}
 自动驾驶汽车一直是最活跃的研究领域之一\cite{paden2016survey}近年来自动驾驶发展迅速,同时,自动驾驶的安全性成了许多人的考虑范围.
-而自动驾驶汽车多为新能源电动汽车.
+而自动驾驶汽车多为新能源电动汽车.但是即便如此,许多人对于新能源汽车的自动驾驶抱有许多担忧.
 如今，电动汽车在许多不同的交通系统中发挥着快速增长的作用。然而，适用性电动汽车的发展常常受到电池容量有限的限制。
 由于历史上的高成本在电池方面，电动汽车的续航里程通常比传统汽车短得多。
 这导致了对电池耗尽时被困的恐惧，这种效应被称为“里程焦虑”。
@@ -66,60 +67,236 @@ Keyword:Autonomous driving, deep Q learning, reward systems, energy learning
 学习在车道之间平稳驾驶，并仅通过视觉信息输入来避开障碍物。\cite{8494053}
 
 \section{研究现状}
-在\cite{AKERBLOM2023103879}中,作者在描述我们如何建模道路网络和影响能量的不同因素,以及车辆穿越特定路段的消耗量。然后概述了两种不同的贝叶斯方法将确定性能源消耗模型扩展到概率设置。
-这篇文章提出了一个关于电动车辆能效导航的新型在线学习框架。在这个设定中，道路段的车辆能耗被假设为随机的，并且相应的分布事先未知。通过利用车辆能耗的物理模型来指定贝叶斯乐手算法（如汤普森采样和BayesUCB）的先验分布参数，从而智能地引导必要的探索朝向合理的路径。多臂老虎机问题可以视为资源分配问题，因此在数据收集代理数量有限的情况下，乐手算法尤其有用。
-尽管路网中的行驶时间既是随机的也是最短路径问题中常见的边权重，但从各种来源（例如，来自手机设备）可以获取大量的行驶时间数据。然而，对于车辆能耗，因为能耗严重依赖于所使用的具体车型，需要内部车辆传感器来收集数据。此外，能耗还取决于所行驶道路的特性，如坡度、曲率、凹凸等。因此，这是一个非常适合应用贝叶斯乐手算法的问题设置。
-虽然多个关于贝叶斯组合乐手算法的研究已经通过使用非信息性先验进行了实证评估，但使用信息性先验来更有效地探索组合武器集的实验较少。我们不仅在实验中使用信息性先验，还通过地理空间图的视觉检查来研究道路网络的探索。此外，我们还实验评估了所提框架对先验错误指定的鲁棒性。我们针对多个城市的道路网络进行了实验，使用了现实的交通环境数据。
-并且没有先前的作品分析过批量组合汤普森采样的贝叶斯遗憾。我们还将分析扩展到同步多代理设置。虽然有关于批量线性上下文乐手（例如，UCB在\cite{han2020sequential}和\cite{ren2020batched}中）的先前工作，但组合乐手问题只是对于线性奖励函数的线性乐手问题的一个特殊案例。然而，我们的技术可扩展用于非线性奖励函数，如在\cite{aakerblom2023online}中所用，其中组合汤普森采样被用来解决寻找最大化其最大边权重的路径的问题。
-最后，这是首个将BayesUCB算法\cite{kaufmann2012bayesian}扩展并评估应用于在线最短路径问题的工作，实证显示了该算法在这一问题设置中的良好表现。
 
-这篇文章里开发了一个在线学习框架，以适应性地探索能源模型的参数，并连续解决在不同时间步骤上的导航优化问题。
-所谓时间步，是指我们每次选择并遍历一条路径的过程。初始时，道路段的具体能耗及模型参数并不明确，
-因此，\cite{AKERBLOM2023103879}从对这些参数的初步估计开始，用以解决当前的导航任务。
-随后，基于在实际导航中所观测到的能耗数据，更新这些参数以优化后续的导航任务。
+\subsection{Q学习对于自动驾驶路线规划的应用}
 
-具体的算法步骤在算法 \ref{alg:online_algorithm} 中有详细描述，
-其中涉及能量模型参数如何根据观测数据进行更新的过程，则在算法 \ref{alg:gaussian_update_parameters} 中进行了阐释。
-在算法 \ref{alg:online_algorithm} 中，向量 $\bm{\mu}{t-1}$ 和 $\bm{\varsigma}{t-1}$ 表示当前时间步 $t$ 所有道路段的能源模型后验参数，
-这些参数用来计算当前的道路权重向量 $\bm{w}_t$。
+\subsubsection{强化学习的主要框架}
+强化学习（Reinforcement Learning, RL）是一种机器学习范式，旨在通过与环境的交互来学习如何采取行动，以最大化累计奖励。不同于监督学习，强化学习不需要标注的输入输出对，而是通过试错来学习最佳策略。强化学习的核心组件包括：
+\begin{enumerate}
+    \item 智能体（Agent）：在环境中采取行动的实体。
+    \item 环境（Environment）：智能体与之交互的外部系统。
+    \item 状态（State）：环境在某一时刻的具体情况。
+    \item 动作（Action）：智能体在某一状态下可以采取的行为。
+    \item 奖励（Reward）：智能体采取某一动作后环境给予的反馈信号.
+    \item 策略（Policy）：智能体从状态到动作的映射规则。
+    \item 价值函数（Value Function）：评估每个状态或状态-动作对的长期收益。
+\end{enumerate}
 
-文中选择使用 $\bm{w}_t$ 来解决优化问题，并确定最优路径 $\bm{a}_t$，即多臂老虎机问题中的“手臂”。
-实施该行动后，我们将观测到包含每条道路段实际能耗的奖励 $r_t(\bm{a}_t)$。假设每条道路的能耗分布在时间上是固定的，期望奖励为 $\mathbb{E}[r (\bm{a}_t)]$。
+强化学习的主要框架如图\ref{fig:fig8}所示.目前，强化学习中最具有代表性的算法是Q-learning 算法\cite{Qlearning} ，该算法能在与环境的互动过程中学习环境中各状态的 Q 值，根据 Q 值得出最优策略。而DQN算法则是利用卷积神经网络来提取特征从而指导智能体的决策过程的一种算法.本文中我们将主要分析强化学习中的Q-learning以及基于Q-learning的DQN(Deep Q Network)算法
 
-鉴于目标是最小化能耗，因此该文章选择将观测到的能耗视为负奖励，并据此更新模型参数。总的时间步数用 $T$ 表示，有时也称为“视界”。
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/强化学习框架.jpg} % 设置图片路径及宽度
+    \caption{强化学习的框架图} % 图片标题
+    \label{fig:fig8} % 图片标签，用于交叉引用
+\end{figure}
 
-为了评估这个学习算法的性能，文中考察了其遗憾值，即按照算法行动与始终执行最优行动之间的期望奖励差额。
-具体而言，时间 $t$ 的即时遗憾定义为 $\Delta_t := \mathbb{E}[r (\bm{a}^*)] - \mathbb{E}[r (\bm{a}_t)]$，
-其中 $\bm{a}^*$ 是使期望奖励最大化的行动。累积遗憾定义为 $\text{Regret}(T) := \sum_{t=1}^T \Delta_t$.
-在采用贝叶斯方法的框架中，我们还需计算贝叶斯遗憾，即 $\text{BayesRegret}(T) := \mathbb{E}[\text{Regret}(T)]$，它是基于先验分布的问题实例上遗憾的期望值。\cite{AKERBLOM2023103879}
 
-\begin{algorithm}[tb]
-	\caption{在线学习节能导航}
-	\label{alg:online_algorithm}
-	\begin{algorithmic}[1]
-	\Require $\bm{\mu}_0, \bm{\varsigma}_0$
-	\For{$t \leftarrow 1, \dots, T$}
-		\label{row:optimization_objective}\State $\bm{w}_t \leftarrow $ \Call{GetEdgeWeights}{$t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
-		\label{row:optimization_solution}\State $\bm{a}_t \leftarrow $ \Call{SolveOptimizationToFindAction}{$\bm{w}_t$}
-		\label{row:apply_action}\State $\bm{r}_t \leftarrow $ \Call{ApplyActionAndObserveReward}{$\bm{a}_t$}
-		\label{row:update_parameters}\State $\bm{\mu}_{t}, \bm{\varsigma}_{t} \leftarrow $ \Call{UpdateParameters}{$\bm{a}_t, \bm{r}_t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
-	\EndFor
-	\end{algorithmic}
+\subsubsection{深度Q学习的原理}
+Deep Q-Learning（深度Q学习）是一种用于强化学习的算法,同时也是强化学习中一个非常具有代表性的算法。它结合了深度学习和Q学习的优点，能够在复杂的环境中做出决策。强化学习是一种机器学习方法，它通过与环境的互动来学习如何做决策。算法会尝试不同的动作，根据获得的奖励（或惩罚）来调整策略，目的是最大化总奖励。
+
+
+
+
+我们还可以使用Q学习来进行能耗的优化.DQN是一种将深度学习与强化学习结合的算法，其核心在于利用卷积神经网络（CNN）从高维感官输入中提取特征，并通过Q值函数指导智能体的决策过程。DQN通过经验回放和固定Q目标网络解决了传统Q学习中的不稳定问题。经验回放缓解了数据相关性问题，而固定Q目标网络则减轻了训练过程中值函数的振荡。实验表明，DQN在复杂环境下表现出色，能够有效学习并优化自动驾驶策略。Q学习是强化学习的一种变体。在Q学习中，存在一个具有状态和相应动作的智能体。在任意时刻，智能体处于某一可行状态。在下一个时间步，通过执行某个动作，状态转变为其他状态。这个动作伴随着奖励或惩罚。智能体的目标是最大化奖励的获取。Q学习算法通过以下更新公式表示：
+$$ Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a’} Q(s’, a’) - Q(s, a)] $$
+其中，\( Q(s_t, a_t) \) 表示在时间 \( t \) 时，智能体处于状态 \( s_t \) 并执行动作 \( a_t \) 的Q值，奖励为 \( r_t \)。\( \alpha \) 是学习率，\( \gamma \) 是折扣因子。参数 \( \gamma \) 的取值范围是 [0,1]。如果 \( \gamma \) 接近 0，智能体将倾向于只考虑即时奖励。相反，如果 \( \gamma \) 接近 1，智能体将更重视未来的奖励，从而愿意延迟奖励。学习率和折扣因子是影响Q学习算法性能的两个最重要的参数。DQN算法的伪代码则如算法\ref{alg:DQN算法}所示
+
+
+\begin{algorithm}[h!]
+\caption{深度Q学习算法}
+\label{alg:DQN算法}
+\begin{algorithmic}[1]
+\Require 初始参数 $\theta_0$
+\State 初始化容量为 $N$ 的经验回放记忆库 $D$
+\State 随机初始化神经网络 $Q$ 的参数 $\theta$
+\State 初始化目标网络 $\hat{Q}$ 的参数 $\theta' = \theta$
+\For{$\text{episode} = 1$ to $M$}
+    \State 初始化状态 $s_1 = \{x_1\}$，预处理得到神经网络的输入特征 $\phi(s_1)$
+    \For{$t = 1$ to $T$}
+        \State 以 $\epsilon$ 的概率随机选择一个动作 $a$
+        \State 否则 $a = \arg\max_{a'} Q(\phi(s_t), a'; \theta)$
+        \State 执行动作 $a$，获得奖励 $r$ 并且模拟器返回下一个时刻的一帧图像 $x_{t+1}$
+        \State $s_{t+1} = s_t, a_t, x_{t+1}$，预处理得到 $\phi_{t+1} = \phi(s_{t+1})$
+        \State 将 $(\phi_t, a_t, r, \phi_{t+1})$ 存储到 $D$ 中（如果 $D$ 满了那么会弹出老的）
+        \State 随机从 $D$ 中采样一个小批量的数据 $(\phi_j, a_j, r_j, \phi_{j+1})$
+        \If{$t+1$ 时刻是游戏结束}
+            \State $y_j = r_j$
+        \Else
+            \State $y_j = r_j + \gamma \max_{a'} \hat{Q}(\phi_{j+1}, a'; \theta')$
+        \EndIf
+        \State 使用梯度下降优化损失函数 $(y_j - Q(\phi_j, a_j; \theta))^2$
+        \If{每过 $C$ 次训练}
+            \State 更新一次目标网络的参数 $\theta' \leftarrow \theta$
+        \EndIf
+    \EndFor
+\EndFor
+\end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[tb]
-	\caption{能量模型的高斯参数更新}
-	\label{alg:gaussian_update_parameters}
-	\begin{algorithmic}[1]
-	\Procedure{UpdateParameters}{$\bm{a}_t, \bm{r}_t, \bm{\mu}_{t-1}, \bm{\varsigma}_{t-1}$}
-	\For{each edge $e \in \bm{a}_t$}
-	\State $\varsigma_{e,t}^2 \leftarrow \left(\frac{1}{\varsigma_{e,t-1}^2} + \frac{1}{\sigma_{e}^2}\right)^{-1}$
-	\State $\mu_{e,t} \leftarrow \varsigma_{e,t}^2 \left( \frac{\mu_{e,t-1}}{\varsigma_{e,t-1}^2} + \frac{r_t(e)}{\sigma^2_e}\right)$
-	\EndFor
-	\State \Return $\bm{\mu}_{t}, \bm{\varsigma}_{t}$
-	\EndProcedure
-	\end{algorithmic}
-\end{algorithm}
+\subsubsection{学习率}
+学习率决定了新获取的信息覆盖旧信息的强度。学习率为0时，智能体不会学习任何东西，而学习率为1时，智能体只会考虑最新的信息。在完全确定性的环境中，学习率为1是最优的。当问题是随机的时，算法在某些技术条件下仍能收敛，这些条件要求学习率逐渐减小到零。在实践中，通常使用恒定的学习率。
+
+\subsubsection{折扣因子}
+折扣因子决定了未来奖励的重要性。折扣因子为0时，智能体将变得短视，只考虑当前的奖励；而折扣因子接近1时，智能体将努力追求长期的高奖励。如果折扣因子等于或超过1，动作值可能会发散。即使折扣因子仅略低于1，当使用人工神经网络来近似值函数时，Q学习也会导致误差传播和不稳定性。在这种情况下，已知从较低的折扣因子开始，并逐渐增加到最终值，可以加速学习。
+
+\subsection{卷积神经网络对于深度Q学习的作用}
+一般来说，神经网络模仿生物神经元的功能，其激励信号可以根据输入刺激的强度打开/关闭。包含组合矩阵运算和非线性激活函数的多层前馈神经网络在解决分类问题上有很好的效果。例如，MINST数据集中0-9位数图像的分类误差低至3\%。然而，在CIFAR-10数据集的分类中，有十类图像，如狗，鸟等，测试误差增加到50\%左右。mlp在图像分类方面的糟糕表现引发了一种新的神经网络，称为卷积神经网络(CNN)。卷积神经网络（Convolutional Neural Network, CNN）是一种正则化的前馈神经网络，通过滤波器（或称核）优化自行学习特征工程。通过使用正则化的权重和较少的连接数，CNN可以避免早期神经网络在反向传播过程中遇到的梯度消失和梯度爆炸问题。
+
+在传统的全连接层中，每个神经元处理一个100×100像素的图像需要10,000个权重。然而，使用级联的卷积（或交叉相关）核，仅需要25个神经元处理5×5大小的图块。高层特征是从更宽的上下文窗口中提取的，而低层特征则从较小的上下文窗口中提取。这使得CNN能够更有效地处理图像，并逐层提取越来越复杂的特征。
+
+总结来说，CNN通过优化卷积核，自动学习图像特征，并通过逐层处理来提取不同层次的特征，从而在图像识别等任务中表现出色。
+
+\subsection{CNN与DQN的联系}
+Deep Q Network (图\ref{fig:fig9})是CNN(图\ref{fig:fig10})的一个变体。输出不是类，而是对应于代理在环境中学习的响应其状态的每个动作的Q值.
+卷积神经网络（Convolutional Neural Network, CNN）和深度Q网络（Deep Q Network, DQN）在结构和功能上有很多联系，但也有显著的不同之处。以下是对它们联系的分析：
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig8.jpg} % 设置图片路径及宽度
+    \caption{DQN框架} % 图片标题
+    \label{fig:fig9} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig9.jpg} % 设置图片路径及宽度
+    \caption{CNN框架} % 图片标题
+    \label{fig:fig10} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{基础结构}：
+    \begin{itemize}
+        \item \textbf{CNN}：CNN的基础结构包括卷积层、池化层和全连接层。这些层通过提取图像特征，最终将输入图像分类到特定的标签类别中。
+        \item \textbf{DQN}：DQN的基础结构中也包含CNN，用于处理和提取输入状态（通常是图像）的特征。这些特征随后被传递到全连接层，以估计Q值。
+    \end{itemize}
+    \item \textbf{特征提取}：
+    \begin{itemize}
+        \item 在CNN中，卷积层和池化层用于提取输入图像的特征。这些特征用于分类任务。
+        \item 在DQN中，卷积层和池化层同样用于提取输入状态（图像或其他形式）的特征。这些特征用于估计每个可能动作的Q值。
+    \end{itemize}
+    \item \textbf{学习过程}：
+    \begin{itemize}
+        \item CNN通过反向传播和梯度下降算法来优化模型参数，使得模型能够在给定的训练数据上进行分类。
+        \item DQN通过Q-learning算法来更新Q值，结合反向传播和梯度下降算法，优化模型参数，使得模型能够在不同的环境状态下选择最优动作。
+    \end{itemize}
+\end{itemize}
+
+但是同时,两者也是有着一些不同点:
+\begin{itemize}
+    \item \textbf{输出类型}：
+    \begin{itemize}
+        \item \textbf{CNN}：输出的是类别标签，即模型将输入图像分类为特定类别的概率。
+        \item \textbf{DQN}：输出的是每个动作的Q值，即在当前状态下采取每个可能动作的预期奖励。
+    \end{itemize}
+    \item \textbf{应用场景}：
+    \begin{itemize}
+        \item \textbf{CNN}：主要用于图像分类、目标检测、图像分割等静态图像处理任务。
+        \item \textbf{DQN}：主要用于强化学习任务，即在动态环境中通过与环境的交互来学习最优策略，例如游戏AI、机器人导航等。
+    \end{itemize}
+    \item \textbf{目标函数}：
+    \begin{itemize}
+        \item \textbf{CNN}：使用交叉熵损失函数或其他分类损失函数，最小化分类错误率。
+        \item \textbf{DQN}：使用贝尔曼方程更新Q值，目标是最小化Q值的时间差误差。
+    \end{itemize}
+\end{itemize}
+
+总结来说，CNN和DQN在特征提取部分有很大的相似性，都是通过卷积神经网络来处理和提取输入特征。但它们的最终目的和输出类型有所不同，CNN用于静态图像的分类，而DQN用于动态环境中的决策优化。
+
+
+\section{深度Q学习在车辆自动驾驶方面的实验结果}
+
+\subsection{实验环境}
+图像~\ref{fig:fig1} 和图像~\ref{fig:fig2} 展示了模拟研究中创建的学习环境。在两侧由人行道界定的直路上，每隔30米随机放置障碍物。这些障碍物包括以下三种类型：
+\begin{itemize}
+  \item 人形（图 ~\ref{fig:fig3}）
+  \item 车辆（图~\ref{fig:fig4}）
+  \item 障碍块（图~\ref{fig:fig5}
+\end{itemize}
+
+这些静态障碍物是从预先制作的集合中随机生成的。模拟环境是使用Unity (https://unity3d.com/) 创建的。Unity与Python程序之间的交互是通过Unity-Python转换模块 (http://ailab.dwango.co.jp/en/) 实现的。学习过程是使用Chainer框架 (http://chainer.org/) 实现的。本篇文章\cite{8494053}的实验环境如下：
+\begin{itemize}
+	\item CPU:8核Xeon CPU x 2
+	\item 内存:256 GB RAM
+	\item 显卡:Nvidia P100 GPU x 5
+\end{itemize}
+
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig1.jpg} % 设置图片路径及宽度
+    \caption{生成障碍物} % 图片标题
+    \label{fig:fig1} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig2.jpg} % 设置图片路径及宽度
+    \caption{障碍物在街道上的位置} % 图片标题
+    \label{fig:fig2} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig3.jpg} % 设置图片路径及宽度
+    \caption{人形组件} % 图片标题
+    \label{fig:fig3} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig4.jpg} % 设置图片路径及宽度
+    \caption{车辆组件} % 图片标题
+    \label{fig:fig4} % 图片标签，用于交叉引用
+\end{figure}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig5.jpg} % 设置图片路径及宽度
+    \caption{障碍物组件} % 图片标题
+    \label{fig:fig5} % 图片标签，用于交叉引用
+\end{figure}
+
+\subsection{代理动作}
+
+DQN 从摄像头输入中解释汽车前方的道路场景，并为给定的时间段提出具体的行动计划。为了简化行动计划，我们只考虑三种动作：向左转 10 度、保持直行、向右转 10 度（图~\ref{fig:fig6}）。
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig6.jpg} % 设置图片路径及宽度
+    \caption{行动计划} % 图片标题
+    \label{fig:fig6} % 图片标签，用于交叉引用
+\end{figure}
+
+\subsection{实验内容}
+实验会一直重复状态-动作循环,直到智能体到达目标.在本次实验中,智能体即为小车.如果在状态-动作循环中，智能体碰到障碍物或越过边界车道，学习回合将中止，智能体将开始一个新的回合。如果智能体在轨道上顺利行进，它会在每克服一个障碍物时得到奖励。智能体更新轨迹信息的频率是0.15s一次.在智能体更新了轨迹信息后,智能体会将轨迹信息发送给学习程序.学习程序在分析了智能体的轨迹信息后,会发送适当的行为给智能体.智能体收到了学习程序发送的信息后,将会根据学习程序的指示来进行适当的行动.实验分别在10m/s,15m/s以及20m/s的速度下进行.小车将会在这样的恒定速度下行驶,在小车行驶时,我们将会记录下小车的轨迹以及小车的运动情况
+
+\subsection{学习结果}
+
+在文章中,小车进行了多次测试.每种速度下的最高得分如图~\ref{fig:fig7}所示，学习智能体在每种速度下避开所有车道和障碍物的最长距离如表格\ref{table:successful_learning}所示。在小车的速度为10m/s时,小车的行驶距离是最远的,达到了10077m.这也符合我们的预期.在小车的速度比较缓慢时,学习程序将会有更多的时间来分析小车的运动并且给出最优的行驶路线,这也导致了小车的行驶距离会比较长.因此我们可以得出这样的结论:智能体的学习能力随着驾驶速度的增加而下降。
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccc}
+\toprule
+\textbf{实验} & \textbf{车速 (米/秒)} & \textbf{行驶距离 (米)} \\
+\midrule
+1 & 10 & 10,077 \\
+2 & 20 & 4,907 \\
+3 & 30 & 2,173 \\
+\bottomrule
+\end{tabular}
+\caption{成功学习}
+\label{table:successful_learning}
+\end{table}
+
+\begin{figure}[h!] % [h] 表示图片将会在当前位置显示
+    \centering % 图片居中
+    \includegraphics[width=\textwidth]{Figures/fig7.jpg} % 设置图片路径及宽度
+    \caption{三种不同速度的平均得分} % 图片标题
+    \label{fig:fig7} % 图片标签，用于交叉引用
+\end{figure}
+
 
 \section{未来展望}
 在未来的研究中,我们可以进一步研究如何将深度Q学习应用到自动驾驶汽车中,以提高自动驾驶汽车的性能.随着自动驾驶技术的发展，未来的研究可以从以下几个方向进行深入：
